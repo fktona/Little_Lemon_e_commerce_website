@@ -1,0 +1,35 @@
+ [
+    {
+      "id": 1,
+      "name": "Cheeseburger",
+      "description": "Juicy beef patty topped with melted cheese, fresh lettuce, tomatoes, and pickles, served in a soft bun.",
+      "price": 9.99,
+      "category": "Burgers",
+      "image": "https://example.com/images/cheeseburger.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Margherita Pizza",
+      "description": "Classic Italian pizza topped with fresh tomatoes, mozzarella cheese, and basil leaves.",
+      "price": 12.99,
+      "category": "Pizzas",
+      "image": "https://example.com/images/margherita_pizza.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Chicken Caesar Salad",
+      "description": "Grilled chicken breast on a bed of crisp romaine lettuce, croutons, Parmesan cheese, and Caesar dressing.",
+      "price": 8.49,
+      "category": "Salads",
+      "image": "https://example.com/images/chicken_caesar_salad.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Chocolate Brownie Sundae",
+      "description": "Warm chocolate brownie topped with a scoop of vanilla ice cream, chocolate syrup, whipped cream, and a cherry.",
+      "price": 6.99,
+      "category": "Desserts",
+      "image": "https://example.com/images/chocolate_brownie_sundae.jpg"
+    }
+  ]
+
