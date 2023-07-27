@@ -1,5 +1,6 @@
 import { useEffect, useState , useContext} from "react";
 import { ItemOrderContext } from "../assets/Context/itemContext"
+import Checkout from "./Checkout"
 
 function Nav({ name }) {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -8,7 +9,7 @@ function Nav({ name }) {
     setIsLoggedIn((prev) => prev);
   };
 
-  const { allOrder } = useContext(ItemOrderContext);
+  
 
   return (
     <>
@@ -18,12 +19,7 @@ function Nav({ name }) {
           <div>
             <p>LITTLE LEMON</p>
             
-              {allOrder.map((ordercart) => (
-              <ul key={ordercart.id}> 
-                <li> {ordercart.Qty}</li>
-                <li> {ordercart.menu}</li>
-               </ul>
-               ))}
+             <Checkout />
             
             <p> welcome {name}</p>
           </div>
