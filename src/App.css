@@ -1,4 +1,4 @@
-#root {
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0.5rem;
@@ -7,15 +7,101 @@
 
 .items{
   position: relative;
-  display: flex;
+  display: grid;
   align-items: center;
-  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
-  background: red;
-  gap: 1rem;
+  background: silver;
+  
 }
 ul {
-  position: relative;
-  width: 50%;
   list-style: none;
+  
 }
+
+li{
+  
+  font-size: 1rem;
+  background:red
+}
+input {
+  max-width:2rem;
+  text-align: center;
+  padding: 0.7rem;
+  margin:12px
+}
+img{
+  position: relative;
+  width: 100%;
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+}
+
+.section{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 2rem;
+  gap:1rem; 
+ background: #F5F5F5;
+ padding:1rem
+ 
+}
+
+.FoodItem{
+  display: flex;
+ flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding :1rem;
+  box-shadow: 1px 2px 3px rgba(0 ,0 ,0 ,0.15);
+  
+}
+
+.ulit{
+  position: absolute;
+  
+}
+.ulit button{
+  background: #FFC107;
+}
+
+.cul{
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+ 
+  width: 90%;
+  margin: 0 auto;
+ 
+  
+}
+.cul ul{
+  display:flex;
+  align-items: space-between;
+  justify-content: center;
+  
+}
+
+.cul li{
+  background: #4CAF50;
+  position: relative;
+  
+}
+
+
+
+.cul img{
+  width:5%;
+  
+}
+
+.FoodItem button {
+  background: #2E7D32;
+} 
+
+.qtyButton{
+  display:flex;
+  
+} */

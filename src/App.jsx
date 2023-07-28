@@ -16,7 +16,7 @@ function App() {
     <ItemOrderContext.Provider 
     value={{ allOrder, setAllOrder , Button}}>
 
-      <Nav name="faith"  style= "position: absolute"/>
+      <Nav name="faith" />
      <FoodMenu
      items={items} 
      keys = {items.map((menu => menu.id))} />

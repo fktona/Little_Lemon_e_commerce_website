@@ -15,19 +15,23 @@ function Checkout() {
   );
 
   return (
-    <div>
+    <div className="ulit">
+    <small>{allOrder.length}</small>
       {allOrder.length > 0 ? (
         <>
           {allOrder.map((cart) => {
             const cartQtyValue = parseInt(cart.Qty);
 
             return (
+            <div className="cul">
+            <img src={cart.image} />
               <ul key={cart.id}>
-                <li>{cartQtyValue}</li>
-                <Button orderNumber={cart.Qty} setOrderNumber={setOrderNumber} />
-                <li>{cart.totalPrice}</li>
                 <li>{cart.menu}</li>
+                 <li>{cart.totalPrice}</li>
               </ul>
+              <Button orderNumber={cart.Qty} setOrderNumber={setOrderNumber} />
+              </div>
+        
             );
           })}
           
@@ -38,7 +42,6 @@ function Checkout() {
       ) : (
         <p>No items in the cart.</p>
       )}
-      <li>{allOrder.length}</li>
     </div>
   );
 }

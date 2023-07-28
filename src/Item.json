@@ -1,35 +1,234 @@
- [
+[
     {
-      "id": 1,
-      "name": "Cheeseburger",
-      "description": "Juicy beef patty topped with melted cheese, fresh lettuce, tomatoes, and pickles, served in a soft bun.",
-      "price": 9.99,
-      "category": "Burgers",
-      "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+        "id": 1,
+        "name": "Cheeseburger",
+        "description": "Juicy beef patty topped with melted cheese, fresh lettuce, tomatoes, and pickles, served in a soft bun.",
+        "price": 9.99,
+        "category": "Burgers",
+        "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
     },
     {
-      "id": 2,
-      "name": "Margherita Pizza",
-      "description": "Classic Italian pizza topped with fresh tomatoes, mozzarella cheese, and basil leaves.",
-      "price": 12.99,
-      "category": "Pizzas",
-      "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+        "id": 2,
+        "name": "Margherita Pizza",
+        "description": "Classic Italian pizza topped with fresh tomatoes, mozzarella cheese, and basil leaves.",
+        "price": 12.99,
+        "category": "Pizzas",
+        "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
     },
     {
-      "id": 3,
-      "name": "Chicken Caesar Salad",
-      "description": "Grilled chicken breast on a bed of crisp romaine lettuce, croutons, Parmesan cheese, and Caesar dressing.",
-      "price": 8.49,
-      "category": "Salads",
-      "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+        "id": 3,
+        "name": "Chicken Caesar Salad",
+        "description": "Grilled chicken breast on a bed of crisp romaine lettuce, croutons, Parmesan cheese, and Caesar dressing.",
+        "price": 8.49,
+        "category": "Salads",
+        "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
     },
     {
-      "id": 4,
-      "name": "Chocolate Brownie Sundae",
-      "description": "Warm chocolate brownie topped with a scoop of vanilla ice cream, chocolate syrup, whipped cream, and a cherry.",
-      "price": 6.99,
-      "category": "Desserts",
-      "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+        "id": 4,
+        "name": "Chocolate Brownie Sundae",
+        "description": "Warm chocolate brownie topped with a scoop of vanilla ice cream, chocolate syrup, whipped cream, and a cherry.",
+        "price": 6.99,
+        "category": "Desserts",
+        "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+    },
+    {
+        "id": 5,
+        "name": "Pepperoni Pizza",
+        "description": "Classic pizza topped with pepperoni, mozzarella cheese, and tangy tomato sauce.",
+        "price": 11.49,
+        "category": "Pizzas",
+        "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+    },
+    {
+        "id": 6,
+        "name": "Caesar Salad",
+        "description": "Fresh romaine lettuce, croutons, Parmesan cheese, and Caesar dressing.",
+        "price": 6.99,
+        "category": "Salads",
+        "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+    },
+    {
+        "id": 7,
+        "name": "Cheese Pizza",
+        "description": "Simple and delicious cheese pizza with mozzarella and tomato sauce.",
+        "price": 10.49,
+        "category": "Pizzas",
+        "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+    },
+    {
+        "id": 8,
+        "name": "Chicken Burger",
+        "description": "Grilled chicken patty topped with fresh lettuce, tomatoes, onions, and mayo, served in a soft bun.",
+        "price": 9.49,
+        "category": "Burgers",
+        "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+    },
+    {
+        "id": 9,
+        "name": "Greek Salad",
+        "description": "Mixed greens, tomatoes, cucumbers, olives, feta cheese, and Greek dressing.",
+        "price": 7.99,
+        "category": "Salads",
+        "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+    },
+    {
+        "id": 10,
+        "name": "Sausage Pizza",
+        "description": "Pizza topped with savory sausage, mozzarella cheese, and tomato sauce.",
+        "price": 12.49,
+        "category": "Pizzas",
+        "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+    },
+    {
+        "id": 11,
+        "name": "BBQ Burger",
+        "description": "Grilled beef patty topped with BBQ sauce, cheddar cheese, bacon, and crispy onion rings.",
+        "price": 10.99,
+        "category": "Burgers",
+        "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+    },
+    {
+        "id": 12,
+        "name": "Caprese Salad",
+        "description": "Fresh mozzarella, ripe tomatoes, basil, and balsamic glaze.",
+        "price": 8.99,
+        "category": "Salads",
+        "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+    },
+    {
+        "id": 13,
+        "name": "Veggie Pizza",
+        "description": "Vegetarian pizza loaded with fresh vegetables and mozzarella cheese.",
+        "price": 11.99,
+        "category": "Pizzas",
+        "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+    },
+    {
+        "id": 14,
+        "name": "Double Cheeseburger",
+        "description": "Two juicy beef patties topped with melted cheese, lettuce, tomatoes, and pickles in a soft bun.",
+        "price": 12.99,
+        "category": "Burgers",
+        "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+    },
+    {
+        "id": 15,
+        "name": "Chicken Cobb Salad",
+        "description": "Grilled chicken, bacon, avocado, tomatoes, hard-boiled eggs, blue cheese, and mixed greens.",
+        "price": 9.99,
+        "category": "Salads",
+        "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+    },
+    {
+        "id": 16,
+        "name": "Hawaiian Pizza",
+        "description": "Pizza topped with ham, pineapple, mozzarella cheese, and tomato sauce.",
+        "price": 12.49,
+        "category": "Pizzas",
+        "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+    },
+    {
+        "id": 17,
+        "name": "Bacon Cheeseburger",
+        "description": "Juicy beef patty topped with crispy bacon, melted cheese, lettuce, tomatoes, and pickles in a soft bun.",
+        "price": 11.49,
+        "category": "Burgers",
+        "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+    },
+    {
+        "id": 18,
+        "name": "Spinach and Feta Salad",
+        "description": "Fresh spinach, feta cheese, red onions, candied pecans, and balsamic vinaigrette.",
+        "price": 7.99,
+        "category": "Salads",
+        "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+    },
+    {
+        "id": 19,
+        "name": "Meat Lover's Pizza",
+        "description": "Pizza loaded with a variety of meats, including pepperoni, sausage, ham, and bacon.",
+        "price": 13.99,
+        "category": "Pizzas",
+        "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+    },
+    {
+        "id": 20,
+        "name": "Veggie Burger",
+        "description": "Grilled vegetarian patty topped with lettuce, tomatoes, onions, and mayo, served in a soft bun.",
+        "price": 9.49,
+        "category": "Burgers",
+        "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+    },
+    {
+        "id": 21,
+        "name": "Garden Salad",
+        "description": "Mixed greens, cherry tomatoes, cucumbers, carrots, and choice of dressing.",
+        "price": 6.49,
+        "category": "Salads",
+        "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+    },
+    {
+        "id": 22,
+        "name": "Mushroom Pizza",
+        "description": "Pizza topped with sautéed mushrooms, mozzarella cheese, and tomato sauce.",
+        "price": 11.99,
+        "category": "Pizzas",
+        "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+    },
+    {
+        "id": 23,
+        "name": "Avocado Bacon Burger",
+        "description": "Juicy beef patty topped with avocado, bacon, melted cheese, lettuce, and tomatoes in a soft bun.",
+        "price": 12.99,
+        "category": "Burgers",
+        "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+    },
+    {
+        "id": 24,
+        "name": "Cobb Salad",
+        "description": "Grilled chicken, avocado, tomatoes, hard-boiled eggs, blue cheese, and mixed greens.",
+        "price": 8.99,
+        "category": "Salads",
+        "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+    },
+    {
+        "id": 25,
+        "name": "Supreme Pizza",
+        "description": "Delicious pizza loaded with various toppings, including pepperoni, sausage, peppers, onions, and olives.",
+        "price": 13.49,
+        "category": "Pizzas",
+        "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+    },
+    {
+        "id": 26,
+        "name": "Mediterranean Salad",
+        "description": "Mixed greens, cherry tomatoes, cucumbers, olives, red onions, feta cheese, and Greek dressing.",
+        "price": 7.99,
+        "category": "Salads",
+        "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+    },
+    {
+        "id": 27,
+        "name": "BBQ Chicken Pizza",
+        "description": "Pizza topped with BBQ chicken, red onions, mozzarella cheese, and cilantro.",
+        "price": 12.99,
+        "category": "Pizzas",
+        "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+    },
+    {
+        "id": 28,
+        "name": "Portobello Burger",
+        "description": "Grilled Portobello mushroom cap topped with roasted red peppers, goat cheese, and balsamic glaze in a soft bun.",
+        "price": 10.99,
+        "category": "Burgers",
+        "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+    },
+    {
+        "id": 29,
+        "name": "Shrimp Caesar Salad",
+        "description": "Grilled shrimp on a bed of crisp romaine lettuce, croutons, Parmesan cheese, and Caesar dressing.",
+        "price": 9.49,
+        "category": "Salads",
+        "image": "https://i.ibb"
     }
-  ]
-
+    ]
