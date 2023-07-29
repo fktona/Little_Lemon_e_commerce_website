@@ -1,7 +1,8 @@
 import { useEffect, useState , useContext} from "react";
 import { ItemOrderContext } from "../assets/Context/itemContext"
 import items from "../Item.json"
-import Checkout from "./Checkout"
+
+
 
 function Nav({ name }) {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -19,26 +20,25 @@ function Nav({ name }) {
   
 
   return (
-    <>
-    <input
+    <div className="text-black font-bold text-md  md:flex space-x-4 flex items-center justify-between   bg-green-500 p-3 ">
+    {/* <input
         type="text"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
         placeholder="Search menu..."
-      />
-      <button onClick={toggleLogin}>{isLoggedIn ? "Logout" : "Login"}</button>
-      <div>
+      />*/}
+     
         {isLoggedIn ? (
-          <div>
-            <p>CULINARY OASIS</p>
-            
-             <Checkout />
-            
-            <p> welcome {name}</p>
-          </div>
+        
+          <>
+            <p className="grow text-center ">CULINARY OASIS</p>
+           
+          </>
         ) : ""}
-      </div>
-    </>
+ <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow text-silver"
+   onClick={toggleLogin}>{isLoggedIn ? "Logout" : "Login"}</button>
+    
+    </div>
   );
 }
 

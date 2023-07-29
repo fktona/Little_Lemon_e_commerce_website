@@ -53,23 +53,23 @@ useEffect(() => {
 
 
   return (
-    <div className="FoodItem">
-    <img src={menu.image} />
-    <ul key = {menu.id}>
-      <li>{menu.name}</li>
-      <li>{menu.category}</li>
-  { /*   <li>{menu.description}</li>*/}
-      <li>${menu.price}</li>
-   
-      {showCart ? (
-        <Button orderNumber={orderNumber} setOrderNumber={setOrderNumber} menu={menu}
-        setshowCart={setshowCart}
-        />
-      ) : null}
-      <br />
-      <button onClick={show}>{showCart ? "Remove"  : "Add To Cart"}</button>
+    <div className=" grid grid-cols-2 place-items-center p-4 border rounded-2xl shadow-md">
+      <img src={menu.image} alt={menu.name} className="w-21 h-21 mx-auto mb-2 rounded-full" />
+      <ul className="text-center" >
+        <li className="text-lg font-semibold">{menu.name}</li>
+        <li className="text-sm text-gray-600">{menu.category}</li>
+        <li className="text-lg font-semibold">${menu.price}</li>
+              <button
+        className=" block mx-auto px-4 py-2 mt-4 bg-blue-500 text-white rounded-lg"
+        onClick={show}
+      >
+        {showCart ? 'Remove' : 'Add To Cart'}
+      </button>
+      </ul>
+      {showCart ? <Button orderNumber={orderNumber} setOrderNumber={setOrderNumber} menu={menu} /> : null}
+      
+
       {/*isBestMenu && <li>Best Menu</li>*/}
-    </ul>
     </div>
   );
 }

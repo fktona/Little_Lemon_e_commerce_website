@@ -12,10 +12,25 @@ function Button({ orderNumber, setOrderNumber, menu , setshowCart  }) {
   };
 
   return (
-    <div>
-      <button onClick={orderIncrement}>+</button>
-      <input type="text" value={orderNumber} readOnly />
-      <button onClick={orderDecrement}>-</button>
+    <div className="flex items-center">
+      <button
+        className="px-2 py-1 bg-blue-500 text-white rounded-md mr-1"
+        onClick={orderIncrement}
+      >
+        +
+      </button>
+      <input
+        className="w-8 text-center border border-gray-400 rounded-md"
+        type="text"
+        value={orderNumber}
+        readOnly
+      />
+      <button
+        className="px-2 py-1 bg-blue-500 text-white rounded-md ml-1"
+        onClick={orderDecrement}
+      >
+        -
+      </button>
     </div>
   );
 }
