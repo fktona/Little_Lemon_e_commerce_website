@@ -14,7 +14,7 @@ function Button({ orderNumber, setOrderNumber, menu , setshowCart  }) {
   return (
     <div className="flex items-center">
       <button
-        className="px-2 py-1 bg-blue-500 text-white rounded-md mr-1"
+        className="px-2 py-1 bg-secondary text-white rounded-md mr-1"
         onClick={orderIncrement}
       >
         +

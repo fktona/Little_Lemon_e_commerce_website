@@ -4,6 +4,8 @@ import items from "../Item.json"
 
 
 
+
+
 function Nav({ name }) {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   
@@ -20,22 +22,23 @@ function Nav({ name }) {
   
 
   return (
-    <div className="text-black font-bold text-md  md:flex space-x-4 flex items-center justify-between   bg-green-500 p-3 ">
+    <div className="   mx-auto 
+h-full w-full md:bg-primary  rounded-3xl bg-clip-padding backdrop-filter backdrop-blur-sm shadow-sm  m-4 text-black font-bold text-sm  md:flex space-x-4 flex items-center justify-between    p-3 ">
     {/* <input
         type="text"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
         placeholder="Search menu..."
       />*/}
-     
+                 <p className=" text-center "><span className="text-secondary space-xl">CULINARY</span> OASIS</p>
         {isLoggedIn ? (
         
           <>
-            <p className="grow text-center ">CULINARY OASIS</p>
+
            
           </>
-        ) : ""}
- <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow text-silver"
+        ) :"" }
+ <button className="bg-secondary hover:bg-accent text-crisp-white font-bold py-2 px-4 text-sm rounded shadow-sm"
    onClick={toggleLogin}>{isLoggedIn ? "Logout" : "Login"}</button>
     
     </div>

@@ -23,7 +23,7 @@ function Checkout() {
               const cartQtyValue = parseInt(cart.Qty);
 
               return (
-                <div key={cart.id} className="flex justify-between border bg-gray-100 p-4 rounded-lg shadow-md">
+                <div key={cart.id} className="flex justify-between bg-crisp-white p-4 rounded-lg shadow-md">
                   <img
                     src={cart.image}
                     alt={cart.menu}
