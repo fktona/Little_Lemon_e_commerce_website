@@ -1,42 +1,73 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { ItemOrderContext } from '../assets/Context/itemContext';
+
 function Checkout() {
-  const [orderNumber, setOrderNumber] = useState(0);
-  const { allOrder, setAllOrder, Button } = useContext(ItemOrderContext);
+  const { allOrder, setAllOrder  } = useContext(ItemOrderContext);
+  
+  const increaseQty = (menu) => {
+    setAllOrder((prevAllOrder) =>
+      prevAllOrder.map((order) =>
+        order.menu === menu
+          ? { ...order, Qty: order.Qty + 1,
+          totalPrice: parseFloat(((order.Qty + 1) * (order.totalPrice/order.Qty)).toFixed(2)) }
+          : order
+      )
+    );
+  };
+
+  const decreaseQty = (menu) => {
+    setAllOrder((prevAllOrder) =>
+      prevAllOrder.map((order) =>
+        order.menu === menu && order.Qty > 0
+          ? { ...order, Qty: order.Qty - 1, totalPrice: parseFloat(((order.Qty - 1) * (order.totalPrice/ order.Qty)).toFixed(2)) }
+          : order
+      )
+    );
+  };
 
   // Calculate the total price and total quantity using the reduce function
   const total = allOrder.reduce(
     (accumulator, cart) => ({
       totalAmount: accumulator.totalAmount + cart.totalPrice,
-      totalQty: accumulator.totalQty + parseInt(cart.Qty),
+      totalQty: accumulator.totalQty + cart.Qty,
     }),
     { totalAmount: 0, totalQty: 0 }
   );
 
   return (
     <div className="container absolute mx-auto px-4">
-      <small>{allOrder.length}</small>
-      {allOrder.length > 0 ? (
+      <small>{total.totalQty}</small>
+      {total.totalQty > 0 ? (
         <>
-          <div className="flex flex-col ">
-            {allOrder.map((cart) => {
-              const cartQtyValue = parseInt(cart.Qty);
-
-              return (
-                <div key={cart.id} className="flex justify-between bg-crisp-white p-4 rounded-lg shadow-md">
-                  <img
-                    src={cart.image}
-                    alt={cart.menu}
-                    className="w-12 h-12 ml-6"
-                  />
-                  <ul className="text-center">
-                    <li className="text-lg font-semibold">{cart.menu}</li>
-                    <li className="text-lg font-semibold">${cart.totalPrice.toFixed(2)}</li>
-                  </ul>
-                  <Button orderNumber={cart.Qty} setOrderNumber={setOrderNumber} />
+          <div className="flex flex-col">
+            {allOrder.map((cart) => (
+              <div key={cart.menu} className="flex justify-between bg-crisp-white p-4 rounded-lg shadow-md">
+                <img
+                  src={cart.image}
+                  alt={cart.menu}
+                  className="w-12 h-12 ml-6"
+                />
+                <ul className="text-center">
+                  <li className="text-lg font-semibold">{cart.menu}</li>
+                  <li className="text-lg font-semibold">${cart.totalPrice.toFixed(2)}</li>
+                </ul>
+                <div className="flex justify-between items-center mt-4">
+                  <button
+                    className="text-red-600 p-1 rounded-full hover:bg-red-600 hover:text-white"
+                    onClick={() => decreaseQty(cart.menu)}
+                  >
+                    -
+                  </button>
+                  <span>{cart.Qty}</span>
+                  <button
+                    className="text-green-600 p-1 rounded-full hover:bg-green-600 hover:text-white"
+                    onClick={() => increaseQty(cart.menu)}
+                  >
+                    +
+                  </button>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
           <button className="block mx-auto mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg">
             Total Price: {total.totalAmount.toFixed(2)} <br />

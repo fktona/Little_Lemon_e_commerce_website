@@ -5,7 +5,7 @@
         "description": "Juicy beef patty topped with melted cheese, fresh lettuce, tomatoes, and pickles, served in a soft bun.",
         "price": 9.99,
         "category": "Burgers",
-        "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+        "image": "https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg?auto=compress&cs=tinysrgb&w=400"
     },
     {
         "id": 2,
@@ -13,7 +13,7 @@
         "description": "Classic Italian pizza topped with fresh tomatoes, mozzarella cheese, and basil leaves.",
         "price": 12.99,
         "category": "Pizzas",
-        "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+        "image": "https://images.pexels.com/photos/1566837/pexels-photo-1566837.jpeg?auto=compress&cs=tinysrgb&w=400"
     },
     {
         "id": 3,
@@ -21,7 +21,7 @@
         "description": "Grilled chicken breast on a bed of crisp romaine lettuce, croutons, Parmesan cheese, and Caesar dressing.",
         "price": 8.49,
         "category": "Salads",
-        "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+        "image": "https://images.pexels.com/photos/991967/pexels-photo-991967.jpeg?auto=compress&cs=tinysrgb&w=400"
     },
     {
         "id": 4,
@@ -29,7 +29,7 @@
         "description": "Warm chocolate brownie topped with a scoop of vanilla ice cream, chocolate syrup, whipped cream, and a cherry.",
         "price": 6.99,
         "category": "Desserts",
-        "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+        "image": "https://images.pexels.com/photos/1132274/pexels-photo-1132274.jpeg?auto=compress&cs=tinysrgb&w=400"
     },
     {
         "id": 5,
@@ -37,7 +37,7 @@
         "description": "Classic pizza topped with pepperoni, mozzarella cheese, and tangy tomato sauce.",
         "price": 11.49,
         "category": "Pizzas",
-        "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+        "image": "https://images.pexels.com/photos/6147826/pexels-photo-6147826.jpeg?auto=compress&cs=tinysrgb&w=400"
     },
     {
         "id": 6,

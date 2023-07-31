@@ -1,38 +1,33 @@
+import React from 'react';
 
-
-function Button({ orderNumber, setOrderNumber, menu , setshowCart  }) {
-  const orderIncrement = () => {
-    setOrderNumber((prevNumber) => prevNumber + 1)
+function Button({ orderNumber, setOrderNumber }) {
+  const decreaseQty = () => {
+    if (orderNumber > 0) {
+      setOrderNumber((prevOrderNumber) => prevOrderNumber - 1);
+    }
   };
 
-  const orderDecrement = () => {
-    setOrderNumber((prevNumber) => (prevNumber > 0? prevNumber - 1 : 0)) 
- orderNumber === 1 ? setshowCart(false):null
-  
+  const increaseQty = () => {
+    setOrderNumber((prevOrderNumber) => prevOrderNumber + 1);
   };
 
   return (
-    <div className="flex items-center">
+    <div className="flex justify-between items-center mt-4">
       <button
-        className="px-2 py-1 bg-secondary text-white rounded-md mr-1"
-        onClick={orderIncrement}
-      >
-        +
-      </button>
-      <input
-        className="w-8 text-center border border-gray-400 rounded-md"
-        type="text"
-        value={orderNumber}
-        readOnly
-      />
-      <button
-        className="px-2 py-1 bg-blue-500 text-white rounded-md ml-1"
-        onClick={orderDecrement}
+        className="text-red-600 p-1 rounded-full hover:bg-red-600 hover:text-white"
+        onClick={decreaseQty}
       >
         -
+      </button>
+      <span>{orderNumber}</span>
+      <button
+        className="text-green-600 p-1 rounded-full hover:bg-green-600 hover:text-white"
+        onClick={increaseQty}
+      >
+        +
       </button>
     </div>
   );
 }
 
-export default Button
+export default Button;

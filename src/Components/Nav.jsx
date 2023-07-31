@@ -22,8 +22,8 @@ function Nav({ name }) {
   
 
   return (
-    <div className="   mx-auto 
-h-full w-full md:bg-primary  rounded-3xl bg-clip-padding backdrop-filter backdrop-blur-sm shadow-sm  m-4 text-black font-bold text-sm  md:flex space-x-4 flex items-center justify-between    p-3 ">
+    <div className="  fixed mx-auto 
+ w-full md:bg-primary lg:opacity-20 top-0 rounded-3xl bg-clip-padding backdrop-filter backdrop-blur-sm   text-black font-bold text-sm  md:flex space-x-4 flex items-center justify-between    p-3 ">
     {/* <input
         type="text"
         value={searchQuery}
