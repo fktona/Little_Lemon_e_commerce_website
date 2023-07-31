@@ -66,7 +66,7 @@ function FoodItem({ menu, isBestMenu }) {
           {showCart ? <AiOutlineDelete /> : 'Add To Cart'}
         </button>
       </ul>
-      {showCart ? (
+      {showCart  ? (
         <Button orderNumber={orderNumber} setOrderNumber={setOrderNumber} />
       ) : null}
     </div>
