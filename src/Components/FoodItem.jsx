@@ -57,7 +57,7 @@ function FoodItem({ menu, isBestMenu }) {
       />
       <ul className="text-center">
         <li className="text-lg font-semibold">{menu.name}</li>
-        <li className="text-sm text-gray-600">{menu.category}</li>
+        <li className="text-sm text-accent">{menu.category}</li>
         <li className="text-lg text-price-900 font-semibold">${menu.price}</li>
         <button
           className="block mx-auto text-sm p-2 mt-2 bg-vibrant-orange text-crisp-white rounded-lg"
