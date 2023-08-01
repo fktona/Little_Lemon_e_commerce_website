@@ -41,26 +41,26 @@ function Checkout() {
         <>
           <div className="flex flex-col">
             {allOrder.map((cart) => (
-              <div key={cart.menu} className="flex justify-between bg-crisp-white p-4 rounded-lg shadow-md">
+              <div key={cart.menu} className="flex justify-between items-center bg-crisp-white p-2 rounded-lg shadow-md">
                 <img
                   src={cart.image}
                   alt={cart.menu}
-                  className="w-12 h-12 ml-6"
+                  className="w-8 h-8 ml-2"
                 />
-                <ul className="text-center">
-                  <li className="text-lg font-semibold">{cart.menu}</li>
-                  <li className="text-lg font-semibold">${cart.totalPrice.toFixed(2)}</li>
+                <ul className="text-center flex justify-between flex-1 " >
+                  <li className="text-md ml-3 ">{cart.menu}</li>
+                  <li className="text-md  mr-3 ">${cart.totalPrice.toFixed(2)}</li>
                 </ul>
-                <div className="flex justify-between items-center mt-4">
+                <div className="flex justify-between items-center gap-2">
                   <button
-                    className="text-red-600 p-1 rounded-full hover:bg-red-600 hover:text-white"
+                    className=" p-1 bg-secondary text-crisp-white w-7 h-7 flex items-center text-center aspect-square justify-center ext-lg font-semibold rounded-sm"
                     onClick={() => decreaseQty(cart.menu)}
                   >
                     -
                   </button>
                   <span>{cart.Qty}</span>
                   <button
-                    className="text-green-600 p-1 rounded-full hover:bg-green-600 hover:text-white"
+                    className=" p-1 bg-secondary text-crisp-white w-7 h-7 flex items-center text-center aspect-square justify-center ext-lg font-semibold rounded-sm"
                     onClick={() => increaseQty(cart.menu)}
                   >
                     +

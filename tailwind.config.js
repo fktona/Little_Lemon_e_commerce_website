@@ -41,11 +41,11 @@ fontFamilies: {
   },
     extend: {
       colors: {
-        'primary': '#57A773',
+        'primary': '#00b860',
         'secondary': '#FF8000',
         'accent': '#A15A3F',
         'price':{
-          500:'green'
+          900:'#FFFFFF'
         }
       },
       
