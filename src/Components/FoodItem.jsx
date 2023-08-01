@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { ItemOrderContext } from '../assets/Context/itemContext';
-import { AiOutlineDelete } from 'react-icons/ai';
+//import { AiOutlineDelete } from 'react-icons/ai';
 import Button from './Button';
 
 function FoodItem({ menu, isBestMenu }) {
@@ -63,11 +63,11 @@ function FoodItem({ menu, isBestMenu }) {
           className="block mx-auto text-sm p-2 mt-2 bg-vibrant-orange text-crisp-white rounded-lg"
           onClick={handleShow}
         >
-          {showCart ? <AiOutlineDelete /> : 'Add To Cart'}
+          {showCart ? "rem" : 'Add To Cart'}
         </button>
       </ul>
-      {showCart ? (
-        <Button orderNumber={orderNumber} setOrderNumber={setOrderNumber} />
+      {showCart ? ((
+        <Button orderNumber={orderNumber} setOrderNumber={setOrderNumber}/>) 
       ) : null}
     </div>
   );

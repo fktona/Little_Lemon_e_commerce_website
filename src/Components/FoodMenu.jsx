@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import FoodItem from './FoodItem';
-import { FiShoppingCart } from 'react-icons/fi';
+//import { FiShoppingCart } from 'react-icons/fi';
 import Checkout from './Checkout';
 
 function FoodMenu({ items }) {
   const [section, setSection] = useState(1);
 
   const sectionItems = {
-    1: items.filter((menu) => menu.id >= 1 && menu.id <= 5),
-    2: items.filter((menu) => menu.id >= 6 && menu.id <= 10),
-    3: items.filter((menu) => menu.id >= 11 && menu.id <= 15),
+    1: items.filter((menu) => menu.id >= 1 && menu.id <= 6),
+    2: items.filter((menu) => menu.id >= 6 && menu.id <= 11),
+    3: items.filter((menu) => menu.id >= 11 && menu.id <= 16),
   };
 
   const toggleSection = (sectionNumber) => {
@@ -56,7 +56,7 @@ function FoodMenu({ items }) {
       </div>
       <div>
         <Checkout />
-        <FiShoppingCart />
+        {/* <FiShoppingCart /> */}
       </div>
     </div>
   );
