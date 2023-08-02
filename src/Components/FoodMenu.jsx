@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import FoodItem from './FoodItem';
-import { FiShoppingCart } from 'react-icons/fi';
 import Checkout from './Checkout';
 
 function FoodMenu({ items }) {
   const [section, setSection] = useState(1);
+  
 
   const sectionItems = {
     1: items.filter((menu) => menu.id >= 1 && menu.id <= 8),
@@ -36,6 +36,7 @@ function FoodMenu({ items }) {
             key={menu.id}
             menu={menu}
             isBestMenu={menu.id === 2}
+            
           />
         ))}
       </div>
@@ -67,7 +68,6 @@ function FoodMenu({ items }) {
       </div>
       <div>
         <Checkout />
-        <FiShoppingCart />
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ function FoodItem({ menu, isBestMenu }) {
   const [showCart, setShowCart] = useState(false);
   const { allOrder, setAllOrder } = useContext(ItemOrderContext);
   const [orderNumber, setOrderNumber] = useState(0);
+  
 
   const handleShow = () => {
     setShowCart(!showCart);
@@ -50,44 +51,34 @@ function FoodItem({ menu, isBestMenu }) {
   }, [totalOrder.Qty]);
 
   return (
-    <div className="grid md:grid-cols-2 place-items-center p-2 rounded-2xl shadow-md mt-6">
+    <div className="grid md:grid-cols-2 place-items-center p-2 rounded-2xl  shadow-md mt-6 w-full h-full">
       <img
         src={menu.image}
         alt={menu.name}
         className="aspect-square mx-auto mb-1 rounded-full"
         style={{ width: '10rem' }}
       />
-      <ul className="text-center">
-<<<<<<< HEAD
+      <ul className="text-center flex flex-col justify-center">
+
         <li className="text-lg font-semibold">{menu.name}</li>
         <li className="text-sm text-accent">{menu.category}</li>
         <li className="text-lg text-price-900 font-semibold">${menu.price}</li>
-=======
-        <li className="text-lg text-price-900 font-semibold">{menu.name}</li>
-        <li className="text-sm text-gray-600">{menu.category}</li>
-        <li className="text-lg text-primary text-price-900 font-semibold">${menu.price}</li>
-        <div className="flex items-around flex-col w-full justify-around">
+
       
-        {showCart ? (
-        <div className="flex-1  mr-2 ml-2" >
-        <Button orderNumber={orderNumber} setOrderNumber={setOrderNumber}/>
+     <div className="  mr-2 ml-2" >
+     {showCart ? 
+        <Button orderNumber={orderNumber} setOrderNumber={setOrderNumber}/>:null}
         </div>
-      ) : null}
->>>>>>> 446a19d (small changes)
+      
+
         <button
           className="block mx-auto text-sm p-1 mt-2 bg-vibrant-orange text-crisp-white rounded-lg"
           onClick={handleShow}
         >
           {showCart ? <AiOutlineDelete className=" rounded-sm text-lg "  /> : 'Add To Cart'}
-        </button></div>
+        </button>
       </ul>
-<<<<<<< HEAD
-      {showCart  ? (
-        <Button orderNumber={orderNumber} setOrderNumber={setOrderNumber} />
-      ) : null}
-=======
-      
->>>>>>> 446a19d (small changes)
+
     </div>
   );
 }

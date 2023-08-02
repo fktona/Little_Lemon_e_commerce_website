@@ -6,6 +6,7 @@ import items from "./Item.json"
 import { ItemOrderContext } from "./assets/Context/itemContext"
 import HeadingText from "./Components/HeadingText"
 import AllMenu from "./Components/AllMenu"
+import OrderingForm from "./Components/OrderingForm"
 function App() {
   
  
@@ -21,7 +22,7 @@ function App() {
      <AllMenu />
       
       
-    
+    <OrderingForm />
     </div>
   )
 }
