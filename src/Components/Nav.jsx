@@ -22,15 +22,15 @@ function Nav({ name }) {
   
 
   return (
-    <div className="  fixed mx-auto 
- w-full md:bg-primary  top-0 rounded-3xl bg-clip-padding backdrop-filter backdrop-blur-sm   text-black font-bold text-sm  md:flex space-x-4 flex items-center justify-between    p-3 ">
+    <div className="   mx-auto 
+ w-full  top-0 rounded-3xl bg-clip-padding backdrop-filter backdrop-blur-sm    font-bold text-sm  md:flex space-x-4 flex items-center justify-between    p-3 ">
     {/* <input
         type="text"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
         placeholder="Search menu..."
       />*/}
-                 <p className=" text-center "><span className="text-secondary space-xl">CULINARY</span> OASIS</p>
+                 <p className=" text-center text-primary " ><span className="text-secondary space-xl">CULINARY</span> OASIS</p>
         {isLoggedIn ? (
         
           <>
@@ -38,7 +38,7 @@ function Nav({ name }) {
            
           </>
         ) :"" }
-        <ul className=" hidden md:flex mx-auto text-crips justify-evenly flex-1">
+        <ul className=" hidden md:flex mx-auto  justify-evenly flex-1">
         <li>Home</li>
         <li>ABOUT</li>
          <li>CONTACT</li>

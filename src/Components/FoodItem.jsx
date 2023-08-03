@@ -62,7 +62,7 @@ function FoodItem({ menu, isBestMenu }) {
 
         <li className="text-lg font-semibold">{menu.name}</li>
         <li className="text-sm text-accent">{menu.category}</li>
-        <li className="text-lg text-price-900 font-semibold">${menu.price}</li>
+        <li className="text-lg text-vibrant-orange text-end font-semibold">${menu.price}</li>
 
       
      <div className="  mr-2 ml-2" >
@@ -72,7 +72,7 @@ function FoodItem({ menu, isBestMenu }) {
       
 
         <button
-          className="block mx-auto text-sm p-1 mt-2 bg-vibrant-orange text-crisp-white rounded-lg"
+          className="block mx-auto text-sm p-1 mt-2 bg- hover:bg-accent text-crisp-white rounded-lg"
           onClick={handleShow}
         >
           {showCart ? <AiOutlineDelete className=" rounded-sm text-lg "  /> : 'Add To Cart'}

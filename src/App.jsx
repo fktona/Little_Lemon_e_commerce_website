@@ -7,13 +7,14 @@ import { ItemOrderContext } from "./assets/Context/itemContext"
 import HeadingText from "./Components/HeadingText"
 import AllMenu from "./Components/AllMenu"
 import OrderingForm from "./Components/OrderingForm"
+//import {BrowserRouter , Routes ,Route} from "react-router-dom"
 function App() {
   
  
  // const [allOrder, setAllOrder] = useState([]);
  
     return (
-    <div className="bg-crisp-white">
+    <div>
     
 
       <Nav name="faith" />
