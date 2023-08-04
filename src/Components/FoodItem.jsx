@@ -58,11 +58,6 @@ function FoodItem({ menu, isBestMenu }) {
         style={{ width: '10rem' }}
       />
       <ul className="text-center">
-<<<<<<< HEAD
-        <li className="text-lg font-semibold">{menu.name}</li>
-        <li className="text-sm text-accent">{menu.category}</li>
-        <li className="text-lg text-price-900 font-semibold">${menu.price}</li>
-=======
         <li className="text-lg text-price-900 font-semibold">{menu.name}</li>
         <li className="text-sm text-gray-600">{menu.category}</li>
         <li className="text-lg text-primary text-price-900 font-semibold">${menu.price}</li>
@@ -73,29 +68,13 @@ function FoodItem({ menu, isBestMenu }) {
         <Button orderNumber={orderNumber} setOrderNumber={setOrderNumber}/>
         </div>
       ) : null}
->>>>>>> 446a19d (small changes)
         <button
           className="block mx-auto text-sm p-1 mt-2 bg-vibrant-orange text-crisp-white rounded-lg"
-          onClick={handleShow}
-        >
-<<<<<<< HEAD
+          onClick={handleShow}>
           {showCart ? "rem" : 'Add To Cart'}
         </button>
+        </div>
       </ul>
-      {showCart ? ((
-        <Button orderNumber={orderNumber} setOrderNumber={setOrderNumber}/>) 
-=======
-          {showCart ? <AiOutlineDelete className=" rounded-sm text-lg "  /> : 'Add To Cart'}
-        </button></div>
-      </ul>
-<<<<<<< HEAD
-      {showCart  ? (
-        <Button orderNumber={orderNumber} setOrderNumber={setOrderNumber} />
->>>>>>> refs/remotes/origin/master
-      ) : null}
-=======
-      
->>>>>>> 446a19d (small changes)
     </div>
   );
 }

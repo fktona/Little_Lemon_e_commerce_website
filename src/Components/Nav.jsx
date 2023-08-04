@@ -30,7 +30,7 @@ function Nav({ name }) {
         onChange={(e) => setSearchQuery(e.target.value)}
         placeholder="Search menu..."
       />*/}
-                 <p className=" text-center "><span className="text-secondary space-xl">CULINARY</span> OASIS</p>
+                 <p className="  text-center "><span className="text-secondary space-xl">CULINARY</span> OASIS</p>
         {isLoggedIn ? (
         
           <>
@@ -42,8 +42,9 @@ function Nav({ name }) {
         <li>Home</li>
         <li>ABOUT</li>
          <li>CONTACT</li>
-          <li>RESERVATION</li>
+         
         </ul>
+        <span className="text-crisp-white bg-secondary rounded-md p-2">RESERVATION</span>
  <button className="bg-secondary hover:bg-accent text-crisp-white font-bold py-2 px-4 text-sm rounded shadow-sm"
    onClick={toggleLogin}>{isLoggedIn ? "Logout" : "Login"}</button>
     

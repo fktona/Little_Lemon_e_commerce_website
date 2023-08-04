@@ -51,7 +51,7 @@ function Checkout() {
                   <li className="text-md ml-3 ">{cart.menu}</li>
                   <li className="text-md  mr-3 ">${cart.totalPrice.toFixed(2)}</li>
                 </ul>
-                <div className="flex justify-between items-center gap-2">
+                <div className="flex justify-between md:justify-evenly items-center gap-2">
                   <button
                     className=" p-1 bg-secondary text-crisp-white w-7 h-7 flex items-center text-center aspect-square justify-center ext-lg font-semibold rounded-sm"
                     onClick={() => decreaseQty(cart.menu)}

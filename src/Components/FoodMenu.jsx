@@ -7,16 +7,10 @@ function FoodMenu({ items }) {
   const [section, setSection] = useState(1);
 
   const sectionItems = {
-<<<<<<< HEAD
-    1: items.filter((menu) => menu.id >= 1 && menu.id <= 6),
-    2: items.filter((menu) => menu.id >= 6 && menu.id <= 11),
-    3: items.filter((menu) => menu.id >= 11 && menu.id <= 16),
-=======
     1: items.filter((menu) => menu.id >= 1 && menu.id <= 8),
     2: items.filter((menu) => menu.id >= 9 && menu.id <= 17),
-    3: items.filter((menu) => menu.id >= 18 && menu.id <= 26),
->>>>>>> refs/remotes/origin/master
-  };
+      3: items.filter((menu) => menu.id >= 18 && menu.id <= 26),
+    };
 
   const toggleSection = (sectionNumber) => {
     setSection(sectionNumber);
@@ -29,9 +23,9 @@ function FoodMenu({ items }) {
     <div className="container mx-auto px-2 gap-8">
     <div>
     <h4 className="text-center text-accent text-xl "> CATEGORIES </h4>
-    <ul class="flex justify-around gap-4 mt-4 mb-4 items-center h-20"> 
+    <ul className="flex justify-around gap-4 mt-4 mb-4 items-center h-20"> 
       {uniqueCategories.map((category) => (
-        <li className=" shadow-sm shadow-price-900 w-full font-bold border-l-2 border-primary h-full flex justify-center items-center text-center text-secondary "key={category}>{category}</li>
+        <li className=" shadow-sm  w-full font-bold border-l-2 border-primary h-full flex justify-center items-center text-center text-secondary "key={category}>{category}</li>
       ))}
     </ul>
     </div>
