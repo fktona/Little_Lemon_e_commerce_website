@@ -20,7 +20,7 @@ function FoodMenu({ items }) {
      
 
   return (
-    <div className="dark:bg-blue-500 container mx-auto px-2 gap-8">
+    <div className=" container mx-auto px-2 gap-8">
     <div>
     <h4 className="text-center text-accent text-xl "> CATEGORIES </h4>
     <ul class="flex justify-around gap-4 mt-4 mb-4 items-center h-20"> 

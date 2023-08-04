@@ -72,7 +72,7 @@ function FoodItem({ menu, isBestMenu }) {
       
 
         <button
-          className="block mx-auto text-sm p-1 mt-2 bg- hover:bg-accent text-crisp-white rounded-lg"
+          className="block mx-auto text-sm p-1 mt-2 bg- hover:bg-accent text-crisp-white bg-secondary rounded-lg"
           onClick={handleShow}
         >
           {showCart ? <AiOutlineDelete className=" rounded-sm text-lg "  /> : 'Add To Cart'}
