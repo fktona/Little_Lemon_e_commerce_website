@@ -21,13 +21,7 @@ export default {
       '2xl': '1536px',
       // => @media (min-width: 1536px) { ... }
     },
-    colors: {
-    'earthy-green': '#57A773',
-    'creamy-yellow': '#F5E1A4',
-    'subtle-brown': '#A15A3F',
-    'crisp-white': '#FFFFFF',
-    'vibrant-orange': '#FF8000',
-  },
+    
   fontSizes: {
     '16': '16px',
     '18': '18px',
@@ -35,18 +29,19 @@ export default {
     '24': '24px',
     '36': '36px',
   },
+    
 fontFamilies: {
     'open-sans': ['Open Sans', 'sans-serif'],
     'montserrat': ['Montserrat', 'sans-serif'],
   },
     extend: {
       colors: {
-        'primary': '#00b860',
-        'secondary': '#FF8000',
-        'accent': '#A15A3F',
-        'price':{
-          900:'#FFFFFF'
-        }
+    'primary': '#00b860',
+    'secondary': '#FF8000',
+    'accent': '#A15A3F',
+    'creamy-yellow': '#F5E1A4',
+    'crisp-white': '#FFFFFF'
+  
       },
       
       fontSize: {

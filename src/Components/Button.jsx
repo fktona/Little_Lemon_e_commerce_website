@@ -14,14 +14,14 @@ function Button({ orderNumber, setOrderNumber }) {
   return (
     <div className="flex justify-between items-center mt-4">
       <button
-        className="text-red-600 p-1 rounded-full hover:bg-red-600 hover:text-white"
+        className="text-accen w-6 text-white p-1 bg-secondary aspect-square hover:bg-accent hover:text-white"
         onClick={decreaseQty}
       >
-        -
+        _
       </button>
       <span>{orderNumber}</span>
       <button
-        className="text-green-600 p-1 rounded-full hover:bg-green-600 hover:text-white"
+        className="w-6 text-white p-1 bg-secondary hover:bg-accent hover:text-white"
         onClick={increaseQty}
       >
         +

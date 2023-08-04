@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import FoodItem from './FoodItem';
-//import { FiShoppingCart } from 'react-icons/fi';
 import Checkout from './Checkout';
 
 function FoodMenu({ items }) {
   const [section, setSection] = useState(1);
+  
 
   const sectionItems = {
     1: items.filter((menu) => menu.id >= 1 && menu.id <= 8),
@@ -20,7 +20,7 @@ function FoodMenu({ items }) {
      
 
   return (
-    <div className="container mx-auto px-2 gap-8">
+    <div className=" container mx-auto px-2 gap-8">
     <div>
     <h4 className="text-center text-accent text-xl "> CATEGORIES </h4>
     <ul className="flex justify-around gap-4 mt-4 mb-4 items-center h-20"> 
@@ -30,12 +30,13 @@ function FoodMenu({ items }) {
     </ul>
     </div>
   
-      <div className="grid md:grid-cols-3 grid-cols-2 p-2 gap-6">
+      <div className="grid md:grid-cols-3 grid-cols-2 p-2 gap-6 ">
         {sectionItems[section].map((menu) => (
           <FoodItem
             key={menu.id}
             menu={menu}
             isBestMenu={menu.id === 2}
+            
           />
         ))}
       </div>
@@ -67,7 +68,6 @@ function FoodMenu({ items }) {
       </div>
       <div>
         <Checkout />
-        {/* <FiShoppingCart /> */}
       </div>
     </div>
   );
