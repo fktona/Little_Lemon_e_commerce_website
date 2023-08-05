@@ -21,21 +21,24 @@ function FoodMenu({ items }) {
      
 
   return (
-    <div className=" container mx-auto px-2 gap-8">
-      <div className="search mt-6 flex items-center justify-around">
-        <div>
-          <input type="text" name="" id="" placeholder='search' className=' shadow-md p-2 outline-none border-2 border-primary'/>
-        <button className='bg-primary shadow-lg p-2 text-crisp-white '>search</button>
+    <div className=" container mx-auto p-2 gap-8 ">
+      <div className="search mt-6 p-2 gap-2 flex items-center justify-between">
+        <div className=" flex ">
+          <input type="text" name="" id="" placeholder='search' className=' shadow-md p-1 outline-none border-2 border-primary text-sm'/>
+        <button className='bg-primary p-2 shadow-lg text-crisp-white '>search</button>
         </div>
-        <button className='border-2 text-primary gap-2 border-primary p-2 flex items-center'>Filter 
+        <button className='border-2 text-primary gap-2 border-primary p-2 text-sm flex items-center'>Filter 
         <span><BsFilterCircle /></span>
         </button>
       </div>
     <div>
-    <h4 className="text-center text-accent text-xl "> CATEGORIES </h4>
+    <h4 className="text-center text-accent mt-[6rem] text-xl "> CATEGORIES </h4>
     <ul className="flex justify-around gap-4 mt-4 mb-4 items-center h-20"> 
       {uniqueCategories.map((category) => (
-        <li className=" shadow-sm  w-full font-bold border-l-2 border-primary h-full flex justify-center items-center text-center text-secondary "key={category}>{category}</li>
+<li className="transition duration-1000 linear transform hover:scale-105 shadow-outline hover:shadow-inner w-full font-bold border-l-2 border-primary h-full flex justify-center items-center text-center text-secondary" key={category}>
+  {category}
+</li>
+
       ))}
     </ul>
     </div>

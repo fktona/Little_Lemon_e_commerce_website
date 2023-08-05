@@ -25,7 +25,7 @@ function Nav() {
   return (
     <div>
         
-    <div className="fixed text-primary mx-auto w-full opacity-90  bg-crisp-white  top-0 rounded-3xl bg-clip-padding backdrop-filter backdrop-blur-lg text-black font-bold text-sm md:flex space-x-4 flex items-center justify-between p-2">
+    <div className="fixed text-primary mx-auto w-full opacity-90  bg-crisp-white  top-0 rounded-3xl bg-clip-padding backdrop-filter backdrop-blur-lg text-black font-bold text-sm md:flex space-x-4 flex items-center justify-between  p-2">
       
      <CompanyLogo />
       

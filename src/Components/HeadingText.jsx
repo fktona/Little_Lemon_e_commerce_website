@@ -2,21 +2,21 @@ import headerImg from "../assets/img/header.jpg"
 
 function HeadingText() {
   const bgImage = {
-    backgroundImage: `url(${headerImg})`, 
+    background: `url(${headerImg}) ,rgb(0, 0, 0 , 0.2)`, 
     backgroundSize: 'cover',
     width: '100%',
-    aspectRatio: '2.5/1', 
-    padding: '2rem',
+   backgroundBlendMode: 'difference',
+    
     backgroundRepeat: 'no-repeat',
-    marginTop: '4rem',
+    
   };
 
   return (
-    <div className="bg-image text-crisp-white flex items-center mx-auto md:aspect-ratio-16/6 p-5 bg-subtle-brown fontFamilies-calibra shadow-sm" style={bgImage}>
-      <h1 className="font-bold text-white">
+    <div className="text-crisp-white absolute flex items-center mx-auto h-[40vh] lg:h-[30vh]  bg-black fontFamilies-calibra shadow-sm" style={bgImage}>
+      <h1 className="font-bold opacity-70 text-white w-full h-full bg-black">
         CULINARY OASIS
       </h1>
-      <h2 className="text-white">
+      <h2 className="text-white text-white opacity-70 w-full h-full bg-black">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       </h2>
     </div>

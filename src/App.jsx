@@ -32,9 +32,8 @@ function App() {
     <div>
       <UserContext.Provider value={{ userProfile,setUserProfile , isLoggedIn , setIsLoggedIn , setShowLoggedIn}}>
       {showLoggedIn ? <LoginForm /> : ""}
-      <CompanyLogo></CompanyLogo>
-     
-      
+  
+
       <RouterProvider router={router}>
        <Nav CompanyLogo={<CompanyLogo />} />
 

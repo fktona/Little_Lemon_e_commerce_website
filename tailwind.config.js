@@ -44,6 +44,11 @@ fontFamilies: {
   
       },
       
+      boxShadow: {
+        'outline': 'rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.22) 0px 2px 16px 0px;',
+        'inner' : 'rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;'
+      },
+      
       fontSize: {
       'sm': '0.8rem',
       'base': '1rem',
