@@ -1,15 +1,26 @@
+import headerImg from "../assets/img/header.jpg"
 
-function HeadingText () {
+function HeadingText() {
   const bgImage = {
-  backgroundImage: "url('https://images.pexels.com/photos/984888/pexels-photo-984888.jpeg?auto=compress&cs=tinysrgb&w=400')",
-  backgroundSize: 'cover',
-}
+    backgroundImage: `url(${headerImg})`, 
+    backgroundSize: 'cover',
+    width: '100%',
+    aspectRatio: '2.5/1', 
+    padding: '2rem',
+    backgroundRepeat: 'no-repeat',
+    marginTop: '4rem',
+  };
+
   return (
-    <div className= " bg-image  mx-auto w-full h-40 p-5 bg-subtle-brown fontFamilies-calibra shadow-sm" style={bgImage} >
-    
-    tt
+    <div className="bg-image text-crisp-white flex items-center mx-auto md:aspect-ratio-16/6 p-5 bg-subtle-brown fontFamilies-calibra shadow-sm" style={bgImage}>
+      <h1 className="font-bold text-white">
+        CULINARY OASIS
+      </h1>
+      <h2 className="text-white">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </h2>
     </div>
-    )
+  );
 }
 
-export default HeadingText
+export default HeadingText;

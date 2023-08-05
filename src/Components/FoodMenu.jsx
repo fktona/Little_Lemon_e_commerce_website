@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import FoodItem from './FoodItem';
 import Checkout from './Checkout';
+import { BsFilterCircle } from 'react-icons/bs';
 
 function FoodMenu({ items }) {
   const [section, setSection] = useState(1);
@@ -21,6 +22,15 @@ function FoodMenu({ items }) {
 
   return (
     <div className=" container mx-auto px-2 gap-8">
+      <div className="search mt-6 flex items-center justify-around">
+        <div>
+          <input type="text" name="" id="" placeholder='search' className=' shadow-md p-2 outline-none border-2 border-primary'/>
+        <button className='bg-primary shadow-lg p-2 text-crisp-white '>search</button>
+        </div>
+        <button className='border-2 text-primary gap-2 border-primary p-2 flex items-center'>Filter 
+        <span><BsFilterCircle /></span>
+        </button>
+      </div>
     <div>
     <h4 className="text-center text-accent text-xl "> CATEGORIES </h4>
     <ul className="flex justify-around gap-4 mt-4 mb-4 items-center h-20"> 

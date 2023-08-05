@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const OrderingForm = () => {
+const Reservation = () => {
   // Form state
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -8,6 +8,13 @@ const OrderingForm = () => {
   const [partySize, setPartySize] = useState(1);
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
+  const [ request , setRequest] = useState('')
+
+  // const [reservationForm , setReservationForm] = ({
+  //   name: '',
+  //   email:'',
+  //   phone
+  // })
 
   // Form submission handler
   const handleSubmit = (e) => {
@@ -17,44 +24,39 @@ const OrderingForm = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8 p-6 bg-crisp_white rounded-lg shadow-md">
-      <form onSubmit={handleSubmit}>
-        <h2 className="text-2xl font-semibold mb-4">Make a Reservation</h2>
-        <div className="grid grid-cols-2 gap-4">
+    <div className=" mx-auto mt-8 bg-crisp_white  shadow-md ">
+      <form className='lg:flex gap-6 p-5 items-center justify-center opacity-80  bg-crisp-white  
+       rounded-3xl bg-clip-padding backdrop-filter backdrop-blur-lg' onSubmit={handleSubmit}>
+        <h2 className="text-2xl font-semibold mb-4 text-center w-80">Make a Reservation</h2>
+        <div className="grid   gap-2 flex-1">
           <div>
-            <label htmlFor="name" className="block font-medium mb-1">
-              Name
-            </label>
             <input
+              placeholder='Enter Your Name' 
               type="text"
               id="name"
-              className="w-full border rounded-lg px-3 py-2 outline-none focus:border-blue-500"
+              className="w-full border  px-3 py-2 outline-none focus:border-primary"
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
             />
           </div>
           <div>
-            <label htmlFor="email" className="block font-medium mb-1">
-              Email
-            </label>
             <input
+              placeholder='Email'
               type="email"
               id="email"
-              className="w-full border rounded-lg px-3 py-2 outline-none focus:border-blue-500"
+              className="w-full border  px-3 py-2 outline-none focus:border-primary"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
           <div>
-            <label htmlFor="phone" className="block font-medium mb-1 text-primary">
-              Phone
-            </label>
             <input
+              placeholder='Phone Number'
               type="text"
               id="phone"
-              className="w-full border rounded-lg px-3 py-2 outline-none focus:border-blue-500"
+              className="w-full border  px-3 py-2 outline-none focus:border-primary"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               required
@@ -67,7 +69,7 @@ const OrderingForm = () => {
             <input
               type="number"
               id="partySize"
-              className="w-full border rounded-lg px-3 py-2 outline-none focus:border-blue-500"
+              className="w-full border  px-3 py-2 outline-none focus:border-primary"
               value={partySize}
               onChange={(e) => setPartySize(e.target.value)}
               required
@@ -75,42 +77,46 @@ const OrderingForm = () => {
               step="1"
             />
           </div>
-          <div>
-            <label htmlFor="date" className="block font-medium mb-1">
-              Date
-            </label>
+          <div className='flex  justify-around gap-6'>
             <input
+              placeholder='Select Date'
               type="date"
               id="date"
-              className="w-full border rounded-lg px-3 py-2 outline-none focus:border-blue-500"
+              className="w-full border  px-3 py-2 outline-none focus:border-primary"
               value={date}
               onChange={(e) => setDate(e.target.value)}
               required
             />
-          </div>
-          <div>
-            <label htmlFor="time" className="block font-medium mb-1">
-              Time
-            </label>
+          
             <input
+              placeholder='Time'
               type="time"
               id="time"
-              className="w-full border rounded-lg px-3 py-2 outline-none focus:border-blue-500"
+              className="w-full border  px-3 py-2 outline-none focus:border-primary"
               value={time}
               onChange={(e) => setTime(e.target.value)}
               required
             />
           </div>
-        </div>
+          <div>
+          <textarea
+            name="comment"
+            id="" cols="13" rows="6"
+            placeholder='Make Special Request'
+            className=' border-2 border-primary text-center w-full p-2 m-4 mx-auto'>
+            </textarea>
         <button
           type="submit"
-          className="mt-4 w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded-lg"
+          className="mt-4 w-full bg-secondary  hover:bg-accent  text-white font-semibold py-2 "
         >
           Reserve Now
         </button>
+          </div>
+        </div>
+        
       </form>
     </div>
   );
 };
 
-export default OrderingForm;
+export default Reservation;

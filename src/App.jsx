@@ -6,27 +6,42 @@ import items from "./Item.json"
 import { ItemOrderContext } from "./assets/Context/itemContext"
 import HeadingText from "./Components/HeadingText"
 import AllMenu from "./Components/AllMenu"
-import OrderingForm from "./Components/OrderingForm"
+import Reservation from "./Components/Reservation"
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
-
+import CompanyLogo from './assets/Context/CompanyIdentity'
+import { UserContext } from './assets/Context/userContext'
+import LoginForm from './Components/Login'
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [showLoggedIn, setShowLoggedIn] = useState(false)
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Nav />} >
         <Route path="/" element={<AllMenu />} />
-        <Route path="reservation" element={<OrderingForm />} />
+        <Route path="reservation" element={<Reservation />} />
       </Route>
     )
   );
 
+  const [userProfile , setUserProfile ] = useState({
+    username: "",
+    email: "",
+  })
+
   return (
     <div>
-            <HeadingText />
+      <UserContext.Provider value={{ userProfile,setUserProfile , isLoggedIn , setIsLoggedIn , setShowLoggedIn}}>
+      {showLoggedIn ? <LoginForm /> : ""}
+      <CompanyLogo></CompanyLogo>
+     
+      
       <RouterProvider router={router}>
-       <Nav name="faith" />
+       <Nav CompanyLogo={<CompanyLogo />} />
 
         <AllMenu />
       </RouterProvider>
+      </UserContext.Provider>
+    
     </div>
   );
 }
