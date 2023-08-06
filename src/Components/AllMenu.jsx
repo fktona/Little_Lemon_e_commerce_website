@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import FoodMenu from './FoodMenu';
-import Checkout from './Checkout';
 import { ItemOrderContext } from '../assets/Context/itemContext';
 import items from "../Item.json"
 // Replace this with the actual path to your menu items

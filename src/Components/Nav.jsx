@@ -28,6 +28,7 @@ function Nav() {
     <div className="fixed text-primary mx-auto w-full opacity-90  bg-crisp-white  top-0 rounded-3xl bg-clip-padding backdrop-filter backdrop-blur-lg text-black font-bold text-sm md:flex space-x-4 flex items-center justify-between  p-2">
       
      <CompanyLogo />
+     <Checkout></Checkout>
       
       <nav className="hidden md:flex mx-auto text-crips justify-evenly flex-1">
         <NavLink to="/">Home</NavLink>
@@ -35,6 +36,7 @@ function Nav() {
         <NavLink to="contact">Contact</NavLink>
         <NavLink to="reservation">RESERVATION</NavLink>
       </nav>
+      
       {isLoggedIn ? (
         <>
         Hello , {userProfile.username.toUpperCase()}

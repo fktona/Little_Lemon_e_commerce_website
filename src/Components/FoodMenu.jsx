@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState ,useContext } from 'react';
 import FoodItem from './FoodItem';
 import Checkout from './Checkout';
 import { BsFilterCircle } from 'react-icons/bs';
+import { UserContext } from '../assets/Context/userContext';
+import items from "../Item.json"
 
-function FoodMenu({ items }) {
+function FoodMenu() {
   const [section, setSection] = useState(1);
-  
+ // const { items  } = useContext(UserContext)
 
   const sectionItems = {
     1: items.filter((menu) => menu.id >= 1 && menu.id <= 8),
@@ -80,7 +82,7 @@ function FoodMenu({ items }) {
         </button>
       </div>
       <div>
-        <Checkout />
+      <Checkout></Checkout>
       </div>
     </div>
   );

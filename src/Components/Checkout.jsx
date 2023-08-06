@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
-import { ItemOrderContext } from '../assets/Context/itemContext';
+import  { useContext, useState } from 'react';
+import { UserContext } from '../assets/Context/userContext';
 import { FiShoppingCart } from 'react-icons/fi';
 
 function Checkout() {
-  const { allOrder, setAllOrder  } = useContext(ItemOrderContext);
+  const [expand , setExpand] = useState(false)
+  const { allOrder, setAllOrder  } = useContext(UserContext);
   
   const increaseQty = (menu) => {
     setAllOrder((prevAllOrder) =>
@@ -34,12 +35,20 @@ function Checkout() {
     }),
     { totalAmount: 0, totalQty: 0 }
   );
+  const Expand = () => {
+    setExpand((prev) => !prev);
+  }
 
   return (
-    <div className="container shadow-2xl  absolute mx-auto  px-4 rounded-full bottom">
-     <div> <FiShoppingCart className="m-auto bg-primary  aspect-square rounded-full p-3 text-center text-5xl text-crisp-white shadow-2xl"/>
+    <div >
+      
+     <div onClick={Expand} className=" w-[80vw] p-2 shadow-outline   mx-auto flex items-center justify-center  rounded-full bottom"> 
+     <FiShoppingCart className=" bg-primary  aspect-square
+      rounded-full
+       p-3 text-center text-2xl text-crisp-white shadow-2xl"/>
       <span>{total.totalQty}</span></div>
-      {total.totalQty > 0 ? (
+      
+      {expand && total.totalQty > 0 ? (
         <>
           <div className="flex flex-col gap-2">
             {allOrder.map((cart) => (

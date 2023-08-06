@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { ItemOrderContext } from '../assets/Context/itemContext';
-//import { AiOutlineDelete } from 'react-icons/ai';
+import { UserContext } from '../assets/Context/userContext';
+import { AiOutlineDelete } from 'react-icons/ai';
 import Button from './Button';
 
 function FoodItem({ menu, isBestMenu }) {
   const [showCart, setShowCart] = useState(false);
-  const { allOrder, setAllOrder } = useContext(ItemOrderContext);
+  const { allOrder, setAllOrder } = useContext(UserContext);
   const [orderNumber, setOrderNumber] = useState(0);
   
 

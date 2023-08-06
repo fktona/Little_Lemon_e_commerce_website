@@ -46,8 +46,7 @@ function LoginForm() {
       <h2 className="text-2xl mb-4">Login</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <input
-            type="text"
+          <input  
             placeholder="Username"
             value={username}
             onChange={handleUsernameChange}
