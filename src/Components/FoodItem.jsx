@@ -55,8 +55,8 @@ function FoodItem({ menu, isBestMenu }) {
       <img
         src={menu.image}
         alt={menu.name}
-        className="aspect-square mx-auto mb-1 rounded-full"
-        style={{ width: '10rem' }}
+        className="aspect-square w-[85%] mx-auto mb-1 rounded-full"
+        
       />
       <ul className="text-center flex flex-col justify-center">
 

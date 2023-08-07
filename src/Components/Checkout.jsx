@@ -4,7 +4,7 @@ import { FiShoppingCart } from 'react-icons/fi';
 
 function Checkout() {
   const [expand , setExpand] = useState(false)
-  const { allOrder, setAllOrder  } = useContext(UserContext);
+  const { allOrder, setAllOrder ,totalCart, setTotalCart } = useContext(UserContext);
   
   const increaseQty = (menu) => {
     setAllOrder((prevAllOrder) =>
@@ -38,11 +38,11 @@ function Checkout() {
   const Expand = () => {
     setExpand((prev) => !prev);
   }
-
+setTotalCart(total)
   return (
     <div >
       
-     <div onClick={Expand} className=" w-[80vw] p-2 shadow-outline   mx-auto flex items-center justify-center  rounded-full bottom"> 
+     <div onClick={Expand} className=" w-[80vw] md:w-full p-2 shadow-outline md:shadow-none   mx-auto flex items-center justify-center  rounded-full bottom"> 
      <FiShoppingCart className=" bg-primary  aspect-square
       rounded-full
        p-3 text-center text-2xl text-crisp-white shadow-2xl"/>
@@ -88,8 +88,8 @@ function Checkout() {
             <button className="bg-secondary right-0 mx-auto p-2 text-crisp-white">Checkout: {total.totalAmount.toFixed(2)}</button>
           </div>
         </>
-      ) : (
-        <p className="text-center">No items in the cart.</p>
+      ) : ( ""
+       /* <p className="text-center">No items in the cart.</p>*/
       )}
     </div>
   );

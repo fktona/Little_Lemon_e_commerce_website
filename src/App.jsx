@@ -12,7 +12,8 @@ import CompanyLogo from './assets/Context/CompanyIdentity'
 import { UserContext } from './assets/Context/userContext'
 import LoginForm from './Components/Login'
 import Checkout from './Components/Checkout'
-import FoodItem from './Components/FoodItem'
+import Contact from './Components/Contact'
+import Footer from './Components/Footer'
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [showLoggedIn, setShowLoggedIn] = useState(false)
@@ -20,6 +21,7 @@ function App() {
     createRoutesFromElements(
       <Route path="/" element={<Nav />} >
         <Route path="/" element={<FoodMenu />} />
+        <Route path="/contact" element={<Contact/>} />
         <Route path="reservation" element={<Reservation />} />
       </Route>
     )
@@ -33,6 +35,7 @@ function App() {
 
 
     const [allOrder, setAllOrder] = useState([]);
+    const [totalCart, setTotalCart] = useState(0);
   
     
       
@@ -40,20 +43,19 @@ function App() {
   return (
     <div>
       <UserContext.Provider value={
-        { userProfile,setUserProfile , isLoggedIn , setIsLoggedIn , setShowLoggedIn ,allOrder, setAllOrder }}>
+        { userProfile,setUserProfile , isLoggedIn , setIsLoggedIn , setShowLoggedIn ,allOrder, setAllOrder ,totalCart, setTotalCart }}>
+          {showLoggedIn ? <LoginForm /> : ""}
       <RouterProvider router={router}>
       
-      {showLoggedIn ? <LoginForm /> : ""}
          
 
       
        <Nav CompanyLogo={<CompanyLogo />} />
-      
-       <FoodItem />
           <FoodMenu />
           <Checkout />
     
       </RouterProvider>
+     
       </UserContext.Provider>
       </div>
   );

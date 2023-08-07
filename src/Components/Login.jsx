@@ -41,7 +41,7 @@ function LoginForm() {
   };
 
   return (
-    <div className="max-w-md  fixed opacity-90  bg-crisp-white  top-0 rounded-3xl bg-clip-padding backdrop-filter backdrop-blur-lg 
+    <div className="max-w-md   opacity-90  bg-crisp-white  top-0 rounded-3xl bg-clip-padding backdrop-filter backdrop-blur-lg 
     z-1 mx-auto flex flex-col mb-8 right-0 top-5 self-center  p-4 border  rounded shadow">
       <h2 className="text-2xl mb-4">Login</h2>
       <form onSubmit={handleSubmit}>

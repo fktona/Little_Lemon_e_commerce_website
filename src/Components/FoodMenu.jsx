@@ -81,8 +81,9 @@ function FoodMenu() {
           3
         </button>
       </div>
-      <div>
-      <Checkout></Checkout>
+      <div className="md:hidden">
+      <Checkout />
+       
       </div>
     </div>
   );
