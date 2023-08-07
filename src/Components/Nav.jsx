@@ -7,7 +7,7 @@ import CompanyLogo from "../assets/Context/CompanyIdentity";
 import HeadingText from "./HeadingText";
 
 function Nav() {
-  const { userProfile, isLoggedIn, setIsLoggedIn, setShowLoggedIn , allOrder,totalCart} = useContext(UserContext);
+  const { userProfile, isLoggedIn, setIsLoggedIn, setShowLoggedIn , allOrder} = useContext(UserContext);
   
 
   const toggleLogin = () => {
@@ -22,6 +22,13 @@ const location = useLocation(); // Get the current location
   const shouldHighlightLink = (linkPath) => {
     return location.pathname === linkPath;
   };
+  const total = allOrder.reduce(
+    (accumulator, cart) => ({
+      totalAmount: accumulator.totalAmount + cart.totalPrice,
+      totalQty: accumulator.totalQty + cart.Qty,
+    }),
+    { totalAmount: 0, totalQty: 0 }
+  );
   return (
     <div className="z-2">
       {/* Top navigation bar */}
@@ -60,8 +67,8 @@ const location = useLocation(); // Get the current location
       </div>
 
       {/* Bottom navigation bar (for small screens) */}
-      <div className={`fixed bottom-[50px] w-[85%] text-primary left-0 right-0 bg-crisp-white p-2 flex justify-between flex-col gap-[2rem] md:hidden mx-auto rounded-3xl shadow-outline transition-all duration-1000 ${isMenuOpen ? 'translate-y-0' : 'translate-y-full'}`}>
-        <nav className={`flex mx-auto p-2 flex-row text-crisp justify-center gap-4 text-sm  top-0 flex-1 ${isMenuOpen ? 'flex-row' : 'hidden'}`}>
+      <div className={`fixed bottom-[50px] w-[85%] text-primary left-0 right-0 bg-crisp-white p-2 flex justify-around  flex-col gap-[2rem] md:hidden mx-auto rounded-3xl shadow-outline transition-all duration-1000 ${isMenuOpen ? 'translate-y-0' : 'translate-y-full'}`}>
+        <nav className={`flex mx-auto p-2 flex-row text-crisp w-full flex-wrap justify-between gap-1 text-sm  top-0 flex-1 ${isMenuOpen ? 'flex-row' : 'hidden'}`}>
           <NavLink className={`bg-primary p-2 rounded-2xl text-crisp-white shadow-outline ${shouldHighlightLink('/') ? 'bg-secondary' : ''}`} to="/" onClick={() => setIsMenuOpen(false)}>Home</NavLink>
           <NavLink className={`bg-primary p-2 rounded-2xl text-crisp-white shadow-outline ${shouldHighlightLink('/about') ? 'bg-secondary' : ''}`} to="/about" onClick={() => setIsMenuOpen(false)}>About</NavLink>
           <NavLink className={`bg-primary p-2 rounded-2xl text-crisp-white shadow-outline ${shouldHighlightLink('/contact') ? 'bg-secondary' : ''}`} to="/contact" onClick={() => setIsMenuOpen(false)}>Contact</NavLink>
@@ -75,7 +82,7 @@ const location = useLocation(); // Get the current location
           </div>
           <NavLink to="/cart" className={`text-2xl px-2 ${shouldHighlightLink('/cart') ? 'text-secondary' : ''}`}>
           <span className="flex">
-            <MdShoppingCart /> <span className="text-[10px] bg-secondary w-[15px] text-center text-crisp-white h-[15px] rounded-full">{totalCart.totalQty}</span></span>
+            <MdShoppingCart /> <span className="text-[10px] bg-secondary w-[15px] text-center text-crisp-white h-[15px] rounded-full">{total.totalQty}</span></span>
           </NavLink>
           <button className={`text-2xl px-2 ${shouldHighlightLink('/about') ? 'text-secondary' : ''}`}>
             <RiUserLine />

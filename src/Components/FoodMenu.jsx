@@ -23,7 +23,7 @@ function FoodMenu() {
      
 
   return (
-    <div className=" container mx-auto p-2 gap-8 ">
+    <div className=" container mx-auto p-2 md:p-[5rem] gap-8 ">
       <div className="search mt-6 p-2 gap-2 flex items-center justify-between">
         <div className=" flex ">
           <input type="text" name="" id="" placeholder='search' className=' shadow-md p-1 outline-none border-2 border-primary text-sm'/>
@@ -45,7 +45,7 @@ function FoodMenu() {
     </ul>
     </div>
   
-      <div className="grid md:grid-cols-3 grid-cols-2 p-2 gap-6 ">
+      <div className="grid md:grid-cols-3 lg:grid-cols-4 grid-cols-2 p-2 gap-6 ">
         {sectionItems[section].map((menu) => (
           <FoodItem
             key={menu.id}
@@ -81,10 +81,10 @@ function FoodMenu() {
           3
         </button>
       </div>
-      <div className="md:hidden">
+      {/* <div className="sm:hidden mb:block">
       <Checkout />
        
-      </div>
+      </div> */}
     </div>
   );
 }

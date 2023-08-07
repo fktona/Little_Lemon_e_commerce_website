@@ -22,10 +22,12 @@ function App() {
       <Route path="/" element={<Nav />} >
         <Route path="/" element={<FoodMenu />} />
         <Route path="/contact" element={<Contact/>} />
+        <Route path="/cart" element={<Checkout/>} />
         <Route path="reservation" element={<Reservation />} />
       </Route>
     )
   );
+  
 
   const [userProfile , setUserProfile ] = useState({
     username: "",
@@ -35,7 +37,7 @@ function App() {
 
 
     const [allOrder, setAllOrder] = useState([]);
-    const [totalCart, setTotalCart] = useState(0);
+    
   
     
       
@@ -43,7 +45,7 @@ function App() {
   return (
     <div>
       <UserContext.Provider value={
-        { userProfile,setUserProfile , isLoggedIn , setIsLoggedIn , setShowLoggedIn ,allOrder, setAllOrder ,totalCart, setTotalCart }}>
+        { userProfile,setUserProfile , isLoggedIn , setIsLoggedIn , setShowLoggedIn ,allOrder, setAllOrder  }}>
           {showLoggedIn ? <LoginForm /> : ""}
       <RouterProvider router={router}>
       

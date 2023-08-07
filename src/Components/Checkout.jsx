@@ -4,7 +4,7 @@ import { FiShoppingCart } from 'react-icons/fi';
 
 function Checkout() {
   const [expand , setExpand] = useState(false)
-  const { allOrder, setAllOrder ,totalCart, setTotalCart } = useContext(UserContext);
+  const { allOrder, setAllOrder } = useContext(UserContext);
   
   const increaseQty = (menu) => {
     setAllOrder((prevAllOrder) =>
@@ -38,30 +38,30 @@ function Checkout() {
   const Expand = () => {
     setExpand((prev) => !prev);
   }
-setTotalCart(total)
+
   return (
     <div >
       
-     <div onClick={Expand} className=" w-[80vw] md:w-full p-2 shadow-outline md:shadow-none   mx-auto flex items-center justify-center  rounded-full bottom"> 
+     {/* <div onClick={Expand} className=" w-[80vw] md:w-full p-2 shadow-outline md:shadow-none   mx-auto flex items-center justify-center  rounded-full bottom"> 
      <FiShoppingCart className=" bg-primary  aspect-square
       rounded-full
        p-3 text-center text-2xl text-crisp-white shadow-2xl"/>
       <span>{total.totalQty}</span></div>
-      
-      {expand && total.totalQty > 0 ? (
+       */}
+      { total.totalQty > 0 ? (
         <>
           <div className="flex flex-col gap-2">
             {allOrder.map((cart) => (
-              <div key={cart.menu} className="flex justify-between items-center bg-crisp-white p-2 rounded-lg  shadow-md">
+              <div key={cart.id} className="flex justify-between items-center bg-crisp-white p-2 rounded-lg  shadow-md">
                 <img
                   src={cart.image}
                   alt={cart.menu}
                   className="w-8 h-8 ml-2"
                 />
-                <ul className="text-center flex justify-between flex-1 " >
-                  <li className="text-sm md:text-md ml-3 ">{cart.menu}</li>
-                  <li className="text-sm md:text-md mr-3 ">${cart.totalPrice.toFixed(2)}</li>
-                </ul>
+                <div className="text-center flex justify-between flex-1 " >
+                  <p className="text-sm md:text-md ml-3 ">{cart.menu}</p>
+                  <p className="text-sm md:text-md mr-3 ">${cart.totalPrice.toFixed(2)}</p>
+                </div>
                 <div className="flex justify-between md:justify-evenly items-center gap-2">
                   <button
                     className=" p-1 bg-secondary text-crisp-white w-7 h-7 flex items-center text-center aspect-square justify-center ext-lg font-semibold rounded-sm"

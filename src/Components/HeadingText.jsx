@@ -1,5 +1,5 @@
 import headerImg from "../assets/img/header.jpg"
-
+import { useLocation } from "react-router";
 function HeadingText() {
   const bgImage = {
     background: `url(${headerImg}) ,rgb(0, 0, 0 , 0.2)`, 
@@ -10,9 +10,10 @@ function HeadingText() {
     backgroundRepeat: 'no-repeat',
     
   };
-
+  const location = useLocation();
   return (
-    <div className="text-crisp-white  flex items-center mx-auto mt-[3rem] h-[40vh] md:aspect-ratio[2.5/1]  bg-black fontFamilies-calibra shadow-sm" style={bgImage}>
+    <div className={`text-crisp-white  flex items-center mx-auto mt-[3rem] h-[40vh]
+     md:aspect-ratio[2.5/1]  bg-black fontFamilies-calibra shadow-sm ${location.pathname === '/cart' ? 'hidden':''}`} style={bgImage}>
       <h1 className="font-bold opacity-70  w-full h-full ">
         CULINARY OASIS
       </h1>
