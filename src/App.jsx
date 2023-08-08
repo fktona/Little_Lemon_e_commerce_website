@@ -14,6 +14,7 @@ import LoginForm from './Components/Login'
 import Checkout from './Components/Checkout'
 import Contact from './Components/Contact'
 import Footer from './Components/Footer'
+import Account from './Components/Account'
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [showLoggedIn, setShowLoggedIn] = useState(false)
@@ -23,6 +24,7 @@ function App() {
         <Route path="/" element={<FoodMenu />} />
         <Route path="/contact" element={<Contact/>} />
         <Route path="/cart" element={<Checkout/>} />
+       <Route path="/profile" element={<Account/>} />
         <Route path="reservation" element={<Reservation />} />
       </Route>
     )
@@ -48,14 +50,10 @@ function App() {
         { userProfile,setUserProfile , isLoggedIn , setIsLoggedIn , setShowLoggedIn ,allOrder, setAllOrder  }}>
           {showLoggedIn ? <LoginForm /> : ""}
       <RouterProvider router={router}>
-      
-         
-
-      
-       <Nav CompanyLogo={<CompanyLogo />} />
+         <Nav CompanyLogo={<CompanyLogo />} />
+ <Account />
           <FoodMenu />
           <Checkout />
-    
       </RouterProvider>
      
       </UserContext.Provider>

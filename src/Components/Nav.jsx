@@ -32,7 +32,7 @@ const location = useLocation(); // Get the current location
   return (
     <div className="z-2">
       {/* Top navigation bar */}
-      <div className={`fixed z-2 text-primary mx-auto w-full opacity-90 bg-crisp-white top-0 rounded-3xl bg-clip-padding backdrop-filter backdrop-blur-lg text-black font-bold text-sm md:flex space-x-4 flex items-center justify-between p-2 ${shouldHighlightLink('/about') ? 'bg-secondary' : ''}`}>
+      <div className={`fixed z-2 text-primary mx-auto w-full opacity-90 bg-crisp-white top-0 rounded-3xl bg-clip-padding backdrop-filter backdrop-blur-lg text-black font-bold text-sm md:flex space-x-4 flex items-center justify-between p-2 ${shouldHighlightLink('/about') ? 'bg-secondary' : ''} ${location.pathname === '/profile'  ? 'hidden md:fixed' : ''}`}>
         <div className="">
           <CompanyLogo />
         </div>
@@ -84,9 +84,9 @@ const location = useLocation(); // Get the current location
           <span className="flex">
             <MdShoppingCart /> <span className="text-[10px] bg-secondary w-[15px] text-center text-crisp-white h-[15px] rounded-full">{total.totalQty}</span></span>
           </NavLink>
-          <button className={`text-2xl px-2 ${shouldHighlightLink('/about') ? 'text-secondary' : ''}`}>
+          <NavLink to="/profile" className={`text-2xl px-2 ${shouldHighlightLink('/profile') ? 'text-secondary' : ''}`}>
             <RiUserLine />
-          </button>
+          </NavLink>
         </div>
       </div>
 

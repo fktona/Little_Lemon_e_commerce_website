@@ -13,7 +13,7 @@ function HeadingText() {
   const location = useLocation();
   return (
     <div className={`text-crisp-white  flex items-center mx-auto mt-[3rem] h-[40vh]
-     md:aspect-ratio[2.5/1]  bg-black fontFamilies-calibra shadow-sm ${location.pathname === '/cart' ? 'hidden':''}`} style={bgImage}>
+     md:aspect-ratio[2.5/1]  bg-black fontFamilies-calibra shadow-sm ${location.pathname === '/cart' || '/profile' ? 'hidden':''}`} style={bgImage}>
       <h1 className="font-bold opacity-70  w-full h-full ">
         CULINARY OASIS
       </h1>
