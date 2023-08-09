@@ -1,7 +1,7 @@
 const CompanyLogo = () => {
     return(
       <p className="text-center text-primary">
-      <span className="text-secondary space-xl">CULINARY</span> OASIS
+      <span className="text-secondary space-xl">LITTLE</span> LEMON
     </p>
     )
   }

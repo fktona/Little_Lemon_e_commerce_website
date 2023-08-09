@@ -1,10 +1,12 @@
-import React from 'react';
+import { useState, useEffect, useContext , useMemo } from 'react';
 
 function Button({ orderNumber, setOrderNumber }) {
+  
   const decreaseQty = () => {
     if (orderNumber > 0) {
+      
       setOrderNumber((prevOrderNumber) => prevOrderNumber - 1);
-    }
+     }
   };
 
   const increaseQty = () => {

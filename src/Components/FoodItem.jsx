@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext , useMemo } from 'react';
 import { UserContext } from '../assets/Context/userContext';
 import { AiOutlineDelete } from 'react-icons/ai';
 import Button from './Button';
@@ -13,6 +13,7 @@ function FoodItem({ menu, isBestMenu }) {
     setShowCart(!showCart);
     showCart ?
     setOrderNumber(0):setOrderNumber(1)
+   
   };
 
   const [totalOrder, setTotalOrder] = useState({

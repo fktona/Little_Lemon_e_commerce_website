@@ -90,7 +90,7 @@ const location = useLocation(); // Get the current location
         </div>
       </div>
 
-      {/* HeadingText component */}
+      
       <HeadingText />
 
       {/* Other content */}

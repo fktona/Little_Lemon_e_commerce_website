@@ -49,13 +49,16 @@ function App() {
       <UserContext.Provider value={
         { userProfile,setUserProfile , isLoggedIn , setIsLoggedIn , setShowLoggedIn ,allOrder, setAllOrder  }}>
           {showLoggedIn ? <LoginForm /> : ""}
+          
       <RouterProvider router={router}>
          <Nav CompanyLogo={<CompanyLogo />} />
  <Account />
           <FoodMenu />
           <Checkout />
+           
       </RouterProvider>
      
+      
       </UserContext.Provider>
       </div>
   );
