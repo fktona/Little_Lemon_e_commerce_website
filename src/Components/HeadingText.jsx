@@ -13,13 +13,8 @@ function HeadingText() {
   const location = useLocation();
   return (
     <div className={`text-crisp-white  flex items-center mx-auto mt-[3rem] h-[40vh]
-     md:aspect-ratio[2.5/1]  bg-black fontFamilies-calibra shadow-sm ${location.pathname === '/cart' || '/profile' ? 'hidden':''}`} style={bgImage}>
-      <h1 className="font-bold opacity-70  w-full h-full ">
-        CULINARY OASIS
-      </h1>
-      <h2 className="text-white  w-full h-full ">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      </h2>
+     md:aspect-ratio[2.5/1]   shadow-sm ${location.pathname === '/cart' || location.pathname === '/profile' ? 'hidden':'flex'}`} style={bgImage}>
+      
     </div>
   );
 }

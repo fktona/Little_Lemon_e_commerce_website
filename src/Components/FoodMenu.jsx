@@ -4,6 +4,7 @@ import Checkout from './Checkout';
 import { BsFilterCircle } from 'react-icons/bs';
 import { UserContext } from '../assets/Context/userContext';
 import items from "../Item.json"
+import HeadingText from "./HeadingText";
 
 function FoodMenu() {
   const [section, setSection] = useState(1);
@@ -42,27 +43,6 @@ const memoizedFoodItems = useMemo(
 
   return (
     <div className=" container mx-auto p-2 md:p-[5rem] pb-[4rem] gap-8 ">
-    {searchTerm === ""? "" :
-    <div className=" ">
-     <div className="flex flex-col gap-2 mt-[5rem]">
-              {filteredItems.map((item) => (
-              <div key={item.id} className="flex justify-between items-center bg-crisp-white p-2 rounded-lg  shadowmd">
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="w-8 h-8 ml-2"
-                />
-                <div className="text-center flex justify-between flex-1 " >
-                  <p className="text-sm md:text-md ml-3 ">{item.name}</p>
-                 
-                </div>
-               
-   
-              </div>
-            ))}
-          </div>
- 
-</div>}
       <div className="search mt-6 p-2 gap-2 flex items-center justify-between">
         <div className=" flex  mt-[5rem]">
          <input
@@ -79,6 +59,27 @@ const memoizedFoodItems = useMemo(
         <span><BsFilterCircle /></span>
         </button>
       </div>
+      {searchTerm === ""? "" :
+    <div className=" ">
+     <div className="flex flex-col gap-2 mt-[2rem]">
+              {filteredItems.map((item) => (
+              <div key={item.id} className="flex justify-between items-center bg-crisp-white p-3  border-primary border-b-[0.5px] ">
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="w-8 h-8 ml-2"
+                />
+                <div className="text-center flex justify-between flex-1 " >
+                  <p className="text-sm md:text-md ml-3 ">{item.name}</p>
+                 
+                </div>
+               
+   
+              </div>
+            ))}
+          </div>
+ 
+</div>}
     <div>
     <h4 className="text-center text-accent mt-[6rem] text-xl "> CATEGORIES </h4>
     <ul className="flex justify-around gap-4 mt-4 mb-4 items-center h-20"> 

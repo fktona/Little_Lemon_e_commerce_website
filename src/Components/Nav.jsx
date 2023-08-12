@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import  { useState, useContext } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { MdMenu, MdShoppingCart } from "react-icons/md";
 import { RiUserLine, RiLogoutBoxLine, RiLoginBoxLine } from "react-icons/ri";
@@ -56,13 +56,13 @@ const location = useLocation(); // Get the current location
           </div>
         ) : ''}
         <div className={`text-secondary px-6 hidden md:flex text-2xl px-2 ${shouldHighlightLink('/cart') ? 'text-secondary' : ''}`}>
-          <MdShoppingCart /><span className="text-sm bg-primary w-[15px]  h-[15px] rounded-full"></span>
+          <MdShoppingCart /><span className="text-sm bg-primary w-[15px]  h-[15px] rounded-full">{total.totalQty}</span>
         </div>
         <button
           className={`bg-secondary hover:bg-accent text-crisp-white font-bold py-2 px-4 text-sm rounded shadow-sm ${shouldHighlightLink('/about') ? 'bg-secondary' : ''}`}
           onClick={toggleLogin}
         >
-          {isLoggedIn ? <RiLogoutBoxLine /> : <RiLoginBoxLine />}
+          {isLoggedIn ? "Logout" : <RiLogoutBoxLine />}
         </button>
       </div>
 
