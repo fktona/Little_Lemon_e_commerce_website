@@ -18,7 +18,7 @@ const Reservation = () => {
   };
 
   return (
-    <div className="mx-auto  p-8 bg-gradient-to-r from-creamy-yellow to-crisp-white shadow-md rounded-lg">
+    <div className="mx-auto  p-8 mb-6 bg-gradient-to-r from-creamy-yellow to-crisp-white shadow-md rounded-lg">
       <form className="space-y-4" onSubmit={handleSubmit}>
         <h2 className="text-2xl font-semibold mb-4 text-primary text-center">Make a Reservation</h2>
         <input
