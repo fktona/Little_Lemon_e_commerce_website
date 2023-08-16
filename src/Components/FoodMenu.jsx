@@ -5,6 +5,15 @@ import { BsFilterCircle } from 'react-icons/bs';
 import { UserContext } from '../assets/Context/userContext';
 import items from "../Item.json"
 import HeadingText from "./HeadingText";
+import { Navigation, Pagination, Scrollbar, EffectCoverflow, A11y } from 'swiper/modules';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+
+
 
 function FoodMenu() {
   const [section, setSection] = useState(1);
@@ -39,6 +48,21 @@ const memoizedFoodItems = useMemo(
     )),
   [section, sectionItems]
 );
+
+
+// Function to generate a random number between min (inclusive) and max (inclusive)
+function getRandomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+const randomNumbers = Array.from({ length: 10 }).reduce((acc, _, index) => {
+  const randomNumber = getRandomNumber(1, 29);
+  return [...acc, randomNumber];
+}, []);
+
+
+
+
 
 
   return (
@@ -91,8 +115,58 @@ const memoizedFoodItems = useMemo(
       ))}
     </ul>
     </div>
+    
+<div className="">
+  <h4 className="font-bold text-secondary">JUST FOR YOU</h4>
+  <Swiper 
+  modules={[Navigation, EffectCoverflow , Pagination, Scrollbar, A11y]}
+  effect = { 'coverflow'}
+
+grabCursor = {true}
+
+centeredSlides = {true}
+
+slides PerView= {'auto'}
+
+coverflowEffect = {{
+stretch:0,
+rotate: 50,
+depth:50,slideShadows:true,
+modifier:1,
+}}
+      spaceBetween={20}
+      slidesPerView={3}
+      navigation
+      pagination={{ clickable: true }}
+      //scrollbar={{ draggable: true }}
+      loop={true}
+      onSwiper={(swiper) => console.log(swiper)}
+      onSlideChange={() => console.log('slide change')}
+  className="shadow-inner relative p-1">
+    {items.map((menu) =>
+      randomNumbers.includes(menu.id) ? (
+        <SwiperSlide className="min-w-[7rem] md:min-w-[10rem]  relative">
+          <p className="w-full flex items-end h-full text-white text-sm text-center font-md absolute top-0 left-0 bg-black bg-opacity-50 justify-ce p-2">
+            {menu.name}
+          </p>
+                    <p className="w-full flex items-start h-full text-white text-sm text-center font-md absolute top-0 left-0  justify-end p-2">
+            {menu.price}
+          </p>
+          <img
+            className="w-full aspect-square"
+            src={menu.image}
+            alt={menu.name}
+          />
+        </SwiperSlide>
+      ) : (
+        ""
+      )
+    )}
+  </Swiper>
+</div>
+
   
-      <div className="grid md:grid-cols-3 lg:grid-cols-4 grid-cols-2 p-3 gap-6 ">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 grid-cols-1 p-3 gap-6 ">
      {/*   {sectionItems[section].map((menu) => (
           <FoodItem
             key={menu.id}
@@ -103,6 +177,7 @@ const memoizedFoodItems = useMemo(
         ))} */}
         {memoizedFoodItems}
       </div>
+
       <div className="flex justify-center space-x-4 mb-4 mt-4 p-4 gap-6">
         <button
           className={`px-4 py-2 shadow-md rounded-md ${

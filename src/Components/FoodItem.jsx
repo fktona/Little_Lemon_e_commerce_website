@@ -52,17 +52,18 @@ function FoodItem({ menu, isBestMenu }) {
   }, [totalOrder.Qty]);
 
   return (
-    <div className="grid md:grid-cols-2 place-items-center p-2 rounded-2xl  shadow-md mt-5 w-full h-full">
+    <div className="grid grid-cols-2 place-items-center p-2 rounded-2xl  shadow-sm gap-[1rem] mt-5 w-full h-full">
       <img
         src={menu.image}
         alt={menu.name}
-        className="aspect-square w-[80%] mx-auto mb-1 rounded-full"
+        className="aspect-square w-[70%] mx-auto mb-1 rounded-ful"
         
       />
       <ul className="text-center flex flex-col justify-center">
 
         <li className="text-md font-semibold">{menu.name}</li>
         <li className="text-sm text-accent">{menu.category}</li>
+         <li className="text-[10px] ">{menu.description}</li>
         <li className="text-md text-primary  font-semibold">${menu.price}</li>
 
       
