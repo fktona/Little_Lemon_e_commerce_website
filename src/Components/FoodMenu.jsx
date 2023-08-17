@@ -66,8 +66,8 @@ const randomNumbers = Array.from({ length: 10 }).reduce((acc, _, index) => {
 
 
   return (
-    <div className=" container mx-auto p-2 md:p-[5rem] pb-[4rem] gap-8 ">
-      <div className="search mt-6 p-2 gap-2 flex items-center justify-between">
+    <div className=" relative z-[-1] mx-auto p-2 md:p-[5rem] pb-[4rem] gap-8 ">
+      {/* <div className="search mt-6 p-2 gap-2 flex items-center justify-between">
         <div className=" flex  mt-[5rem]">
          <input
             type="text"
@@ -103,12 +103,14 @@ const randomNumbers = Array.from({ length: 10 }).reduce((acc, _, index) => {
             ))}
           </div>
  
-</div>}
+</div>} */}
     <div>
     <h4 className="text-center text-accent mt-[6rem] text-xl "> CATEGORIES </h4>
     <ul className="flex justify-around gap-4 mt-4 mb-4 items-center h-20"> 
       {uniqueCategories.map((category) => (
-<li className="transition duration-1000 linear transform hover:scale-105 shadow-outline hover:shadow-inner w-full font-bold border-l-2 border-primary h-full flex justify-center items-center  text-center text-secondary" key={category}>
+<li className="transition duration-1000 linear transform 
+hover:scale-105 shadow-outline hover:shadow-inner w-full font-bold 
+border-l-2 border-primary h-full flex justify-center items-center  text-center text-secondary" key={category}>
   {category}
 </li>
 
@@ -118,7 +120,7 @@ const randomNumbers = Array.from({ length: 10 }).reduce((acc, _, index) => {
     
 <div className="">
   <h4 className="font-bold text-secondary">JUST FOR YOU</h4>
-  <Swiper 
+  <Swiper
   modules={[Navigation, EffectCoverflow , Pagination, Scrollbar, A11y]}
   effect = { 'coverflow'}
 
@@ -126,7 +128,7 @@ grabCursor = {true}
 
 centeredSlides = {true}
 
-slides PerView= {'auto'}
+// slides PerView= {'auto'}
 
 coverflowEffect = {{
 stretch:0,
@@ -141,12 +143,13 @@ modifier:1,
       //scrollbar={{ draggable: true }}
       loop={true}
       onSwiper={(swiper) => console.log(swiper)}
-      onSlideChange={() => console.log('slide change')}
+      //onSlideChange={() => console.log('slide change')}
   className="shadow-inner relative p-1">
     {items.map((menu) =>
       randomNumbers.includes(menu.id) ? (
-        <SwiperSlide className="min-w-[7rem] md:min-w-[10rem]  relative">
-          <p className="w-full flex items-end h-full text-white text-sm text-center font-md absolute top-0 left-0 bg-black bg-opacity-50 justify-ce p-2">
+        <SwiperSlide  key={menu.id} className="min-w-[7rem] max-w-[7rem] md:min-w-[10rem]  relative">
+          <p className="w-full flex items-end 
+          h-full text-white text-sm text-center font-md absolute top-0 left-0 bg-black bg-opacity-50 justify-center p-2">
             {menu.name}
           </p>
                     <p className="w-full flex items-start h-full text-white text-sm text-center font-md absolute top-0 left-0  justify-end p-2">
@@ -166,7 +169,7 @@ modifier:1,
 </div>
 
   
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 grid-cols-1 p-3 gap-6 ">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 p-3 gap-6 ">
      {/*   {sectionItems[section].map((menu) => (
           <FoodItem
             key={menu.id}

@@ -15,6 +15,7 @@ import Checkout from './Components/Checkout'
 import Contact from './Components/Contact'
 import Footer from './Components/Footer'
 import Account from './Components/Account'
+import Search from './Components/search'
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [showLoggedIn, setShowLoggedIn] = useState(false)
@@ -45,11 +46,11 @@ function App() {
       
 
   return (
-    <div>
+    <div className=' relative p-2 lg:p-3'>
       <UserContext.Provider value={
         { userProfile,setUserProfile , isLoggedIn , setIsLoggedIn , setShowLoggedIn ,allOrder, setAllOrder  }}>
           {showLoggedIn ? <LoginForm /> : ""}
-          
+        <Search></Search>  
       <RouterProvider router={router}>
          <Nav CompanyLogo={<CompanyLogo />} />
  <Account />

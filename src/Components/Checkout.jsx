@@ -51,8 +51,8 @@ function Checkout() {
       { total.totalQty > 0 ? (
         <>
           <div className="flex flex-col gap-2">
-            {allOrder.map((cart) => (
-              <div key={cart.id} className="flex justify-between items-center bg-crisp-white p-2 rounded-lg  shadow-md">
+            {allOrder.map((cart , index) => (
+              <div key={index} className="flex justify-between items-center bg-crisp-white p-2 rounded-lg  shadow-md">
                 <img
                   src={cart.image}
                   alt={cart.menu}

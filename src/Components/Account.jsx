@@ -12,7 +12,7 @@ const Account = () => {
         <h2>YOUR PROFILE</h2>
         {isLoggedIn ? <div> <h3>Welcome {userProfile.username}</h3> 
         <h5>{userProfile.email}</h5> 
-        </div>: <h3>Please Log In</h3>}
+        </div>: <button onClick={set} className="absolute bottom-20 bg-accent">Please Log In</button>}
       </header>
       <main className= "flex w-full h-[40vh] p-6 flex-col ">
         <section className= "flex w-full  p-6 flex-col justify-between">

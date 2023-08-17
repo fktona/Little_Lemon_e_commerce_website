@@ -30,9 +30,11 @@ const location = useLocation(); // Get the current location
     { totalAmount: 0, totalQty: 0 }
   );
   return (
-    <div className="z-2">
+    <div className="z-2  ">
       {/* Top navigation bar */}
-      <div className={`fixed z-2 text-primary mx-auto w-full opacity-90 bg-crisp-white top-0 rounded-3xl bg-clip-padding backdrop-filter backdrop-blur-lg text-black font-bold text-sm md:flex space-x-4 flex items-center justify-between p-2 ${shouldHighlightLink('/about') ? 'bg-secondary' : ''} ${location.pathname === '/profile'  ? 'hidden md:fixed' : ''}`}>
+      <div className={`sticky z-2  container mx-auto text-primary shadow-md  opacity-90
+       bg-crisp-white top-0  bg-clip-padding backdrop-filter backdrop-blur-lg
+        text-black font-bold text-sm md:flex space-x-4 flex items-center justify-between p-2 pr-8 ${shouldHighlightLink('/about') ? 'bg-secondary' : ''} ${location.pathname === '/profile'  ? 'hidden md:fixed' : ''}`}>
         <div className="">
           <CompanyLogo />
         </div>
@@ -59,7 +61,8 @@ const location = useLocation(); // Get the current location
           <MdShoppingCart /><span className="text-sm bg-primary w-[15px]  h-[15px] rounded-full">{total.totalQty}</span>
         </div>
         <button
-          className={`bg-secondary hover:bg-accent text-crisp-white font-bold py-2 px-4 text-sm rounded shadow-sm ${shouldHighlightLink('/about') ? 'bg-secondary' : ''}`}
+          className={`bg-secondary hover:bg-accent text-crisp-white font-bold py-2 px-4
+           text-sm rounded shadow-sm ${shouldHighlightLink('/about') ? 'bg-secondary' : ''}`}
           onClick={toggleLogin}
         >
           {isLoggedIn ? "Logout" : <RiLogoutBoxLine />}
