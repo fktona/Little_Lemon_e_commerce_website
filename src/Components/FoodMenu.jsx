@@ -66,7 +66,7 @@ const randomNumbers = Array.from({ length: 10 }).reduce((acc, _, index) => {
 
 
   return (
-    <div className=" relative z-[-1] mx-auto p-2 md:p-[5rem] pb-[4rem] gap-8 ">
+    <div className=" relative  mx-auto p-2 md:p-[5rem] pb-[4rem] gap-8 ">
       {/* <div className="search mt-6 p-2 gap-2 flex items-center justify-between">
         <div className=" flex  mt-[5rem]">
          <input

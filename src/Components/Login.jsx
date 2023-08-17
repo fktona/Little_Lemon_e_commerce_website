@@ -41,10 +41,15 @@ function LoginForm() {
   };
 
   return (
-    <div className="max-w-md   opacity-90  bg-crisp-white  top-0 rounded-3xl bg-clip-padding backdrop-filter backdrop-blur-lg 
-    z-1 mx-auto flex flex-col mb-8 right-0 top-5 self-center  p-4 border  rounded shadow">
-      <h2 className="text-2xl mb-4">Login</h2>
-      <form onSubmit={handleSubmit}>
+    <div className=" w-[90%]  z-[2] md:right-20 max-w-[500px] fixed p-8 mt-[3rem]    top-0 rounded-3xl bg-clip-padding backdrop-filter backdrop-blur-lg 
+    z-1  flex flex-col mb-8 top-5 translate-x-2 p-4 border  rounded shadow">
+      <h2 className="text-2xl text-primary font-bold mb-4">Login</h2>
+       <button
+          className=" absolute top-2 right-10 px-3 bg-red-500 right-0 text-white tex-sm py-2 opacity-100 rounded hover:bg-red-800"
+        >
+          close 
+        </button>
+      <form onSubmit={handleSubmit} className="relative w-full flex  flex-col opacity-90  justify-center">
         <div className="mb-4">
           <input  
             placeholder="Username"
@@ -73,10 +78,11 @@ function LoginForm() {
         </div>
         <button
           type="submit"
-          className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+          className=" relative px-8 bg-primary mx-auto text-white py-2 rounded hover:bg-primary"
         >
           Login
         </button>
+        <span> Don't have an account<a> Sign Up </a></span>
       </form>
     </div>
   );
