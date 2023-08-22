@@ -85,7 +85,7 @@ const location = useLocation(); // Get the current location
           </div>
           <NavLink to="/cart" className={`text-2xl px-2 ${shouldHighlightLink('/cart') ? 'text-secondary' : ''}`}>
           <span className="flex">
-            <MdShoppingCart /> <span className="text-[10px] bg-secondary w-[15px] text-center text-crisp-white h-[15px] rounded-full">{total.totalQty}</span></span>
+            <MdShoppingCart /> <span className="text-[10px] bg-secondary w-[17px] flex items-center justify-center text-center text-crisp-white h-[17px] rounded-full">{total.totalQty}</span></span>
           </NavLink>
           <NavLink to="/profile" className={`text-2xl px-2 ${shouldHighlightLink('/profile') ? 'text-secondary' : ''}`}>
             <RiUserLine />

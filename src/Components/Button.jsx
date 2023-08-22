@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext , useMemo } from 'react';
 
-function Button({ orderNumber, setOrderNumber }) {
+const Button = ({ orderNumber, setOrderNumber }) =>{
   
   const decreaseQty = () => {
     if (orderNumber > 0) {

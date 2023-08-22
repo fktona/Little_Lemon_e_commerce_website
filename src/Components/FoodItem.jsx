@@ -1,20 +1,18 @@
-import { useState, useEffect, useContext , useMemo } from 'react';
+import React ,{ useState, useEffect, useContext ,  useCallback, useRef, useMemo } from 'react';
 import { UserContext } from '../assets/Context/userContext';
 import { AiOutlineDelete } from 'react-icons/ai';
 import Button from './Button';
 
-function FoodItem({ menu, isBestMenu }) {
-  const [showCart, setShowCart] = useState(false);
-  const { allOrder, setAllOrder } = useContext(UserContext);
+ const FoodItem = ({ menu  }) => {
+   
+  const { allOrder, setAllOrder , show, setShow , showCart, setShowCart } = useContext(UserContext);
   const [orderNumber, setOrderNumber] = useState(0);
+  const memoizedOrdeNumber = useMemo(() => orderNumber, [orderNumber]);
   
 
-  const handleShow = () => {
-    setShowCart(!showCart);
-    showCart ?
-    setOrderNumber(0):setOrderNumber(1)
-   
-  };
+
+  
+
 
   const [totalOrder, setTotalOrder] = useState({
     menu: '',
@@ -31,32 +29,62 @@ function FoodItem({ menu, isBestMenu }) {
       Qty: orderNumber,
       totalPrice: parseFloat((orderNumber * menu.price).toFixed(2)),
     }));
-  }, [orderNumber]);
+  }, [orderNumber]); 
 
   useEffect(() => {
-    
-    const orderExistsWithDifferentQty = allOrder.some(
-      (order) => order.menu === totalOrder.menu && order.Qty !== totalOrder.Qty
-    );
+  const orderExistsWithDifferentQty = allOrder.some(
+    (order) => order.menu === totalOrder.menu && order.Qty !== totalOrder.Qty
+  );
 
-    totalOrder.Qty === 0
-      ? setAllOrder(allOrder.filter((order) => order.menu !== totalOrder.menu))
-      : orderExistsWithDifferentQty
-      ? setAllOrder(
-          allOrder.map((order) =>
-            order.menu === totalOrder.menu ? totalOrder : order
-          )
-        )
-      : setAllOrder((prevAllOrder) => [...prevAllOrder, totalOrder]);
+  if (totalOrder.Qty === 0 ) {
+    setAllOrder(allOrder.filter((order) => order.menu !== totalOrder.menu));
+  } else {
+    const existingOrder = allOrder.some((order) => order.menu === totalOrder.menu );
+
+    if (existingOrder ) {
       
-  }, [totalOrder.Qty]);
+      if (orderExistsWithDifferentQty) {
+        const updatedOrders = allOrder.map((order) =>
+          order.menu === totalOrder.menu && totalOrder.Qty? totalOrder : order
+        );
+        setAllOrder(updatedOrders);
+      } else {
+        // Existing order with the same menu and same quantity, no need to add
+      }
+    } else {
+      setAllOrder((prevAllOrder) => [...prevAllOrder, totalOrder]);
+    }
+  }
+}, [ totalOrder]);
+
+  
+  const ordn = allOrder.filter((Food) => Food.menu === menu.name ).map((food) => food.Qty)
+  
+ 
+  useEffect(() => {
+  // Update orderNumber based on ordn
+  const sumOfQty = ordn.reduce((acc, qty) => acc + qty, 0);
+  setOrderNumber(sumOfQty);
+  
+  
+
+  
+}, [allOrder]);
+
+const existingOrder = allOrder.some((order) => order.menu === totalOrder.menu );
+    
+const handleShow = () => {
+  setOrderNumber(1)
+  existingOrder && setOrderNumber(0)
+  };
+
 
   return (
-    <div className="grid grid-cols-2 place-items-center wra p-2 rounded-2xl  shadow-sm gap-[1rem] mt-5 w-full h-full">
+    <div className="grid grid-cols-2 place-items-center wra p-2  border-1 border-primary rounded-2xl  shadow-sm gap-[1rem] mt-5 w-full h-full">
       <img
         src={menu.image}
         alt={menu.name}
-        className="aspect-square max-w-[90%]  mx-auto mb-1 rounded-ful"
+        className="aspect-square  mx-auto mb-1 rounded-ful"
         
       />
       <ul className="text-center flex flex-col justify-center">
@@ -68,8 +96,8 @@ function FoodItem({ menu, isBestMenu }) {
 
 
      <div className="  mr-2 ml-2" >
-     {showCart ? 
-        <Button orderNumber={orderNumber} setOrderNumber={setOrderNumber}/>:null}
+     {existingOrder? 
+          <Button orderNumber={ordn} setOrderNumber={setOrderNumber} />:null}
         </div>
       
 
@@ -77,7 +105,7 @@ function FoodItem({ menu, isBestMenu }) {
           className="block mx-auto text-sm p-1 mt-2 bg- hover:bg-accent text-crisp-white bg-secondary rounded-lg"
           onClick={handleShow}
         >
-          {showCart ? <AiOutlineDelete className=" rounded-sm text-lg "  /> : 'Add To Cart'}
+          {existingOrder ? <AiOutlineDelete className=" rounded-sm text-lg "  /> : 'Add To Cart'}
         </button>
       </ul>
 

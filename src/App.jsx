@@ -18,7 +18,6 @@ import Account from './Components/Account'
 import Search from './Components/search'
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [showLoggedIn, setShowLoggedIn] = useState(false)
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Nav />} >
@@ -38,17 +37,16 @@ function App() {
   })
 
 
-
+const [showLoggedIn, setShowLoggedIn] = useState(false)
     const [allOrder, setAllOrder] = useState([]);
     
-  
-    
-      
+const [show, setShow] = useState();
+      const [showCart, setShowCart] = useState(false);
 
   return (
     <div className=' relative p-2 lg:p-3'>
       <UserContext.Provider value={
-        { userProfile,setUserProfile , isLoggedIn , setIsLoggedIn , setShowLoggedIn ,allOrder, setAllOrder  }}>
+        { userProfile,setUserProfile , isLoggedIn , setIsLoggedIn , setShowLoggedIn ,allOrder, setAllOrder ,show, setShow ,showCart, setShowCart }}>
           {showLoggedIn ? <LoginForm /> : ""}
                  <Search />
       <RouterProvider router={router}>
