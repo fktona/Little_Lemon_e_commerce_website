@@ -15,6 +15,7 @@ import Button from './Button';
 
 
   const [totalOrder, setTotalOrder] = useState({
+   
     menu: '',
     image: '',
     Qty: 0,
@@ -24,6 +25,7 @@ import Button from './Button';
   useEffect(() => {
     setTotalOrder((prevTotalOrder) => ({
       ...prevTotalOrder,
+     
       menu: menu.name,
       image: menu.image,
       Qty: orderNumber,
@@ -71,7 +73,7 @@ import Button from './Button';
   
 }, [allOrder]);
 
-const existingOrder = allOrder.some((order) => order.menu === totalOrder.menu );
+const existingOrder = allOrder.some((order) => order.menu === totalOrder.menu && order.Qty !== 0);
     
 const handleShow = () => {
   setOrderNumber(1)

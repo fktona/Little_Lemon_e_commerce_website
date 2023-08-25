@@ -70,7 +70,7 @@ const location = useLocation(); // Get the current location
       </div>
 
       {/* Bottom navigation bar (for small screens) */}
-      <div className={`fixed z-[10] bottom-[50px] w-[85%] text-primary left-0 right-0 bg-crisp-white p-2 flex justify-around  flex-col gap-[2rem] md:hidden mx-auto rounded-3xl shadow-outline transition-all duration-1000 ${isMenuOpen ? 'translate-y-0' : 'translate-y-full'}`}>
+      <div className={`fixed z-[10] bottom-[50px] w-[85%] text-primary left-0 right-0 bg-crisp-white p-2 flex justify-around  flex-col gap-[2rem] md:hidden mx-auto rounded-3xl shadow-outline transition-all linear duration-1000 ${isMenuOpen ? 'translate-y-0' : 'translate-y-full'}`}>
         <nav className={`flex mx-auto p-2 flex-row text-crisp w-full flex-wrap justify-between gap-1 text-sm  top-0 flex-1 ${isMenuOpen ? 'flex-row' : 'hidden'}`}>
           <NavLink className={`bg-primary p-2 rounded-2xl text-crisp-white shadow-outline ${shouldHighlightLink('/') ? 'bg-secondary' : ''}`} to="/" onClick={() => setIsMenuOpen(false)}>Home</NavLink>
           <NavLink className={`bg-primary p-2 rounded-2xl text-crisp-white shadow-outline ${shouldHighlightLink('/about') ? 'bg-secondary' : ''}`} to="/about" onClick={() => setIsMenuOpen(false)}>About</NavLink>

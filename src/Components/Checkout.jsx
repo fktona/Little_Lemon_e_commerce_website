@@ -1,15 +1,14 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext , useMemo, useState, useEffect } from 'react';
 import { UserContext } from '../assets/Context/userContext';
 import { FiShoppingCart } from 'react-icons/fi';
 
 function Checkout() {
   const [clearCart, setClearCart] = useState(false);
   const { allOrder, setAllOrder } = useContext(UserContext);
-  const [timeoutId, setTimeoutId] = useState(null);
-    
-  const [removeTime, setRemoveTime] = useState(3000);
-  const [cd, setcd] = useState(3);
+const [orderToBeRemoved, setOrderToBeRemoved] = useState([]);
+const [stopRemoval, setStopRemoval] = useState({})
 
+const [removal, setRemoval] = useState()
   const increaseQty = (menu) => {
     setAllOrder((prevAllOrder) =>
       prevAllOrder.map((order) =>
@@ -28,8 +27,7 @@ function Checkout() {
 
     
   const decreaseQty = (menu) => {
-    
-    
+
     setAllOrder((prevAllOrders) =>
       prevAllOrders.map((order) =>
         order.menu === menu
@@ -49,38 +47,121 @@ function Checkout() {
     );
    
    
-   const newtimeoutId = setTimeout(() => {
-      setAllOrder((prevAllOrders) =>
-        prevAllOrders.filter((order) => order.Qty > 0)
-      );
-    },3000)
-    setTimeoutId(newtimeoutId)
-    clearTimeout(timeoutId);
+   
   };
 
-  const revertQty = (menu) => {
-    clearTimeout(timeoutId);
-    setRemoveTime(3000)
-    
-    
-    setAllOrder((prevAllOrder) =>
-      prevAllOrder.map((order) =>
-        order.menu === menu.menu 
-          ? {
-              ...order,
-              Qty:  1,
-              
-            }
-          : order
-      )
-    );
+
+
+const revertQty = (menu) => {
+  // Remove the order associated with the clicked button from orderToBeRemoved
+  setOrderToBeRemoved((prevOrders) =>
+    prevOrders.filter((existingOrder) => existingOrder.menu !== menu.menu)
+  );
+
+  setAllOrder((prevAllOrder) =>
+    prevAllOrder.map((order) =>
+      order.menu === menu.menu
+        ? {
+            ...order,
+            Qty: 1,
+          }
+        : order
+    )
+  );
+};
+
+useEffect(() => {
+  const orderWithZeroQty = allOrder.filter((order) => order.Qty < 1);
+
+  if (orderWithZeroQty.length > 0) {
+    const newOrdersWithTime = orderWithZeroQty
+      .filter((zeroOrder) => !orderToBeRemoved.some(existingOrder => existingOrder.menu === zeroOrder.menu)) 
+      .map((zeroOrder) => ({
+        ...zeroOrder,
+        timeLeft: 6000,
+      }));
+
+    setOrderToBeRemoved((prevOrders) => [...prevOrders, ...newOrdersWithTime]);
+  }
+}, [allOrder]);
+useEffect(() => {
+  return () => {
+    setOrderToBeRemoved([]);
   };
-  // useEffect(() => {
-  //   // ... (total calculation)
-  //   return () => {
-  //     clearTimeout(timeoutId);
-  //   };
-  // }, [allOrder]);
+}, []);
+
+useEffect(() => {
+  if (orderToBeRemoved.length > 0) {
+    const removeInterval = setInterval(() => {
+      setOrderToBeRemoved((prevOrders) => {
+        const newOrders = [...prevOrders];
+
+        if (newOrders.length > 0) {
+          newOrders.forEach((order) => {
+            if (order.timeLeft > 0) {
+              order.timeLeft -= 1000; // Decrease timeLeft by 1 second
+              
+            } else {
+              const updatedAllOrder = allOrder.filter(
+                (o) => o.menu !== order.menu
+              );
+              setAllOrder(updatedAllOrder);
+              newOrders.shift()
+            }
+          });
+        }
+         
+        if (newOrders.length === 0) {
+          clearInterval(removeInterval);
+        }
+
+        return newOrders;
+      });
+    }, 1000); // Update every 1 second
+
+    setRemoval(removeInterval);
+
+    return () => {
+      clearInterval(removeInterval);
+    };
+  }
+}, [allOrder, orderToBeRemoved]);
+
+// const orderElements = allOrder.map((order, index) => {
+//     const orderToRemove = orderToBeRemoved.find((o) => o.menu === order.menu);
+
+//     const shouldDisplayMenu = orderToRemove && lastAddedIndex === index;
+
+//     return (
+//       <div className="" key={order.menu}>
+//         {orderToRemove && shouldDisplayMenu && (
+//           <div className={`shadow-outline transition-all duration-1000 ${order.timeLeft <= 5000 ? 'hidden' : 'block'}`}>
+//             <button onClick={() => revertQty(order)}>Revert Qty</button>
+//             <span>{shouldDisplayMenu ? orderToRemove.menu : ''}</span>
+//             <div className="progress-bar">
+//               <div className="progress-bar-fill" style={{ width: `${(orderToRemove.timeLeft / 6000) * 100}%` }}></div>
+//             </div>
+//           </div>
+//         )}
+//       </div>
+//     );
+//   });
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+ 
+
   const total = allOrder.reduce(
     (accumulator, cart) => ({
       totalAmount: accumulator.totalAmount + cart.totalPrice,
@@ -99,12 +180,34 @@ const rclear = () => {
   useEffect(() => {
     total;
   }, [allOrder]);
+  
+  
+  const progressBarWidths = allOrder.map((cart) => {
+  const orderToRemove = orderToBeRemoved.find((o) => o.menu === cart.menu);
+  return (orderToRemove?.timeLeft / 6000) * 100 
+});
+
+
+const sortByQuantityAndOrder = (a, b) => {
+  if (a.Qty !== b.Qty) {
+    return b.Qty - a.Qty; // Sort by quantity in descending order
+  } else {
+    // If quantities are the same, maintain the order they were added
+    return allOrder.indexOf(a) - allOrder.indexOf(b);
+  }
+};
+
+// Sort the allOrder array based on quantity and order
+const sortedOrders = [...allOrder].sort(sortByQuantityAndOrder);
+
 
   return (
     <div>
       {allOrder.length >0 ? (
         <>
-          <div className="flex relative flex-col gap-2">
+
+          <div className="flex relative flex-col gap-4">
+              
             <div>
               <button onClick={clear} className="p-4 bg-black text-crisp-white">
                 Delete All items
@@ -132,8 +235,8 @@ const rclear = () => {
               cart.Qty >0 ? (
                 <div
                   key={index}
-                  className="flex justify-between items-center bg-crisp-white p-2 rounded-lg  shadow-md"
-                >
+                  className="flex justify-between items-center p-2 rounded-lg  shadow-md"
+                > 
                   <img src={cart.image} alt={cart.menu} className="w-8 h-8 ml-2" />
                   <div className="text-center flex justify-between flex-1">
                     <p className="text-sm md:text-md ml-3">{cart.menu}</p>
@@ -156,15 +259,43 @@ const rclear = () => {
                   </div>
                 </div>
               ) : (
-              <>
-                <button onClick={() => revertQty(cart)}
-                className="bg-red-600 flex w-fit ">revert items {cd}</button>
-                <input className="bg-blue-500 h-[15px] w-[15px]  " type="progress"  min ="0" max={cd} />
-             </> )
-            )}
+
+
+      <div className="" key={cart.menu}>
+          <div className={`shadow-outline flex items-center justify-between py-1 px-2 transition-all duration-1000 `}>
+          <div className="flex gap-2 text-sm justify-between items-center ">
+              <img src={cart.image} alt={cart.menu} className="w-8 h-8 ml-2" />
+                 
+            <span>{cart.menu}</span>    
+            </div>
+             <button onClick={() => revertQty(cart)}
+            className="h-full text-crisp-white relative bg-primary p-2"text>Revert Qty</button>
+                  </div>
+            <div className="progress-bar">
+<div className="progress-bar-fill  bg-primary" style={{ width: `${progressBarWidths[index]}%` }}></div>
+            </div>
           </div>
+
+     
+     
+
+// <div key={cart.menu}>
+//       {orderElements}
+//     </div>
+              )
+
+
+
+
+
+
+
+          )  
+          }
+          </div> 
+           <p className="bg-black w-8 text-crisp-white"> {orderToBeRemoved.length} </p>
           <div className="flex flex-col justify-center mx-auto mt-4 px-4 py-2  text-xl  font-bold gap-2">
-            <div className="flex  justify-around items-center">
+            <div className="flex  justify-around items-center"> 
               <span>Total Price:</span>
               <span>${total.totalAmount.toFixed(2)}</span>
             </div>

@@ -230,5 +230,13 @@
         "price": 9.49,
         "category": "Salads",
         "image": "https://i.ibb"
+    }, 
+        {
+        "id": 30,
+        "name": "vanilla Brownie",
+        "description": "Warm chocolate brownie topped with a scoop of vanilla ice cream, chocolate syrup, whipped cream, and a cherry.",
+        "price": 6.99,
+        "category": "Desserts",
+        "image": "https://images.pexels.com/photos/1132274/pexels-photo-1132274.jpeg?auto=compress&cs=tinysrgb&w=400"
     }
     ]
