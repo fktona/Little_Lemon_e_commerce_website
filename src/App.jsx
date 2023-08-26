@@ -17,7 +17,6 @@ import Footer from './Components/Footer'
 import Account from './Components/Account'
 import Search from './Components/search'
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Nav />} >
@@ -34,14 +33,16 @@ function App() {
   const [userProfile , setUserProfile ] = useState({
     username: "",
     email: "",
+    password: "",
   })
 
 
 const [showLoggedIn, setShowLoggedIn] = useState(false)
-    const [allOrder, setAllOrder] = useState([]);
+const [allOrder, setAllOrder] = useState([]);
     
 const [show, setShow] = useState();
-      const [showCart, setShowCart] = useState(false);
+const [showCart, setShowCart] = useState(false);
+const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   return (
     <div className=' relative p-2 lg:p-3'>

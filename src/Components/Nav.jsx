@@ -11,8 +11,8 @@ function Nav() {
   
 
   const toggleLogin = () => {
-    setShowLoggedIn(true);
-    setIsLoggedIn(false);
+   !isLoggedIn ? setShowLoggedIn(true):setIsLoggedIn(false)
+   
   };
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -65,7 +65,7 @@ const location = useLocation(); // Get the current location
            text-sm rounded shadow-sm ${shouldHighlightLink('/about') ? 'bg-secondary' : ''}`}
           onClick={toggleLogin}
         >
-          {isLoggedIn ? "Logout" : <RiLogoutBoxLine />}
+          {isLoggedIn ? <RiLogoutBoxLine />: <RiLoginBoxLine />}
         </button>
       </div>
 

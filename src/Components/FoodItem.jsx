@@ -5,7 +5,7 @@ import Button from './Button';
 
  const FoodItem = ({ menu  }) => {
    
-  const { allOrder, setAllOrder , show, setShow , showCart, setShowCart } = useContext(UserContext);
+  const { allOrder, setAllOrder  } = useContext(UserContext);
   const [orderNumber, setOrderNumber] = useState(0);
   const memoizedOrdeNumber = useMemo(() => orderNumber, [orderNumber]);
   
