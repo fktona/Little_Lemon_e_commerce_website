@@ -97,3 +97,58 @@ button {
   background-color: #4caf50; /* Green color */
   transition: width 1s linear; /* Smooth transition animation */
 }
+
+.fillForm{
+  position: relative;
+  list-style: none;
+  left:0;
+  animation: move 1000ms ease-in ;
+  
+}
+.fillForm::before{
+  content: "";
+  position: absolute;
+  width: 3px;
+  height: 100%;
+  background-color: white;
+  left:0;
+  top:0;
+  animation: move2 1000ms ease-in ;
+  box-shadow: 2px 0 1px 1px rgba(230,230,230 , 0.3);
+  
+  
+  
+}
+
+.login input{
+  outline: none;
+}
+
+.login input:focus {
+  border: 1px solid green;
+}
+
+
+@keyframes move {
+    from {
+      left: -120%;
+    }
+    to {
+      left: 0;
+    }
+  }
+  
+  @keyframes move2 {
+    0% {
+      left: 120%;
+      opacity: 0;
+      
+    }
+    
+    40%{
+      opacity: 1;
+    }
+    100% {
+      left: 0;
+    }
+  }
