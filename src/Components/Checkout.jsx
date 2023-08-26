@@ -6,9 +6,6 @@ function Checkout() {
   const [clearCart, setClearCart] = useState(false);
   const { allOrder, setAllOrder } = useContext(UserContext);
 const [orderToBeRemoved, setOrderToBeRemoved] = useState([]);
-const [stopRemoval, setStopRemoval] = useState({})
-
-const [removal, setRemoval] = useState()
   const increaseQty = (menu) => {
     setAllOrder((prevAllOrder) =>
       prevAllOrder.map((order) =>
@@ -119,7 +116,7 @@ useEffect(() => {
       });
     }, 1000); // Update every 1 second
 
-    setRemoval(removeInterval);
+    
 
     return () => {
       clearInterval(removeInterval);
@@ -127,40 +124,6 @@ useEffect(() => {
   }
 }, [allOrder, orderToBeRemoved]);
 
-// const orderElements = allOrder.map((order, index) => {
-//     const orderToRemove = orderToBeRemoved.find((o) => o.menu === order.menu);
-
-//     const shouldDisplayMenu = orderToRemove && lastAddedIndex === index;
-
-//     return (
-//       <div className="" key={order.menu}>
-//         {orderToRemove && shouldDisplayMenu && (
-//           <div className={`shadow-outline transition-all duration-1000 ${order.timeLeft <= 5000 ? 'hidden' : 'block'}`}>
-//             <button onClick={() => revertQty(order)}>Revert Qty</button>
-//             <span>{shouldDisplayMenu ? orderToRemove.menu : ''}</span>
-//             <div className="progress-bar">
-//               <div className="progress-bar-fill" style={{ width: `${(orderToRemove.timeLeft / 6000) * 100}%` }}></div>
-//             </div>
-//           </div>
-//         )}
-//       </div>
-//     );
-//   });
-
-
-
-
-
-
-
-
-
-  
-  
-  
-  
-  
- 
 
   const total = allOrder.reduce(
     (accumulator, cart) => ({
@@ -171,7 +134,7 @@ useEffect(() => {
   );
 
   const clear = () => {
-    setClearCart((prev) => !prev);
+    setClearCart(true);
   };
 const rclear = () => {
     setClearCart((prev) => !prev);
@@ -276,22 +239,12 @@ const sortedOrders = [...allOrder].sort(sortByQuantityAndOrder);
             </div>
           </div>
 
-     
-     
-
-// <div key={cart.menu}>
-//       {orderElements}
-//     </div>
               )
 
+          )}
 
 
 
-
-
-
-          )  
-          }
           </div> 
            <p className="bg-black w-8 text-crisp-white"> {orderToBeRemoved.length} </p>
           <div className="flex flex-col justify-center mx-auto mt-4 px-4 py-2  text-xl  font-bold gap-2">
