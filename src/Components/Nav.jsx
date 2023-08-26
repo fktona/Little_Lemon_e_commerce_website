@@ -1,18 +1,18 @@
 import  { useState, useContext } from "react";
-import { NavLink, Outlet, useLocation } from "react-router-dom";
+import { NavLink,  useLocation } from "react-router-dom";
 import { MdMenu, MdShoppingCart } from "react-icons/md";
 import { RiUserLine, RiLogoutBoxLine, RiLoginBoxLine } from "react-icons/ri";
 import { UserContext } from "../assets/Context/userContext";
 import CompanyLogo from "../assets/Context/CompanyIdentity";
-import HeadingText from "./HeadingText";
+
 
 function Nav() {
   const { userProfile, isLoggedIn, setIsLoggedIn, setShowLoggedIn , allOrder} = useContext(UserContext);
   
 
   const toggleLogin = () => {
-   !isLoggedIn ? setShowLoggedIn(true):setIsLoggedIn(false)
-   
+    setShowLoggedIn(true);
+    setIsLoggedIn(false);
   };
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,9 +32,10 @@ const location = useLocation(); // Get the current location
   return (
     <div className="z-2  ">
       {/* Top navigation bar */}
-      <div className={`sticky z-[10] container mx-auto text-primary shadow-md  opacity-90
-       bg-crisp-white top-0  bg-clip-padding backdrop-filter backdrop-blur-lg
-        text-black font-bold text-sm md:flex space-x-4 flex items-center justify-between p-2 pr-8 ${shouldHighlightLink('/about') ? 'bg-secondary' : ''} ${location.pathname === '/profile'  ? 'hidden md:fixed' : ''}`}>
+      <div className={`fixed z-[10] container inset-0 h-fit mx-auto shadow-md  opacity-90
+       bg-crisp-white top-0  bg-clip-padding  backdrop-blur-lg
+        font-bold text-sm md:flex space-x-4 flex items-center justify-between 
+        p-2 pr-8 ${shouldHighlightLink('/about') ? 'bg-secondary' : ''} ${location.pathname === '/profile'  ? 'hidden md:fixed' : ''}`}>
         <div className="">
           <CompanyLogo />
         </div>
@@ -57,20 +58,21 @@ const location = useLocation(); // Get the current location
             Hello, {userProfile.username.toUpperCase()}
           </div>
         ) : ''}
-        <div className={`text-secondary px-6 hidden md:flex text-2xl px-2 ${shouldHighlightLink('/cart') ? 'text-secondary' : ''}`}>
-          <MdShoppingCart /><span className="text-sm bg-primary w-[15px]  h-[15px] rounded-full">{total.totalQty}</span>
-        </div>
+         <NavLink to="/cart" className={`text-2xl px-2 ${shouldHighlightLink('/cart') ? 'text-secondary' : ''}`}>
+          <span className="flex">
+            <MdShoppingCart  className="text-primary"/> <span className="text-[10px] bg-secondary w-[15px] text-center text-crisp-white h-[15px] rounded-full">{total.totalQty}</span></span>
+          </NavLink>
         <button
           className={`bg-secondary hover:bg-accent text-crisp-white font-bold py-2 px-4
            text-sm rounded shadow-sm ${shouldHighlightLink('/about') ? 'bg-secondary' : ''}`}
           onClick={toggleLogin}
         >
-          {isLoggedIn ? <RiLogoutBoxLine />: <RiLoginBoxLine />}
+          {isLoggedIn ? "Logout" : <RiLogoutBoxLine />}
         </button>
       </div>
 
       {/* Bottom navigation bar (for small screens) */}
-      <div className={`fixed z-[10] bottom-[50px] w-[85%] text-primary left-0 right-0 bg-crisp-white p-2 flex justify-around  flex-col gap-[2rem] md:hidden mx-auto rounded-3xl shadow-outline transition-all linear duration-1000 ${isMenuOpen ? 'translate-y-0' : 'translate-y-full'}`}>
+      <div className={`fixed z-[10] bottom-[50px] w-[85%] text-primary left-0 right-0 bg-crisp-white p-2 flex justify-around  flex-col gap-[2rem] md:hidden mx-auto rounded-3xl shadow-outline transition-all duration-1000 ${isMenuOpen ? 'translate-y-0' : 'translate-y-full'}`}>
         <nav className={`flex mx-auto p-2 flex-row text-crisp w-full flex-wrap justify-between gap-1 text-sm  top-0 flex-1 ${isMenuOpen ? 'flex-row' : 'hidden'}`}>
           <NavLink className={`bg-primary p-2 rounded-2xl text-crisp-white shadow-outline ${shouldHighlightLink('/') ? 'bg-secondary' : ''}`} to="/" onClick={() => setIsMenuOpen(false)}>Home</NavLink>
           <NavLink className={`bg-primary p-2 rounded-2xl text-crisp-white shadow-outline ${shouldHighlightLink('/about') ? 'bg-secondary' : ''}`} to="/about" onClick={() => setIsMenuOpen(false)}>About</NavLink>
@@ -85,7 +87,7 @@ const location = useLocation(); // Get the current location
           </div>
           <NavLink to="/cart" className={`text-2xl px-2 ${shouldHighlightLink('/cart') ? 'text-secondary' : ''}`}>
           <span className="flex">
-            <MdShoppingCart /> <span className="text-[10px] bg-secondary w-[17px] flex items-center justify-center text-center text-crisp-white h-[17px] rounded-full">{total.totalQty}</span></span>
+            <MdShoppingCart /> <span className="text-[10px] bg-secondary w-[15px] text-center text-crisp-white h-[15px] rounded-full">{total.totalQty}</span></span>
           </NavLink>
           <NavLink to="/profile" className={`text-2xl px-2 ${shouldHighlightLink('/profile') ? 'text-secondary' : ''}`}>
             <RiUserLine />
@@ -94,12 +96,12 @@ const location = useLocation(); // Get the current location
       </div>
 
       
-      <HeadingText />
+{/*      <HeadingText />
 
-      {/* Other content */}
       <Outlet />
+    */}
     </div>
-  );
+         );
 }
 
 export default Nav;

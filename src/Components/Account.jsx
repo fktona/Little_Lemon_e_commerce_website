@@ -1,30 +1,41 @@
 import React, { useContext } from "react";
 import { UserContext } from "../assets/Context/userContext";
 import { NavLink, useLocation } from "react-router-dom";
+import CompanyLogo from "../assets/Context/CompanyIdentity";
 
 const Account = () => {
-  const { userProfile, isLoggedIn, setIsLoggedIn,setShowLoggedIn , allOrder} = useContext(UserContext);
+  const { userProfile, isLoggedIn, setIsLoggedIn, setShowLoggedIn, allOrder } = useContext(UserContext);
 
   return (
-    <div>
-      <header className="block w-full p-[2rem] bg-black   text-crisp-white">
-        <button className="p-[4px] bg-accent shadow-md">Home</button>
-        <h2>YOUR PROFILE</h2>
-        {isLoggedIn ? <div> <h3>Welcome {userProfile.username}</h3> 
-        <h5>{userProfile.email}</h5> 
-        </div>: <button className="absolute bottom-20 bg-accent">Please Log In</button>}
+    <div className="relative">
+      <header className=" relative   w-full  py-6  bg-[#1f221ff8]  text-crisp-white">
+       <div className="absolute px-4 py-2 top-1 w-full flex justify-between"><CompanyLogo />
+       <button className="p-[2px] relative text-sm bg-accent shadow-md">Home</button></div> 
+        <div className="relative   flex items-end justify-between ">
+        <div className=" text-sm mt-6 px-4">
+         
+        {isLoggedIn ? <div> 
+           <h6>YOUR PROFILE:</h6>
+        <h3>Welcome,  {userProfile.username.toUpperCase()}</h3>
+          <h5>{userProfile.email}</h5><button onClick={() => {
+            setIsLoggedIn(false)
+          }}
+            className=" mt-2 p-2 py-1 bg-accent"> Logout</button>
+        </div> : <button onClick={() => {
+          setShowLoggedIn(true)
+        }}
+          className=" px-2 py-1 mt-2 bg-accent">Please Log In</button>}</div>
+        </div>
       </header>
-      <main className= "flex w-full h-[40vh] p-6 flex-col ">
-        <section className= "flex w-full  p-6 flex-col justify-between">
-          <div>Messages</div>
-          <div>Orders</div>
-          <div>Vouchers</div>
-          <div>Saved Items</div>
-        </section>
-        <section className= "flex w-full  p-6 flex-col justify-between">
-          <div>Address Book</div>
-          <div>Change Theme</div>
-        </section>
+      <p className="text-sm text-primary px-4 py-1 ">Your Balance: 000</p>
+      <main className="flex w-full mt-6 px-4 gap-2 flex-col ">
+          <div className=" border-b-[1px] p-2 shadow-sm ">Messages</div>
+          <div className=" border-b-[1px] p-2 shadow-sm ">Orders</div>
+          <div className=" border-b-[1px] p-2 shadow-sm ">Vouchers</div>
+          <div className=" border-b-[1px] p-2 shadow-sm ">Saved Items</div>
+        
+          <div className=" border-b-[1px] p-2 shadow-sm ">Address Book</div>
+          <div className=" border-b-[1px] p-2 shadow-sm ">Change Theme</div>
       </main>
     </div>
   );

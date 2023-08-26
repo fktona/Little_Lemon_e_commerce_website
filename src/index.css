@@ -69,20 +69,7 @@ button {
   cursor: pointer;
 }
 
-/* Customize the track color */
-.custom-range::-webkit-slider-runnable-track {
-  width: 100%;
-  height: 8px;
-  background: #f0f0f0;
-  border-radius: 5px;
-}
 
-.custom-range::-moz-range-track {
-  width: 100%;
-  height: 8px;
-  background: #red;
-  border-radius: 5px;
-}
 /* Assuming you have a container class for the progress bar */
 .progress-bar {
   width: 100%;
