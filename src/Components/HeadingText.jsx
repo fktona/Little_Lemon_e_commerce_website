@@ -19,7 +19,7 @@ function HeadingText() {
 
   const location = useLocation();
   return (
-    <div className={`  flex justify-center items-center mx-auto mt-[5rem]  h-[30vh]
+    <div className={`  headingText relative flex justify-center items-center mx-auto mt-2  h-[30vh]
      md:aspect-ratio[2.5/1]   shadow-sm
       ${location.pathname === '/cart' || location.pathname === '/profile' ? 'hidden':'flex'}`} style={bgImage}>
      

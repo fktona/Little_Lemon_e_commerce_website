@@ -7,12 +7,11 @@ import CompanyLogo from "../assets/Context/CompanyIdentity";
 
 
 function Nav() {
-  const { userProfile, isLoggedIn, setIsLoggedIn, setShowLoggedIn , allOrder} = useContext(UserContext);
+  const { userProfile, isLoggedIn, setIsLoggedIn, setShowLoggedIn , allOrder , aboutToSignOut , authUser} = useContext(UserContext);
   
 
   const toggleLogin = () => {
-    setShowLoggedIn(true);
-    setIsLoggedIn(false);
+    authUser? (setIsLoggedIn(true) , aboutToSignOut()):setShowLoggedIn(true)
   };
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -58,8 +57,8 @@ const location = useLocation(); // Get the current location
             Hello, {userProfile.username.toUpperCase()}
           </div>
         ) : ''}
-         <NavLink to="/cart" className={`text-2xl px-2 ${shouldHighlightLink('/cart') ? 'text-secondary' : ''}`}>
-          <span className="flex">
+         <NavLink to="/cart" className={`  hidden lg:inline text-2xl px-2 ${shouldHighlightLink('/cart') ? 'text-secondary' : ''}`}>
+          <span className="flex ">
             <MdShoppingCart  className="text-primary"/> <span className="text-[10px] bg-secondary w-[15px] text-center text-crisp-white h-[15px] rounded-full">{total.totalQty}</span></span>
           </NavLink>
         <button
@@ -67,7 +66,7 @@ const location = useLocation(); // Get the current location
            text-sm rounded shadow-sm ${shouldHighlightLink('/about') ? 'bg-secondary' : ''}`}
           onClick={toggleLogin}
         >
-          {isLoggedIn ? "Logout" : <RiLogoutBoxLine />}
+          {isLoggedIn ? <RiLogoutBoxLine />: <RiLoginBoxLine />}
         </button>
       </div>
 

@@ -3,6 +3,7 @@ import FoodItem from './FoodItem';
 import Button from './Button';
 import Checkout from './Checkout';
 import { BsFilterCircle } from 'react-icons/bs';
+import { MdClose} from 'react-icons/md';
 import { UserContext } from '../assets/Context/userContext';
 import items from "../Item.json"
 import HeadingText from "./HeadingText";
@@ -72,8 +73,11 @@ border-l-2 border-primary h-full flex justify-center items-center  text-center t
       ))}
     </ul>
     </div>
-    <div className=" perspective-[500px] p-4 max-w-[550px] shadow-outline"> 
-     <h4 className="text-center text-accent m-[1rem] text-xl "> {showEachCategory}</h4>
+    {showEachCategory ?
+    <div className="    bg-[#0000001z]  m-auto h-[40vh] inset-0 w-[90%] fixed z-[75] nax-h-[300px]  bg-clip-padding backdrop-filter backdrop-blur-lg border shadow"> 
+    <button onClick = { ()=> setShowEachCategory(null)}
+    className="absolute top-2 right-10 px-3 bg-red-500  text-white tex-sm py-2 opacity-100 rounded hover:bg-red-800 "> <MdClose /> </button>
+     <h4 className="text-center text-primary font-semi-bold  m-[1rem] text-2xl "> {showEachCategory}</h4>
     <Swiper 
     modules={[Navigation, EffectCoverflow , Pagination, Scrollbar, A11y]}
     
@@ -88,7 +92,7 @@ border-l-2 border-primary h-full flex justify-center items-center  text-center t
       scrollbar={{ draggable: true }}
       loop={true}
       onSwiper={(swiper) => console.log(swiper)}
-   className="transform rotate-y-45 translate-z-100"  >
+   className=""  >
        
     {
       showEachCategory ? EachCategory(showEachCategory).map((menu ) => (
@@ -103,7 +107,7 @@ border-l-2 border-primary h-full flex justify-center items-center  text-center t
     }
     
     </Swiper>
-    </div>
+    </div>:null}
 <div className="">
   <h4 className="font-bold text-secondary">JUST FOR YOU</h4>
   <Swiper

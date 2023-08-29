@@ -8,9 +8,9 @@ export default function RootLayout() {
     const location = useLocation();
     
   return (
-    <div className="">
+    <div className="relative">
          <Nav CompanyLogo={<CompanyLogo />} />
-        <div className={`${ location.pathname === '/profile' ? 'hidden':''}`}>
+        <div className={`${ location.pathname === '/profile' ? 'hidden':''} relative`}>
         <Search />
         <HeadingText /></div>
         <Outlet />
