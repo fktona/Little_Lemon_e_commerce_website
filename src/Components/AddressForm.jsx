@@ -1,19 +1,24 @@
-import React, { useState } from 'react';
-
+import React, { useState, useContext} from 'react';
+import { getDatabase , ref , push , set } from "firebase/database"
+import { auth } from "../assets/firebase";
+import { UserContext } from "../assets/Context/userContext"
 const AddressForm = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
-    username: '',
     email: '',
-    password: '',
     phoneNumber: '',
-    county: '',
+    country: '',
     state: '',
     city: '',
     address: '',
-    agreeToTerms: false,
   });
+  
+  
+  const { dbParentPath} = useContext(UserContext);
+  const emptyFieldKey = Object.keys(formData).filter(key => !formData[key]);
+  const [emptyField, setEmptyField] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleInputChange = (event) => {
     const { name, value, type, checked } = event.target;
@@ -25,11 +30,49 @@ const AddressForm = () => {
     }));
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // You can perform form submission or validation here
-    console.log(formData);
-  };
+  const handleSubmit = async (event) => {
+  event.preventDefault();
+  setEmptyField(true)
+  
+  if (emptyFieldKey.length > 0) {
+      
+      return;
+    }
+  try {
+    setIsLoading(true)
+    const db = getDatabase();
+
+    if (!auth.currentUser) {
+      console.log("User not authenticated");
+      return;
+    }
+    
+    
+    const dbRef = ref(db, `${dbParentPath( auth.currentUser.uid)}/address`);
+
+    // Push the form data as a new child node with a unique key
+    const newAddressRef = push(dbRef);
+    await set(newAddressRef, formData);
+
+    setFormData((prev) => {
+      const resetData = {};
+      Object.keys(prev).forEach((key) => {
+        resetData[key] = '';
+      });
+      return resetData;
+    });
+    
+    
+    console.log('Address data saved to Firebase');
+  } catch (error) {
+    console.log('Error saving address data:', error);
+  } finally {
+    // Set loader state back to false after response is received
+    setIsLoading(false);
+    setEmptyField(false)
+  }
+};
+
 
   return (
     <form onSubmit={handleSubmit}
@@ -54,15 +97,6 @@ const AddressForm = () => {
         />
       </div>
       <div>
-        <label>Username:</label>
-        <input
-          type="text"
-          name="username"
-          value={formData.username}
-          onChange={handleInputChange}
-        />
-      </div>
-      <div>
         <label>Email:</label>
         <input
           type="email"
@@ -82,11 +116,11 @@ const AddressForm = () => {
         />
       </div>
       <div>
-        <label>County:</label>
+        <label>Country:</label>
         <input
           type="text"
-          name="county"
-          value={formData.county}
+          name="country"
+          value={formData.country}
           onChange={handleInputChange}
         />
       </div>
@@ -120,6 +154,11 @@ const AddressForm = () => {
       <div>
       </div>
       <button type="submit">Submit</button>
+      <ul>
+      { emptyFieldKey.length > 0 && emptyField && emptyFieldKey.map((o) => <li key={o}
+        className="  text-sm p-1 text-red-500 mb-2  " > Fill  {o}</li>)}
+        </ul>
+      { isLoading && <div className="lds-dual-ring"></div>}
     </form>
   );
 };

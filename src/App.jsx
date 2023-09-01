@@ -1,4 +1,4 @@
-import { useState ,useEffect} from 'react'
+import { useState ,useEffect , useMemo} from 'react'
 import FoodMenu from "./Components/FoodMenu"
 import Reservation from "./Components/Reservation"
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
@@ -11,9 +11,19 @@ import Account from './Components/Account'
 import RootLayout from './RootLayout'
 import Address from './Components/AddressForm'
 import { auth } from "./assets/firebase";
+import { UserProfileFetcher } from "./assets/UserData"
 import { onAuthStateChanged ,signOut} from "firebase/auth";
 
 function App() {
+  
+  const [showLoggedIn, setShowLoggedIn] = useState(false)
+const [allOrder, setAllOrder] = useState([]);
+const [show, setShow] = useState();
+const [showCart, setShowCart] = useState(false);
+const [authUser, setAuthUser] = useState(null)
+const [profileInformation, setProfileInformation] = useState({})
+
+const dbParentPath =  (uid) => 'users/' + uid;
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<RootLayout />} >
@@ -26,27 +36,22 @@ function App() {
     )
   );
   
-
   const [userProfile , setUserProfile ] = useState({
-    username: "",
+    firstname:"",
+    lastname:"",
     email: "",
     password: "",
+    confirmPassword:"",
   })
 
 
-const [showLoggedIn, setShowLoggedIn] = useState(false)
-const [allOrder, setAllOrder] = useState([]);
-    
-const [show, setShow] = useState();
-const [showCart, setShowCart] = useState(false);
-const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-const [authUser, setAuthUser] = useState(null)
 
 useEffect(()=> {
   
   const listen = onAuthStateChanged(auth , (user)=> {
     user ? setAuthUser(user):null
+    console.log(user)
   })
   
   return () => {
@@ -55,27 +60,43 @@ useEffect(()=> {
   
 }, [])
 
+
+useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const fetchedData = await UserProfileFetcher(dbParentPath(auth.currentUser.uid));
+        setProfileInformation(fetchedData);
+      } catch (error) {
+        console.log(error)
+      }
+    };
+
+    fetchData();
+  }, [authUser]);
+
+const memoizedUserData = useMemo(() => profileInformation, [profileInformation]);
+
 const aboutToSignOut = () => {
   signOut(auth).then( () => {
-    setIsLoggedIn(false)
+    setAuthUser(false)
     console.log("signOut")
     }).catch((error)=> {
       console.log("error")
     })
 }
 
-
+console.table(profileInformation)
 
   return (
     <div className=' relative p-2 lg:p-3'>
       <UserContext.Provider value={
-        { userProfile,setUserProfile , isLoggedIn , setIsLoggedIn , setShowLoggedIn ,allOrder, setAllOrder ,show, setShow ,showCart, setShowCart , authUser , aboutToSignOut}}>
+        { userProfile,setUserProfile ,   setShowLoggedIn ,allOrder, setAllOrder ,show, setShow ,showCart, setShowCart , authUser , aboutToSignOut ,dbParentPath , profileInformation, setProfileInformation ,memoizedUserData}}>
           {showLoggedIn ? <Access /> : ""}
-                 
+                     <Address />     
       <RouterProvider router={router}>
       <RootLayout />
-          <FoodMenu />
-          <Checkout />
+
+          
         
       </RouterProvider>
      

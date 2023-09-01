@@ -4,14 +4,13 @@ import { MdClose} from 'react-icons/md';
 import { auth } from "../assets/firebase";
 import { signInWithEmailAndPassword} from "firebase/auth";
 function SignIn() {
-  const { setIsLoggedIn, authUser,  setShowLoggedIn , IsLoggedIn} = useContext(UserContext);
+  const { authUser,  setShowLoggedIn , setProfileInformation, dbParentPath} = useContext(UserContext);
   const [emptyField, setEmptyField] = useState(false);
   const [incorrectPassword, setIncorrectPassword] = useState(false);
   const [incorrectEmail, setIncorrectEmail] = useState(false);
   const [signInError, setSignInError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
  
-
 const [userSignIn , setUserSignIn ] = useState({
     email: "",
     password: "",
@@ -38,6 +37,7 @@ const handleSubmit = async (event) => {
   }
 
   try {
+   
     setIsLoading(true)
     
     const userCredential = await signInWithEmailAndPassword(
@@ -46,29 +46,33 @@ const handleSubmit = async (event) => {
       userSignIn.password
     );
 
-    // User exists and login successful
+
+ 
     setEmptyField(false);
-    setIsLoggedIn(true);
     setShowLoggedIn(false);
     console.log(userCredential.user);
-    // Handle userCredentials or any related logic here
+    
+    
   } catch (error) {
     if (error.code === "auth/wrong-password") {
       console.log("Incorrect password");
       setIncorrectPassword(true)
-      // Handle incorrect password condition here, e.g., show error message to the user
+     
+     
+     
     } else if (error.code === "auth/user-not-found") {
       console.log("User not found");
       setIncorrectEmail(true)
       // Handle user not found condition here, e.g., show error message to the user
     } else {
       console.error("Error signing in:", error);
-      // Handle other error conditions here
       setSignInError(true)
     }
   } finally {
-    // Set loader state back to false after response is received
+
+
     setIsLoading(false);
+    setEmptyField(false)
   }
 };
 
@@ -79,7 +83,7 @@ const handleSubmit = async (event) => {
     <div className=" login w-[90%] bg-[#0000006e]   z-[29] md:right-20 max-w-[500px] fixed p-8 mt-[3rem]    top-0 rounded-3xl bg-clip-padding backdrop-filter backdrop-blur-lg 
     z-1  flex flex-col mb-8 top-5 translate-x-2 p-4 border  rounded shadow">
       <h2 className="text-2xl text-primary font-bold mb-4">Login</h2>
-      { isLoading && <div class="lds-dual-ring"></div>}
+      { isLoading && <div className="lds-dual-ring"></div>}
        <button onClick={ ()=> { setShowLoggedIn(false)}}
           className=" absolute top-2 right-10 px-3 bg-red-500  text-white tex-sm py-2 opacity-100 rounded hover:bg-red-800"
         >
@@ -94,16 +98,7 @@ const handleSubmit = async (event) => {
         
       <form onSubmit={handleSubmit} className="relative w-full flex  flex-col opacity-90  justify-center">
         
-        <div className="mb-4">
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={userSignIn.password}
-            onChange={handleInputChange}
-            className="w-full px-3 py-2 rounded border"
-          />
-        </div>
+
         <div className="mb-4">
           <input
             type="email"
@@ -114,6 +109,16 @@ const handleSubmit = async (event) => {
             className="w-full px-3 py-2 rounded border"
           />
         </div>
+        <div className="mb-4">
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={userSignIn.password}
+            onChange={handleInputChange}
+            className="w-full px-3 py-2 rounded border"
+          />
+                  </div>
         <button onClick={()=>{  setEmptyField(true)}}
           type="submit"
           className=" relative px-8 bg-primary mx-auto text-white py-2 rounded hover:bg-primary"

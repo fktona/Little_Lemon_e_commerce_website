@@ -7,11 +7,11 @@ import CompanyLogo from "../assets/Context/CompanyIdentity";
 
 
 function Nav() {
-  const { userProfile, isLoggedIn, setIsLoggedIn, setShowLoggedIn , allOrder , aboutToSignOut , authUser} = useContext(UserContext);
+  const { userProfile, setShowLoggedIn , allOrder , aboutToSignOut , authUser} = useContext(UserContext);
   
 
   const toggleLogin = () => {
-    authUser? (setIsLoggedIn(true) , aboutToSignOut()):setShowLoggedIn(true)
+    authUser? (setShowLoggedIn(false), aboutToSignOut()):setShowLoggedIn(true)
   };
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,6 +28,8 @@ const location = useLocation(); // Get the current location
     }),
     { totalAmount: 0, totalQty: 0 }
   );
+  
+  
   return (
     <div className="z-2  ">
       {/* Top navigation bar */}
@@ -52,11 +54,11 @@ const location = useLocation(); // Get the current location
             RESERVATION
           </NavLink>
         </nav>
-        {isLoggedIn ? (
+        {authUser ? (
           <div className={`text-accent block ${shouldHighlightLink('/about') ? 'text-secondary' : 'text-accent'}`}>
-            Hello, {userProfile.username.toUpperCase()}
+            Hello, {userProfile.firstname.toUpperCase()}
           </div>
-        ) : ''}
+        ):null}
          <NavLink to="/cart" className={`  hidden lg:inline text-2xl px-2 ${shouldHighlightLink('/cart') ? 'text-secondary' : ''}`}>
           <span className="flex ">
             <MdShoppingCart  className="text-primary"/> <span className="text-[10px] bg-secondary w-[15px] text-center text-crisp-white h-[15px] rounded-full">{total.totalQty}</span></span>
@@ -66,7 +68,7 @@ const location = useLocation(); // Get the current location
            text-sm rounded shadow-sm ${shouldHighlightLink('/about') ? 'bg-secondary' : ''}`}
           onClick={toggleLogin}
         >
-          {isLoggedIn ? <RiLogoutBoxLine />: <RiLoginBoxLine />}
+          {authUser ? <RiLogoutBoxLine />: <RiLoginBoxLine />}
         </button>
       </div>
 
@@ -94,11 +96,6 @@ const location = useLocation(); // Get the current location
         </div>
       </div>
 
-      
-{/*      <HeadingText />
-
-      <Outlet />
-    */}
     </div>
          );
 }

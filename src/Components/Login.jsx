@@ -1,19 +1,21 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext ,useCallback } from 'react';
 import { UserContext } from '../assets/Context/userContext';
 import { MdClose} from 'react-icons/md';
 import CompanyLogo from "../assets/Context/CompanyIdentity";
 import { auth } from "../assets/firebase";
 import { createUserWithEmailAndPassword , fetchSignInMethodsForEmail} from "firebase/auth";
+import { getDatabase , ref , push , set } from "firebase/database"
 
 
 function LoginForm() {
   
   
-  const { userProfile, setUserProfile, setIsLoggedIn, setShowLoggedIn } = useContext(UserContext);
+  const { userProfile, setUserProfile , setDbParentPath ,profileInformation } = useContext(UserContext);
    const [emptyField, setEmptyField] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [existUser, setExistUser] = useState(false);
   const [passwordLength, setPasswordLength] = useState(false);
+ 
   
   
 
@@ -36,19 +38,27 @@ function LoginForm() {
 const emptyFieldKey = Object.keys(userProfile).filter(key => !userProfile[key]);
 
 // Assuming you have initialized Firebase and have access to the authentication service
+ const {password , ...userData} = userProfile
+
+function createUserRecord(uid ,email) {
+  setDbParentPath(`users/${uid}`)
+  const db = getDatabase()
+    set(ref(db,`users/${uid}/userProfile`), userData)
+}
 
 
 
 const handleSubmit = async (event) => {
     event.preventDefault();
-    
-    if (emptyFieldKey.length > 0) {
+   
+    if (emptyFieldKey.length > 0 || userProfile.password != userProfile.confirmPassword  ) {
         return;
     }
 
     
     
     try {
+      setIsLoading(true)
         // Check if user with the given email already exists
         const signInMethods = await fetchSignInMethodsForEmail(auth, userProfile.email);
         
@@ -60,14 +70,20 @@ const handleSubmit = async (event) => {
 
         // Create user with email and password
         const userCredentials = await createUserWithEmailAndPassword(auth, userProfile.email, userProfile.password);
+        const user = userCredentials.user
         
+        createUserRecord(user.uid , user.email)
+       
         console.log(userCredentials);
         // Handle userCredentials or any related logic here
         setExistUser(false)
-        setIsLoggedIn(true);
+        
         setShowLoggedIn(false);
     } catch (error) {
         console.error('Error creating user:', error);
+    } finally {
+      setIsLoading(false)
+      setEmptyField(false)
     }
 }
 
@@ -92,9 +108,18 @@ const handleSubmit = async (event) => {
       <form onSubmit={handleSubmit} className="relative w-full flex  flex-col opacity-90  justify-center">
         <div className="mb-4">
           <input  
-            placeholder="Username"
-            name="username"
-            value={userProfile.username}
+            placeholder="Firstname"
+            name="firstname"
+            value={userProfile.firstname}
+            onChange={handleInputChange}
+            className="w-full px-3 py-2 rounded border"
+          />
+        </div>
+         <div className="mb-4">
+          <input  
+            placeholder="Lastname"
+            name="lastname"
+            value={userProfile.lastname}
             onChange={handleInputChange}
             className="w-full px-3 py-2 rounded border"
           />
@@ -108,6 +133,17 @@ const handleSubmit = async (event) => {
             onChange={handleInputChange}
             className="w-full px-3 py-2 rounded border"
           /> { passwordLength ?
+          <span className="text-red-400 text-[11px] "> password should be atleast 6 characters</span>:null}
+        </div>
+                <div className="mb-4">
+          <input
+            type="password"
+            name="confirmPassword"
+            placeholder="Confirm Password"
+            value={userProfile.confirmPassword}
+            onChange={handleInputChange}
+            className="w-full px-3 py-2 rounded border"
+          /> { userProfile.password != userProfile.confirmPassword  ?
           <span className="text-red-400 text-[11px] "> password should be atleast 6 characters</span>:null}
         </div>
         <div className="mb-4">
@@ -128,6 +164,7 @@ const handleSubmit = async (event) => {
         </button>
         <span className="text-crisp-white mx-auto text-sm p-1 mt-5"> Already have an account<span className="text-black mx-4"> Sign In</span></span>
       </form>
+            { isLoading && <div className="lds-dual-ring"></div>}
     </div>
   );
 }

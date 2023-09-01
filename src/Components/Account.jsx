@@ -7,7 +7,7 @@ import {GrNext , GrDown} from  "react-icons/gr";
 import {MdAdd ,MdWest} from  "react-icons/md";
 
 const Account = () => {
-  const { userProfile, isLoggedIn, setIsLoggedIn, setShowLoggedIn, allOrder , authUser} = useContext(UserContext);
+  const {setShowLoggedIn, allOrder , setAuthUser ,authUser ,aboutToSignOut ,profileInformation , memoizedUserData} = useContext(UserContext);
 
   const [showSections, setShowSections] = useState({
     messages:false,
@@ -36,12 +36,11 @@ const toggleSection = (section) => {
         <div className="relative   flex items-end justify-between ">
         <div className=" text-sm mt-6 px-4">
          
-        {isLoggedIn ? <div> 
+        {authUser ? <div> 
            <h6>YOUR PROFILE:</h6>
-        <h3>Welcome,  {userProfile.username.toUpperCase()}</h3>
-          <h5>{authUser.email}</h5><button onClick={() => {
-            setIsLoggedIn(false)
-          }}
+        <h3>Welcome,{memoizedUserData.firstname} </h3>
+          <h5>{authUser.email}</h5><button onClick={ aboutToSignOut
+          }
             className=" mt-2 p-2 py-1 bg-accent"> Logout</button>
         </div> : <button onClick={() => {
           setShowLoggedIn(true)

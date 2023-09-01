@@ -7,7 +7,7 @@ const Access = () =>  {
     
   return (
     <div className="relative flex">
-         <SignUp/>
+         <SignIn/>
        
     </div>
   )
