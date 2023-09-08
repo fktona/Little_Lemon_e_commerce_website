@@ -1,9 +1,14 @@
 import React, { useState, useContext} from 'react';
-import { getDatabase , ref , push , set } from "firebase/database"
-import { auth } from "../assets/firebase";
-import { UserContext } from "../assets/Context/userContext"
+// import { getDatabase , ref , push , set } from "firebase/database"
+ import {useNavigate } from "react-router-dom"
+// import { auth } from "../assets/firebase";
+// import { UserContext } from "../assets/Context/userContext"
+import {MdWest} from  "react-icons/md";
+import useSubmit from "../assets/useFormData"
 const AddressForm = () => {
-  const [formData, setFormData] = useState({
+  
+  
+  const  [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     email: '',
@@ -15,68 +20,85 @@ const AddressForm = () => {
   });
   
   
-  const { dbParentPath} = useContext(UserContext);
-  const emptyFieldKey = Object.keys(formData).filter(key => !formData[key]);
-  const [emptyField, setEmptyField] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-
-  const handleInputChange = (event) => {
-    const { name, value, type, checked } = event.target;
-    const fieldValue = type === 'checkbox' ? checked : value;
-
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: fieldValue,
-    }));
-  };
-
-  const handleSubmit = async (event) => {
-  event.preventDefault();
-  setEmptyField(true)
   
-  if (emptyFieldKey.length > 0) {
+  const {
+    emptyField,
+    isLoading,
+    emptyFieldKey,
+    handleSubmit,
+    Navigate,
+    handleInputChange,
+  } = useSubmit('address' ,formData, setFormData);
+  
+ 
+  
+  // const { dbParentPath} = useContext(UserContext);
+  // const emptyFieldKey = Object.keys(formData).filter(key => !formData[key]);
+  // const [emptyField, setEmptyField] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
+
+  // const handleInputChange = (event) => {
+  //   const { name, value, type, checked } = event.target;
+  //   const fieldValue = type === 'checkbox' ? checked : value;
+
+  //   setFormData((prevData) => ({
+  //     ...prevData,
+  //     [name]: fieldValue,
+  //   }));
+  // };
+
+  // const handleSubmit = async (event) => {
+  // event.preventDefault();
+  // setEmptyField(true)
+  
+  // if (emptyFieldKey.length > 0) {
       
-      return;
-    }
-  try {
-    setIsLoading(true)
-    const db = getDatabase();
+  //     return;
+  //   }
+  // try {
+  //   setIsLoading(true)
+  //   const db = getDatabase();
 
-    if (!auth.currentUser) {
-      console.log("User not authenticated");
-      return;
-    }
+  //   if (!auth.currentUser) {
+  //     console.log("User not authenticated");
+  //     return;
+  //   }
     
     
-    const dbRef = ref(db, `${dbParentPath( auth.currentUser.uid)}/address`);
+  //   const dbRef = ref(db, `${dbParentPath( auth.currentUser.uid)}/address`);
 
-    // Push the form data as a new child node with a unique key
-    const newAddressRef = push(dbRef);
-    await set(newAddressRef, formData);
+  //   // Push the form data as a new child node with a unique key
+  //   const newAddressRef = push(dbRef);
+  //   await set(newAddressRef, formData);
+    
 
-    setFormData((prev) => {
-      const resetData = {};
-      Object.keys(prev).forEach((key) => {
-        resetData[key] = '';
-      });
-      return resetData;
-    });
+  //   setFormData((prev) => {
+  //     const resetData = {};
+  //     Object.keys(prev).forEach((key) => {
+  //       resetData[key] = '';
+  //     });
+  //     return resetData;
+  //   });
     
     
-    console.log('Address data saved to Firebase');
-  } catch (error) {
-    console.log('Error saving address data:', error);
-  } finally {
-    // Set loader state back to false after response is received
-    setIsLoading(false);
-    setEmptyField(false)
-  }
-};
+//     console.log('Address data saved to Firebase');
+//   } catch (error) {
+//     console.log('Error saving address data:', error);
+//   } finally {
+//     // Set loader state back to false after response is received
+//     setIsLoading(false);
+//     setEmptyField(false)
+//     Navigate(-1)
+//   }
+// };
 
 
   return (
+    <>
+           <button onClick={() => Navigate(-1)}
+       className="p-2  mt-4 right-0 top-2  px-3 text-white text-center text-sm bg-accent shadow-md"><MdWest /></button>
     <form onSubmit={handleSubmit}
-          className=" addressForm flex flex-col gap-6">
+          className=" addressForm relative mt-4 flex flex-col gap-6">
           <h3> FILL YOU ADDRESS</h3>
       <div>
         <label>First Name:</label>
@@ -160,6 +182,7 @@ const AddressForm = () => {
         </ul>
       { isLoading && <div className="lds-dual-ring"></div>}
     </form>
+    </>
   );
 };
 

@@ -38,7 +38,7 @@ function LoginForm() {
 const emptyFieldKey = Object.keys(userProfile).filter(key => !userProfile[key]);
 
 // Assuming you have initialized Firebase and have access to the authentication service
- const {password , ...userData} = userProfile
+ const {password, confirmPassword , ...userData} = userProfile
 
 function createUserRecord(uid ,email) {
   setDbParentPath(`users/${uid}`)

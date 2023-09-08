@@ -5,9 +5,14 @@ import CompanyLogo from "../assets/Context/CompanyIdentity";
 import Address from './AddressForm'
 import {GrNext , GrDown} from  "react-icons/gr";
 import {MdAdd ,MdWest} from  "react-icons/md";
-
+import { auth } from "../assets/firebase";
+import { UserAddressFetcher } from "../assets/UserAddress"
+import {useNavigate } from "react-router-dom"
 const Account = () => {
-  const {setShowLoggedIn, allOrder , setAuthUser ,authUser ,aboutToSignOut ,profileInformation , memoizedUserData} = useContext(UserContext);
+  
+  const Navigate = useNavigate()
+  
+  const {setShowLoggedIn, allOrder , setAuthUser ,authUser ,aboutToSignOut ,profileInformation , dbParentPath , memoizedUserData , addresses, defaultAddress} = useContext(UserContext);
 
   const [showSections, setShowSections] = useState({
     messages:false,
@@ -32,7 +37,8 @@ const toggleSection = (section) => {
     <div className="relative">
       <header className=" relative   w-full  py-6  bg-[#1f221ff8]  text-crisp-white">
        <div className="absolute px-4 py-2 top-1 w-full flex justify-between"><CompanyLogo />
-       <button className="p-[3px] px-3 text-center relative text-sm bg-accent shadow-md"><MdWest /></button></div> 
+       <button onClick={() => Navigate(-1)}
+       className="p-[3px] px-3 text-center relative text-sm bg-accent shadow-md"><MdWest /></button></div> 
         <div className="relative   flex items-end justify-between ">
         <div className=" text-sm mt-6 px-4">
          
@@ -59,6 +65,7 @@ const toggleSection = (section) => {
           </div>
           {showSections.messages && (
             <div className="show relative p-1 flex justify-end bg-green-50 w-full"> 
+            <span className="absolute top-[30%]  left-2 text-[12px]"> No Messages</span>
               <button className="relative right-0 border text-primary p-1 px-3 hover:bg-primary hover:text-crisp-white flex border-1 border-primary">
                 View
               </button>
@@ -111,9 +118,15 @@ const toggleSection = (section) => {
             Address { showSections.addressBook ? <GrDown />:<GrNext />}
           </div>
           {showSections.addressBook && (
-            <div className="show relative p-1 flex justify-end bg-green-50 w-full">
-              <button className="relative right-0 border text-primary p-1 px-3 hover:bg-primary hover:text-crisp-white flex border-1 border-primary">
-               <md /> View
+            <div className="show relative p-1 flex justify-between bg-green-50 w-full">
+            { authUser ? 
+            <div className="text-[12px] relative flex flex-col">
+            <span>Name: {addresses[defaultAddress].data.firstName}  { addresses[defaultAddress].data.lastName} </span> 
+            <span>Address: {addresses[defaultAddress].data.address} .....  </span>
+            </div>:''}
+               <button onClick={() => Navigate('/addresses')}
+              className="relative right-0 border text-primary self-end p-1 px-3 hover:bg-primary hover:text-crisp-white flex items-center gap-2  border-1 border-primary">
+               View
               </button>
             </div>
           )}
@@ -126,6 +139,7 @@ const toggleSection = (section) => {
           className="relative flex flex-col gap-2 justify-between item-center border-b-[1px] p-2 shadow-sm "
         >
           <div className="flex justify-between">
+
             ChangeTheme { showSections.changeTheme ? <GrDown />:<GrNext />}
           </div>
           {showSections.changeTheme && (

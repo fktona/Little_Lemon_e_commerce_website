@@ -1,17 +1,20 @@
 import { useState, useEffect, useContext , useMemo } from 'react';
 
-const Button = ({ orderNumber, setOrderNumber }) =>{
+const Button = ({ orderNumber, setOrderNumber , allOrder }) =>{
   
   const decreaseQty = () => {
     if (orderNumber > 0) {
       
       setOrderNumber((prevOrderNumber) => prevOrderNumber - 1);
+
+
      }
   };
 
   const increaseQty = () => {
     setOrderNumber((prevOrderNumber) => prevOrderNumber + 1);
-  };
+ 
+ };
 
   return (
     <div className="flex justify-between items-center mt-4">

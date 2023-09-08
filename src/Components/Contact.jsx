@@ -1,9 +1,33 @@
-import React from 'react';
-import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 
+import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
+import  { useState, useContext} from 'react';
+import {useNavigate } from "react-router-dom"
+import {MdWest} from  "react-icons/md";
+import useSubmit from "../assets/useFormData"
 const ContactPage = () => {
+  
+  const  [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    Message: '',
+  });
+  
+  
+  
+    const {
+    emptyField,
+    isLoading,
+    emptyFieldKey,
+    handleSubmit,
+    Navigate,
+    handleInputChange,
+  } = useSubmit('address' ,formData, setFormData);
+  
+  
   return (
-    <div className="flex flex-col md:flex-row p-8 md:p-16 bg-crisp-white">
+    <div className="flex flex-col md:flex-row p-8 md:p-16 bg-crisp-white">  
+    <button onClick={() => Navigate(-1)}
+       className="p-[3px] px-3 text-center relative text-sm bg-accent shadow-md"><MdWest /></button>
       {/* Company Info */}
       <div className="md:w-1/2  p-4 flex flex-col justify-between  border-b md:border-b-0 md:border-r border-accent">
       <div>

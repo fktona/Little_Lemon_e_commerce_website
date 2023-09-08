@@ -55,7 +55,7 @@ const randomNumbers = useMemo(() => {
 
 
   return (
-    <div className=" relative  mx-auto p-2 md:p-[5rem] pb-[4rem] gap-8 ">
+    <div className=" relative  mx-auto p-2 md:p-[5rem]  gap-8 ">
 
     <div>
     <h4 className="text-center text-accent mt-[6rem] text-xl "> CATEGORIES </h4>

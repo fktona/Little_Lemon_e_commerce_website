@@ -1,11 +1,14 @@
 import React, { useContext , useMemo, useState, useEffect } from 'react';
 import { UserContext } from '../assets/Context/userContext';
 import { FiShoppingCart } from 'react-icons/fi';
-
+import {MdWest ,MdClose} from  "react-icons/md";
+import { NavLink,  useLocation } from "react-router-dom";
+import {useNavigate } from "react-router-dom"
 function Checkout() {
   const [clearCart, setClearCart] = useState(false);
   const { allOrder, setAllOrder } = useContext(UserContext);
 const [orderToBeRemoved, setOrderToBeRemoved] = useState([]);
+const Navigate = useNavigate()
   const increaseQty = (menu) => {
     setAllOrder((prevAllOrder) =>
       prevAllOrder.map((order) =>
@@ -134,9 +137,9 @@ useEffect(() => {
   );
 
   const clear = () => {
-    setClearCart(true);
-  };
+    setClearCart((clear) => !clear);
 const rclear = () => {
+  };
     setClearCart((prev) => !prev);
     setAllOrder([])
   };
@@ -165,35 +168,29 @@ const sortedOrders = [...allOrder].sort(sortByQuantityAndOrder);
 
 
   return (
-    <div>
+    <div className="pt-8">
+           <button onClick={() => Navigate(-1)}
+       className="p-2  mt-4 right-0 top-2  px-3 text-white text-center text-sm bg-accent shadow-md"><MdWest /></button>
       {allOrder.length >0 ? (
+        
         <>
-
+          <div className="flex shadow-sm  flex-col justify-center items-center mt-4 mb-4 px-4 py-2 text-slate-600  text-md w-[70%]  relative  font-semibold gap-2">
+            <div className="flex w-full  justify-around items-center"> 
+              <span>Total Price:</span>
+              <span>${total.totalAmount.toFixed(2)}</span>
+            </div>
+            <div className="flex  justify-around w-full items-center">
+              <span>Total Quantities: </span>
+              <span>{total.totalQty}</span>
+            </div>
+          <NavLink to="/delivery">
+             <button className="bg-secondary  shadow-outline mx-auto p-1 text-md text-white">
+              Checkout
+            </button>
+          </NavLink>     
+          </div>
           <div className="flex relative flex-col gap-4">
               
-            <div>
-              <button onClick={clear} className="p-4 bg-black text-crisp-white">
-                Delete All items
-              </button>
-              {clearCart ? (
-                <div className="absolute inset-x-0 mx-auto shadow-lg w-[80%] z-[2] h-[29vh] flex flex-col items-center justify-evenly font- bold text-lg bg-crisp-white">
-                  <button
-                    onClick={clear}
-                    className="p-1 text-md bg-accent absolute top-2 right-3 text-crisp-white"
-                  >
-                    Cancel
-                  </button>
-                  <p className="text-center">All items will be deleted</p>
-                  <button
-                    onClick={rclear
-                    }
-                    className="p-2 bg-red-700 text-crisp-white"
-                  >
-                    Continue
-                  </button>
-                </div>
-              ) : null}
-            </div>
             {allOrder.map((cart, index) =>
               cart.Qty >0 ? (
                 <div
@@ -243,27 +240,35 @@ const sortedOrders = [...allOrder].sort(sortByQuantityAndOrder);
 
           )}
 
-
-
           </div> 
-           <p className="bg-black w-8 text-crisp-white"> {orderToBeRemoved.length} </p>
-          <div className="flex flex-col justify-center mx-auto mt-4 px-4 py-2  text-xl  font-bold gap-2">
-            <div className="flex  justify-around items-center"> 
-              <span>Total Price:</span>
-              <span>${total.totalAmount.toFixed(2)}</span>
+       
+                       <div>
+              <button onClick={clear} className="p-2 shadow-outline px-3 mt-6 bg-accent text-white">
+                Clear
+              </button>
+              {clearCart ? (
+                <div className="absolute top-[50%] inset-x-0 m-auto shadow-outline w-[80%] z-[2] h-[29vh] flex flex-col items-center justify-evenly font- bold text-lg bg-crisp-white">
+                  <button
+                    onClick={clear}
+                    className="p-1 text-md bg-red-500 absolute top-2 right-3 text-white"
+                  >
+                    <MdClose />
+                  </button>
+                  <p className="text-center">All items will be deleted</p>
+                  <button
+                    onClick={rclear
+                    }
+                    className="p-1 px-2 bg-accent text-sm text-crisp-white"
+                  >
+                    Continue
+                  </button>
+                </div>
+              ) : null}
             </div>
-            <div className="flex justify-around m-4 items-center">
-              <span>Total Quantities: </span>
-              <span>{total.totalQty}</span>
-            </div>
-            <button className="bg-secondary right-0 mx-auto p-2 text-crisp-white">
-              Checkout: {total.totalAmount.toFixed(2)}
-            </button>
-          </div>
         </>
       ) : (
         <div className="text-center h-[50vh] justify-center flex items-center">
-          No items in the cart.
+          Cart Empty 
         </div>
       )}
     </div>

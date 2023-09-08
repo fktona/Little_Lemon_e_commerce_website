@@ -68,16 +68,21 @@ import Button from './Button';
   const sumOfQty = ordn.reduce((acc, qty) => acc + qty, 0);
   setOrderNumber(sumOfQty);
   
-  
+    if (allOrder.length > 0 ){
+   
 
-  
+
+}
 }, [allOrder]);
+
 
 const existingOrder = allOrder.some((order) => order.menu === totalOrder.menu && order.Qty !== 0);
     
 const handleShow = () => {
   setOrderNumber(1)
   existingOrder && setOrderNumber(0)
+
+
   };
 
 
@@ -99,7 +104,7 @@ const handleShow = () => {
 
      <div className="  mr-2 ml-2" >
      {existingOrder? 
-          <Button orderNumber={ordn} setOrderNumber={setOrderNumber} />:null}
+          <Button allOrder={allOrder} orderNumber={ordn} setOrderNumber={setOrderNumber} />:null}
         </div>
       
 

@@ -1,8 +1,12 @@
 const CompanyLogo = () => {
     return(
-      <p className="text-center text-primary">
+      <div className="text-primary flex  font-italics flex-col">
+      <div className="text-center font-bold text-primary">
       <span className="text-secondary space-xl">CULINARY</span> OASIS 
-    </p>
+      
+    </div>
+
+    </div>
     )
   }
 

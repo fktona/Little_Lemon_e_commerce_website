@@ -13,18 +13,18 @@ export default function Search() {
    const [expandSearch, setExpandSearch] = useState(false);
     
   return (
-    <div className="relative z-[3] flex mt-12 gap1 items-center">
+    <div className="relative  flex  items-center">
 
     { expandSearch && (
       <>
          <div className=" ">
-        <div className=" flex ">
+        <div className=" flex overflow-hidden">
          <input
             type="text"
             name=""
             id=""
             placeholder="search"
-            className="shadow-md p-1 outline-none border-2 border-primary text-sm"
+            className="shadow-md p-1 searhInput outline-none border-2 border-primary text-sm"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
         />
@@ -55,7 +55,7 @@ export default function Search() {
 }
 </>
 )}
-        <button className="relative shadow-outline hover:shadow-md search p-1 left-[-2px] px-2 flex items-center text-bold  text-xl text-white bg-primary  justify-between border-2 border-primary" onClick={ () => setExpandSearch((prev) => !prev)}> {expandSearch?<MdClose />: <MdSearch />}</button>
+        <button className={`${ expandSearch ? 'searhButton':''} relative shadow-outline hover:shadow-md search p-1  px-2 flex items-center text-bold  text-xl text-white bg-primary justify-between border-2 border-primary`} onClick={ () => setExpandSearch((prev) => !prev)}> {expandSearch?<MdClose />: <MdSearch />}</button>
     </div>
   )
 }
