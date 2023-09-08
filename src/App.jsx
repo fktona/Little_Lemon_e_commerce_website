@@ -40,6 +40,7 @@ const [allOrder, setAllOrder] = useState([]);
 const [show, setShow] = useState();
 const [showCart, setShowCart] = useState(false);
 const [isLoggedIn, setIsLoggedIn] = useState(false)
+const [openCart, setOpenCart] = useState(false)
 
 const [authUser, setAuthUser] = useState(null)
 
@@ -69,14 +70,11 @@ const aboutToSignOut = () => {
   return (
     <div className=' relative p-2 lg:p-3'>
       <UserContext.Provider value={
-        { userProfile,setUserProfile , isLoggedIn , setIsLoggedIn , setShowLoggedIn ,allOrder, setAllOrder ,show, setShow ,showCart, setShowCart , authUser , aboutToSignOut}}>
+        { userProfile,setUserProfile , isLoggedIn , setIsLoggedIn , setShowLoggedIn ,allOrder, setAllOrder , setOpenCart , openCart ,show, setShow ,showCart, setShowCart , authUser , aboutToSignOut}}>
           {showLoggedIn ? <Access /> : ""}
-                 
+           {openCart ? <aside className='hidden bg-gray-100 shadow-md p-2 top-[3rem] md:block z-[777777] fixed overflow-y-scroll w-[35%] h-[88vh] right-2'><Checkout /></aside>:null}      
       <RouterProvider router={router}>
       <RootLayout />
-          <FoodMenu />
-          <Checkout />
-        
       </RouterProvider>
      
       

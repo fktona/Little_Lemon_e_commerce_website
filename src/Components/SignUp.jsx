@@ -6,7 +6,7 @@ import { auth } from "../assets/firebase";
 import { createUserWithEmailAndPassword , fetchSignInMethodsForEmail} from "firebase/auth";
 
 
-function LoginForm() {
+function LoginForm({switchForm, setSwitchForm}) {
   
   
   const { userProfile, setUserProfile, setIsLoggedIn, setShowLoggedIn } = useContext(UserContext);
@@ -75,8 +75,8 @@ const handleSubmit = async (event) => {
 
 
   return (
-    <div className=" w-[90%] bg-[#0000006e]   z-[29] md:right-20 max-w-[500px] fixed p-8 mt-[3rem]    top-0 rounded-3xl bg-clip-padding backdrop-filter backdrop-blur-lg 
-    z-1  flex flex-col mb-8 top-5 translate-x-2 p-4 border  rounded shadow"> <div className=""> <CompanyLogo/></div>
+    <div className={`signUpForm bg-[#0000006e]  ${switchForm ? "signUpFormR":null} z-[29] md:right-20 h-[62vh] max-w-[400px] fixed p-8 mt-[3rem]   bg-clip-padding backdrop-filter backdrop-blur-lg 
+    z-1  flex flex-col mb-8  border  rounded shadow`}> <div className=""> <CompanyLogo/></div>
       <h2 className="text-xl text-primary font-semi-bold mb-4">Sign Up</h2>
        <button onClick={ ()=> { setShowLoggedIn(false)}}
           className=" absolute top-2 right-10 px-3 bg-red-500  text-white tex-sm py-2 opacity-100 rounded hover:bg-red-800"
@@ -126,7 +126,9 @@ const handleSubmit = async (event) => {
         >
           Sign Up
         </button>
-        <span className="text-crisp-white mx-auto text-sm p-1 mt-5"> Already have an account<span className="text-black mx-4"> Sign In</span></span>
+        <span onClick={ ()=> setSwitchForm(false)}
+         className="text-crisp-white cursor-[pointer] mx-auto text-sm p-1 mt-5"> Already have an account<span
+         className="text-white bg-secondary p-1 shadow-sm mx-4"> Sign In</span></span>
       </form>
     </div>
   );

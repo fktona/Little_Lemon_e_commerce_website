@@ -3,7 +3,7 @@ import { UserContext } from '../assets/Context/userContext';
 import { MdClose} from 'react-icons/md';
 import { auth } from "../assets/firebase";
 import { signInWithEmailAndPassword} from "firebase/auth";
-function SignIn() {
+function SignIn( {switchForm, setSwitchForm}) {
   const { setIsLoggedIn, authUser,  setShowLoggedIn , IsLoggedIn} = useContext(UserContext);
   const [emptyField, setEmptyField] = useState(false);
   const [incorrectPassword, setIncorrectPassword] = useState(false);
@@ -76,8 +76,8 @@ const handleSubmit = async (event) => {
 
  
   return (
-    <div className=" login w-[90%] bg-[#0000006e]   z-[29] md:right-20 max-w-[500px] fixed p-8 mt-[3rem]    top-0 rounded-3xl bg-clip-padding backdrop-filter backdrop-blur-lg 
-    z-1  flex flex-col mb-8 top-5 translate-x-2 p-4 border  rounded shadow">
+    <div className="  signInForm bg-[#0000006e] h-[62vh]  z-[29] md:right-20 max-w-[400px] fixed p-8 mt-[3rem]   bg-clip-padding backdrop-filter backdrop-blur-lg 
+    z-1  flex flex-col mb-8 border  rounded shadow">
       <h2 className="text-2xl text-primary font-bold mb-4">Login</h2>
       { isLoading && <div class="lds-dual-ring"></div>}
        <button onClick={ ()=> { setShowLoggedIn(false)}}
@@ -120,7 +120,8 @@ const handleSubmit = async (event) => {
         >
           Login
         </button>
-        <span className="text-crisp-white mx-auto text-sm p-1 mt-5"> Don't have an account<span className="text-black mx-4"> Sign Up </span></span>
+        <span className="text-crisp-white mx-auto text-sm p-1 mt-5"> Don't have an account<span onClick={()=>setSwitchForm(true)}
+        className="text-white bg-secondary p-1 cursor-[pointer] shadow-sm mx-4"> Sign Up </span></span>
       </form>
     </div>
   );

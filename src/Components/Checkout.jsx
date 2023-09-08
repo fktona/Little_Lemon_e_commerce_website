@@ -198,7 +198,7 @@ const sortedOrders = [...allOrder].sort(sortByQuantityAndOrder);
               cart.Qty >0 ? (
                 <div
                   key={index}
-                  className="flex justify-between items-center p-2 rounded-lg  shadow-md"
+                  className="flex justify-between bg-crisp-white items-center p-2 rounded-lg  shadow-md"
                 > 
                   <img src={cart.image} alt={cart.menu} className="w-8 h-8 ml-2" />
                   <div className="text-center flex justify-between flex-1">

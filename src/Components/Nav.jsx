@@ -1,13 +1,13 @@
 import  { useState, useContext } from "react";
 import { NavLink,  useLocation } from "react-router-dom";
-import { MdMenu, MdShoppingCart } from "react-icons/md";
+import { MdClose, MdMenu, MdShoppingCart } from "react-icons/md";
 import { RiUserLine, RiLogoutBoxLine, RiLoginBoxLine } from "react-icons/ri";
 import { UserContext } from "../assets/Context/userContext";
 import CompanyLogo from "../assets/Context/CompanyIdentity";
 
 
 function Nav() {
-  const { userProfile, isLoggedIn, setIsLoggedIn, setShowLoggedIn , allOrder , aboutToSignOut , authUser} = useContext(UserContext);
+  const { userProfile, isLoggedIn, setIsLoggedIn, setShowLoggedIn , allOrder , aboutToSignOut , authUser , setOpenCart, openCart} = useContext(UserContext);
   
 
   const toggleLogin = () => {
@@ -57,10 +57,11 @@ const location = useLocation(); // Get the current location
             Hello, {userProfile.username.toUpperCase()}
           </div>
         ) : ''}
-         <NavLink to="/cart" className={`  hidden lg:inline text-2xl px-2 ${shouldHighlightLink('/cart') ? 'text-secondary' : ''}`}>
-          <span className="flex ">
-            <MdShoppingCart  className="text-primary"/> <span className="text-[10px] bg-secondary w-[15px] text-center text-crisp-white h-[15px] rounded-full">{total.totalQty}</span></span>
-          </NavLink>
+         <div className={`  hidden lg:inline text-2xl px-2}`}>
+          <span onClick={() => setOpenCart((prv) => !prv)} 
+          className="flex text-primary">
+            {!openCart ? <MdShoppingCart  />:< MdClose   />} <span className="text-[10px] bg-secondary w-[15px] text-center text-crisp-white h-[15px] rounded-full">{total.totalQty}</span></span>
+          </div>
         <button
           className={`bg-secondary hover:bg-accent text-crisp-white font-bold py-2 px-4
            text-sm rounded shadow-sm ${shouldHighlightLink('/about') ? 'bg-secondary' : ''}`}
