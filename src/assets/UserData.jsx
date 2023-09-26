@@ -6,8 +6,10 @@ export const UserProfileFetcher = async (dbParentPath) => {
   const uid = auth.currentUser.uid;
 
   try {
-    const snapshot = await get(child(dbRefProfile, `${dbParentPath}/userProfile`));
-    
+    const snapshot = await get(
+      child(dbRefProfile, `${dbParentPath}/userProfile`),
+    );
+
     if (snapshot.exists()) {
       return snapshot.val();
     } else {

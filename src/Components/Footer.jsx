@@ -1,5 +1,4 @@
-
-import CompanyLogo from "../assets/Context/CompanyIdentity"
+import CompanyLogo from "../assets/Context/CompanyIdentity";
 const Footer = () => {
   return (
     <footer className="bg-black  py-2">
@@ -16,11 +15,11 @@ const Footer = () => {
             Subscribe
           </button>
         </div>
-         
+
         <p className="text-white mt-2 text-sm">
-        <CompanyLogo/>
-        &copy; 2023</p>
-       
+          <CompanyLogo />
+          &copy; 2023
+        </p>
       </div>
     </footer>
   );

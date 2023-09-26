@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333;
+            margin-top: 20px;
+        }
+
+        p {
+            color: #666;
+        }
+
+        img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            margin-top: 10px;
+        }
+
+        .profile-container {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #0077cc;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <h1>My Profile</h1>
+
+        <!-- Slack Name -->
+        <p data-testid="slackUserName">FAITH ADETONA</p>
+
+        <!-- Slack Display Picture -->
+        <img src="https://hngx.zuriboard.com/media/zuriboard/profile-images/Dmlc9Htgfo7xrEnTVb7teNwIL7lDh11mJzeMu7Uk.png" alt="Faith" data-testid="slackDisplayImage" loading="lazy">
+
+        <!-- Current Day of the Week -->
+        <p data-testid="currentDayOfTheWeek"></p>
+
+        <!-- Current UTC Time -->
+        <p data-testid="currentUTCTime"></p>
+
+        <!-- Track -->
+        <p data-testid="myTrack">Frontend</p>
+
+        <!-- GitHub URL -->
+        <p data-testid="githubURL"><a href="https://github.com/fktona/ZuriFirstProject">GitHub Repository</a></p>
+    </div>
+
+    <script>
+        // JavaScript for displaying current day of the week and UTC time
+        const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        const today = new Date();
+        const dayOfWeek = daysOfWeek[today.getUTCDay()];
+        const utcTime = today.getTime()
+        document.querySelector('[data-testid="currentDayOfTheWeek"]').textContent = `Current Day: ${dayOfWeek}`;
+        document.querySelector('[data-testid="currentUTCTime"]').textContent = `Current UTC Time(milliseconds): ${utcTime}`;
+    </script>
+</body>
+</html>
