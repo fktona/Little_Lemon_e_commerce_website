@@ -67,11 +67,11 @@ function LoginForm() {
     try {
       setIsLoading(true);
       // Check if user with the given email already exists
-      const rr = await fetchSignInMethodsForEmail(auth, userProfile.email);
+      const signInMethods = await fetchSignInMethodsForEmail(auth, userProfile.email);
 
       if (signInMethods.length > 0) {
         setExistUser(true);
-        // User with the provided email already exist
+      console.log("exists")
         return;
       }
 
@@ -84,8 +84,7 @@ function LoginForm() {
       const user = userCredentials.user;
 
       createUserRecord(user.uid, user.email);
-
-      console.log(userCredentials);
+      
       // Handle userCredentials or any related logic here
       setExistUser(false);
 
@@ -181,7 +180,7 @@ function LoginForm() {
           {userProfile.password != userProfile.confirmPassword ? (
             <span className="text-red-400 text-[11px] ">
               {" "}
-              password should be atleast 6 characters
+              please confirm password 
             </span>
           ) : null}
         </div>
