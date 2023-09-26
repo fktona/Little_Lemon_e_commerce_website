@@ -21,13 +21,14 @@ export default function Register () {
         <h1 className="text-4xl font-bold text-primary">Try to login or register</h1>
         <p className="text-gray-600 w-full  flex justify-between mt-2">Login</p>
         <button
-          className="mt-4 px-4 py-2 text-white rounded hover:bg-secondary"
+          className="mt-4 px-4 py-2 text-white rounded h
+          bg-secondary"
           onClick={() => gg()}
         >
           Login
         </button>
         <button
-          className="mt-4 px-4 relative ml-[3rem] py-2 text-white rounded hover:bg-secondary"
+          className="mt-4 px-4 relative ml-[3rem] py-2 text-white rounded bg-secondary"
           onClick={() => Navigate("/")}
         >
           Back
