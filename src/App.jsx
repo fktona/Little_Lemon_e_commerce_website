@@ -18,6 +18,7 @@ import RootLayout from "./RootLayout";
 import Address from "./Components/AddressForm";
 import ReservationList from "./Components/ReservationForm";
 import AddressList from "./Components/Address";
+import Register from "./Components/Register";
 import PaidOrder from "./Components/PaidOrder";
 import DeliveryDetails from "./Components/DeliveryDetails";
 import { auth } from "./assets/firebase";
@@ -45,12 +46,12 @@ function App() {
         <Route path="/" element={<FoodMenu />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/cart" element={<Checkout />} />
-        <Route path="/orders" element={<PaidOrder />} />
-        <Route path="/addresses" element={<AddressList />} />
+        <Route path="/orders" element={authUser?<PaidOrder />:<Register/> }/>
+        <Route path="/addresses" element={authUser?<AddressList />:<Register/>}/>
         <Route path="/addresses/add" element={<Address />} />
-        <Route path="delivery" element={<DeliveryDetails />} />
+        <Route path="delivery" element={authUser?<DeliveryDetails />:<Register />} />
         <Route path="/profile" element={<Account />} />
-        <Route path="reservation" element={<Reservation />} />
+        <Route path="reservation" element={authUser?<Reservation />:<Register/>} />
         <Route path="/reservation/list" element={<ReservationList />} />
       </Route>,
     ),
