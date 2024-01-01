@@ -8,7 +8,7 @@ const Access = () => {
   return (
     <div className="box-item">
       <div className={`flip-box`}>
-        <div
+        { !switchForm ? <div
           className={`${
             !switchForm ? "flip-box-back-now" : ""
           }  flip-box-back login w-[90%] bg-[#0000006e]   z-[29] md:right-20 max-w-[500px] fixed p-8 mt-[3rem]    top-0 rounded-3xl bg-clip-padding backdrop-filter backdrop-blur-lg 
@@ -27,7 +27,7 @@ const Access = () => {
               Sign Up{" "}
             </span>
           </span>{" "}
-        </div>
+        </div>:
 
         <div
           className={` ${
@@ -48,7 +48,7 @@ const Access = () => {
               Sign In
             </span>
           </span>{" "}
-        </div>
+        </div>}
       </div>
     </div>
   );
