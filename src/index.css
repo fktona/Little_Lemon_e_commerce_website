@@ -269,7 +269,7 @@ input:focus {
   }
 }
 
-.box-container {
+/* .box-container {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -366,3 +366,4 @@ input:focus {
   -ms-transform: translateY(-50%) translateZ(60px) scale(0.94);
   top: 50%;
 }
+*/
