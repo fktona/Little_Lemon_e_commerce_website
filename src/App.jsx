@@ -186,7 +186,7 @@ function App() {
   };
 
   return (
-    <div className=" relative pb-[4rem]">
+    <div className=" pb-[4rem] relative max-w-[1440px] mx-auto">
       <UserContext.Provider
         value={{
           userProfile,

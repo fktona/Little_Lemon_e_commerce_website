@@ -53,7 +53,7 @@ function Nav() {
           <CompanyLogo />
         </div>
         <nav
-          className={`md:flex fixed w-full 
+          className={`md:flex fixed w-full max-w-[1440px] 
            text-white hidden mx-auto md:flex-row  items-center justify-center gap-[3rem] flex-1 ${
             isMenuOpen ? "flex-col" : "hidden"
           }`}
