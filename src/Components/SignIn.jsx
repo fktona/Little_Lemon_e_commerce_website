@@ -1,15 +1,14 @@
 import React, { useState, useContext } from "react";
 import { UserContext } from "../assets/Context/userContext";
-import { MdClose } from "react-icons/md";
 import { auth } from "../assets/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate, NavLink } from "react-router-dom";
+import AuthorizationContainer from "./AcessContainer";
 function SignIn() {
+
+  const navigate = useNavigate();
   const {
-    authUser,
     setShowLoggedIn,
-    setProfileInformation,
-    dbParentPath,
-    setSwitchForm,
   } = useContext(UserContext);
   const [emptyField, setEmptyField] = useState(false);
   const [incorrectPassword, setIncorrectPassword] = useState(false);
@@ -55,6 +54,7 @@ function SignIn() {
       setEmptyField(false);
       setShowLoggedIn(false);
       console.log(userCredential.user);
+      navigate('/')
     } catch (error) {
       if (error.code === "auth/wrong-password") {
         console.log("Incorrect password");
@@ -74,18 +74,11 @@ function SignIn() {
   };
 
   return (
-    <div>
-      <h2 className="text-2xl text-primary font-bold mb-4">Login</h2>
+    <AuthorizationContainer>
+    <div className=" relative flex flex-col gap-5 w-full h-full top-0">
+      <h2 className="text-3xl text-[#131313] text-center font-bold mb-4">Sign In</h2>
       {isLoading && <div className="lds-dual-ring"></div>}
-      <button
-        onClick={() => {
-          setShowLoggedIn(false);
-        }}
-        className=" absolute top-2 right-10 px-3 bg-red-500  text-white tex-sm py-2 opacity-100 rounded hover:bg-red-800"
-      >
-        <MdClose />
-      </button>
-
+    
       <ul className="overflow-hidden">
         {emptyFieldKey.length > 0 &&
           emptyField &&
@@ -119,7 +112,7 @@ function SignIn() {
 
       <form
         onSubmit={handleSubmit}
-        className="relative w-full flex  flex-col opacity-90  justify-center"
+        className="relative w-full flex  flex-col gap-4 opacity-90  justify-center"
       >
         <div className="mb-4">
           <input
@@ -146,12 +139,15 @@ function SignIn() {
             setEmptyField(true);
           }}
           type="submit"
-          className=" relative px-8 bg-primary mx-auto text-white py-2 rounded hover:bg-primary"
+          className=" relative px-8 bg-[#131313] opacity-100 mx-auto z-10 text-white py-2 rounded hover:bg-secondary"
         >
           Login
         </button>
       </form>
+      <span className="w-fit mx-auto text-white">Do not have an account? <NavLink to={'/signup'} className={'text-primary hover:text-secondary underline'}>Sign Up</NavLink></span>
+     
     </div>
+    </AuthorizationContainer>
   );
 }
 

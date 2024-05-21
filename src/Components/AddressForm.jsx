@@ -84,7 +84,7 @@ const AddressForm = () => {
   // };
 
   return (
-    <>
+    <div className="px-4 lg:px-[160px]">
       <button
         onClick={() => Navigate(-1)}
         className="p-2  mt-4 right-0 top-2  px-3 text-white text-center text-sm bg-accent shadow-md"
@@ -183,7 +183,7 @@ const AddressForm = () => {
         </ul>
         {isLoading && <div className="lds-dual-ring"></div>}
       </form>
-    </>
+    </div>
   );
 };
 

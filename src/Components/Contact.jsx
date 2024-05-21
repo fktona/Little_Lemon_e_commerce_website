@@ -20,13 +20,7 @@ const ContactPage = () => {
   } = useSubmit("address", formData, setFormData);
 
   return (
-    <div className="flex flex-col md:flex-row p-8 md:p-16 bg-crisp-white">
-      <button
-        onClick={() => Navigate(-1)}
-        className="p-[3px] px-3 text-center relative text-sm bg-accent shadow-md"
-      >
-        <MdWest />
-      </button>
+    <div className="flex flex-col items-center md:flex-row p-8 md:p-16 bg-crisp-white">
       {/* Company Info */}
       <div className="md:w-1/2  p-4 flex flex-col justify-between  border-b md:border-b-0 md:border-r border-accent">
         <div>

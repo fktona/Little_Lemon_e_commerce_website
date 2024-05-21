@@ -85,7 +85,7 @@ const Account = () => {
       <p className="text-sm font-bold bg-green-100 text-primary px-4 py-1 ">
         Your Balance: 000
       </p>
-      <main className="flex w-full mt-6 px-4 gap-6 flex-col ">
+      <main className="flex w-full lg:px-[60px] mt-6 px-4 gap-6 flex-col ">
         <div
           onClick={() => toggleSection("messages")}
           className="relative flex flex-col gap-2 justify-between item-center border-b-[1px] p-2 shadow-sm "

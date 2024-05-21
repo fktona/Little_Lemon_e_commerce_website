@@ -9,13 +9,11 @@ const useSubmit = (specificPath, formData, setFormData) => {
   const [emptyField, setEmptyField] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const Navigate = useNavigate();
-  //  const [formData, setFormData] = useState({
-
-  //  });
+  
 
   const emptyFieldKey = Object.keys(formData).filter((key) => !formData[key]);
 
-  // Form submission handler
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     setEmptyField(true);
@@ -38,7 +36,7 @@ const useSubmit = (specificPath, formData, setFormData) => {
         `${dbParentPath(auth.currentUser.uid)}/${specificPath}`,
       );
 
-      // Push the form data as a new child node with a unique key
+  
       const newRef = push(dbRef);
       await set(newRef, formData);
 
@@ -54,14 +52,14 @@ const useSubmit = (specificPath, formData, setFormData) => {
     } catch (error) {
       console.log("Error saving reservation data:", error);
     } finally {
-      // Set loader state back to false after response is received
+      
       setIsLoading(false);
       setEmptyField(false);
       Navigate(-1);
     }
   };
 
-  // Function to handle changes in form fields
+  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -72,7 +70,6 @@ const useSubmit = (specificPath, formData, setFormData) => {
 
   return {
     emptyField,
-    isLoading,
     isLoading,
     emptyFieldKey,
     Navigate,

@@ -8,7 +8,7 @@ const ReservationList = () => {
   const { isLoading, reservation, setReservation } = useContext(UserContext);
 
   return (
-    <>
+    <div className="relative px-4 lg:px-[160px]">
       <button
         onClick={() => Navigate(-1)}
         className="p-[3px] px-3 left-6 top-5 text-center relative text-sm bg-accent shadow-md text-white"
@@ -73,7 +73,7 @@ const ReservationList = () => {
           Make New Reservation{" "}
         </button>
       </NavLink>
-    </>
+    </div>
   );
 };
 

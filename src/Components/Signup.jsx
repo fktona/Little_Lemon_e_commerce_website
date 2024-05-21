@@ -1,8 +1,8 @@
 import React, { useState, useContext, useCallback } from "react";
 import { UserContext } from "../assets/Context/userContext";
-import { MdClose } from "react-icons/md";
-import CompanyLogo from "../assets/Context/CompanyIdentity";
+import AuthorizationContainer from "./AcessContainer";
 import { auth } from "../assets/firebase";
+import { NavLink , useNavigate} from "react-router-dom";
 import {
   createUserWithEmailAndPassword,
   fetchSignInMethodsForEmail,
@@ -13,9 +13,6 @@ function LoginForm() {
   const {
     userProfile,
     setUserProfile,
-    setDbParentPath,
-    profileInformation,
-    setSwitchForm,
     setShowLoggedIn,
   } = useContext(UserContext);
   const [emptyField, setEmptyField] = useState(false);
@@ -87,6 +84,7 @@ function LoginForm() {
       
       // Handle userCredentials or any related logic here
       setExistUser(false);
+      useNavigate('/')
 
       setShowLoggedIn(false);
     } catch (error) {
@@ -98,21 +96,9 @@ function LoginForm() {
   };
 
   return (
-    <div>
-      {" "}
-      <div className="">
-        {" "}
-        <CompanyLogo />
-      </div>
-      <h2 className="text-xl text-primary font-semi-bold mb-4">Sign Up</h2>
-      <button
-        onClick={() => {
-          setShowLoggedIn(false);
-        }}
-        className=" absolute top-2 right-10 px-3 bg-red-500  text-white tex-sm py-2 opacity-100 rounded hover:bg-red-800"
-      >
-        <MdClose />
-      </button>
+    <AuthorizationContainer>
+    <div className=" relative flex flex-col gap-5 w-full pb-6 h-full top-0">
+    <h2 className="text-3xl text-[#131313] text-center font-bold  ">Sign Up</h2>
       <ul className="overflow-hidden">
         {emptyFieldKey.length > 0 &&
           emptyField &&
@@ -168,7 +154,7 @@ function LoginForm() {
             </span>
           ) : null}
         </div>
-        <div className="mb-4">
+        <div className="mb-4 space-y-4">
           <input
             type="password"
             name="confirmPassword"
@@ -199,13 +185,15 @@ function LoginForm() {
             setEmptyField(true);
           }}
           type="submit"
-          className=" relative px-8 bg-primary mx-auto text-white py-2 rounded hover:bg-primary"
+          className=" relative px-8 bg-[#131313] mx-auto text-white py-2 rounded hover:bg-secondary"
         >
           Sign Up
         </button>
       </form>
+      <span className="w-fit mx-auto text-white">Already have an account? <NavLink to={'/signin'} className={'text-primary hover:text-secondary underline'}>Sign In</NavLink></span>
       {isLoading && <div className="lds-dual-ring"></div>}
     </div>
+    </AuthorizationContainer>
   );
 }
 

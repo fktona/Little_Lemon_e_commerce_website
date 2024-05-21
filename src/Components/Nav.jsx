@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { MdMenu, MdShoppingCart, MdClose } from "react-icons/md";
 import { RiUserLine, RiLogoutBoxLine, RiLoginBoxLine } from "react-icons/ri";
 import { UserContext } from "../assets/Context/userContext";
@@ -15,17 +15,19 @@ function Nav() {
     authUser,
   } = useContext(UserContext);
 
+  const Navigate = useNavigate()
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [signoutConfirm, setSignoutConfirm] = useState(false);
-  const location = useLocation(); // Get the current useLocation
+  const location = useLocation(); 
 
   const toggleLogin = () => {
     authUser
       ? (setShowLoggedIn(false), setSignoutConfirm(true))
-      : setShowLoggedIn(true);
+      : Navigate('/signin');
   };
 
-  // Function to determine if a link should have secondary background color
+  
   const shouldHighlightLink = (linkPath) => {
     return location.pathname === linkPath;
   };
@@ -38,12 +40,11 @@ function Nav() {
   );
 
   return (
-    <div className="z-2  ">
-      {/* Top navigation bar */}
+    <div className="z-2  relative ">
+      
       <div
-        className={`fixed z-[10] container inset-0 h-fit mx-auto shadow-md  opacity-90
-       b-crisp-white top-0  bg-clip-padding  backdrop-blur-lg
-        font-bold text-sm md:flex space-x-4 flex items-center justify-between 
+        className={`absolute z-[10] w-full top-0  
+        font-bold text-sm md:flex gap-8 flex items-center justify-between 
         p-2 pr-8 ${shouldHighlightLink("/about") ? "bg-secondary" : ""} ${
           location.pathname === "/profile" ? "hidden md:fixed" : ""
         }`}
@@ -52,35 +53,37 @@ function Nav() {
           <CompanyLogo />
         </div>
         <nav
-          className={`md:flex hidden mx-auto md:flex-row text-crisp justify-center gap-[3rem] flex-1 ${
+          className={`md:flex fixed w-full 
+           text-white hidden mx-auto md:flex-row  items-center justify-center gap-[3rem] flex-1 ${
             isMenuOpen ? "flex-col" : "hidden"
           }`}
         >
+          <div className="w-fit bg-black/40 h-fit flex py-4 space-x-6 px-[50px]  rounded-[89px]">
           <NavLink
             to="/"
             onClick={() => setIsMenuOpen(false)}
             className={`${
-              shouldHighlightLink("/") ? "text-secondary" : "text-primary"
+              shouldHighlightLink("/") ? "border-b-2 border-secondary" : "text-white"
             }`}
           >
             Home
           </NavLink>
           <NavLink
-            to="/about"
+            to="/profile"
             onClick={() => setIsMenuOpen(false)}
             className={`${
-              shouldHighlightLink("/about") ? "text-secondary" : "text-primary"
+              shouldHighlightLink("/about") ? "border-b-2 border-secondary" : "text-white"
             }`}
           >
-            About
+            Account
           </NavLink>
           <NavLink
             to="/contact"
             onClick={() => setIsMenuOpen(false)}
             className={`${
               shouldHighlightLink("/contact")
-                ? "text-secondary"
-                : "text-primary"
+                ? "border-b-2 border-secondary"
+                : "text-white"
             }`}
           >
             Contact
@@ -90,25 +93,16 @@ function Nav() {
             onClick={() => setIsMenuOpen(false)}
             className={`${
               shouldHighlightLink("/reservation")
-                ? "text-secondary"
-                : "text-primary"
+                ? "border-b-2 border-secondary "
+                : "text-white"
             }`}
           >
             RESERVATION
           </NavLink>
-        </nav>
-        {authUser ? (
-          <div
-            className={`text-accent block ${
-              shouldHighlightLink("/about") ? "text-secondary" : "text-accent"
-            }`}
-          >
-            HI, {profileInformation ? profileInformation.firstname : ""}
-          </div>
-        ) : null}
-        <NavLink
+
+          <NavLink
           to="/cart"
-          className={`  hidden lg:inline text-2xl px-2 ${
+          className={`  hidden ml-2 lg:inline text-2xl px-2 ${
             shouldHighlightLink("/cart") ? "text-secondary" : ""
           }`}
         >
@@ -119,7 +113,19 @@ function Nav() {
             </span>
           </span>
         </NavLink>
-        <button
+        </div>
+        </nav>
+        <div className="flex gap-4 z-50">
+        {authUser ? (
+          <div
+            className={`text-accent block ${
+              shouldHighlightLink("/about") ? "text-secondary" : "text-accent"
+            }`}
+          >
+            HI, {profileInformation ? profileInformation.firstname : ""}
+          </div>
+        ) : null}
+               <button
           className="bg-primary hover:bg-accent text-crisp-white font-bold py-2 px-4
            text-sm rounded shadow-sm"
           onClick={toggleLogin}
@@ -127,8 +133,10 @@ function Nav() {
           {authUser ? <RiLogoutBoxLine /> : <RiLoginBoxLine />}
         </button>
       </div>
+      </div>
       {signoutConfirm ? (
-        <div className="fixed shadow-outline flex flex-col items-center gap-3 justify-center z-[12] right-3 top-10 w-[40%] p-4 bg-crisp-white">
+        <div className="fixed shadow-outline flex flex-col
+         items-center gap-3 justify-center z-[12] right-3 w-fit top-10  p-10 bg-crisp-white">
           {" "}
           <MdClose
             onClick={() => setSignoutConfirm(false)}

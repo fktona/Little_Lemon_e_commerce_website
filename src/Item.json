@@ -157,7 +157,7 @@
     "description": "Grilled vegetarian patty topped with lettuce, tomatoes, onions, and mayo, served in a soft bun.",
     "price": 949,
     "category": "Burgers",
-    "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+    "image": "https://images.pexels.com/photos/1566837/pexels-photo-1566837.jpeg?auto=compress&cs=tinysrgb&w=400"
   },
   {
     "id": 21,
@@ -165,7 +165,7 @@
     "description": "Mixed greens, cherry tomatoes, cucumbers, carrots, and choice of dressing.",
     "price": 649,
     "category": "Salads",
-    "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+    "image": "https://images.pexels.com/photos/1566837/pexels-photo-1566837.jpeg?auto=compress&cs=tinysrgb&w=400"
   },
   {
     "id": 22,
@@ -173,7 +173,7 @@
     "description": "Pizza topped with sautéed mushrooms, mozzarella cheese, and tomato sauce.",
     "price": 1199,
     "category": "Pizzas",
-    "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+    "image": "https://images.pexels.com/photos/1566837/pexels-photo-1566837.jpeg?auto=compress&cs=tinysrgb&w=400"
   },
   {
     "id": 23,
@@ -181,7 +181,7 @@
     "description": "Juicy beef patty topped with avocado, bacon, melted cheese, lettuce, and tomatoes in a soft bun.",
     "price": 1299,
     "category": "Burgers",
-    "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+    "image": "https://images.pexels.com/photos/1566837/pexels-photo-1566837.jpeg?auto=compress&cs=tinysrgb&w=400"
   },
   {
     "id": 24,
@@ -189,7 +189,7 @@
     "description": "Grilled chicken, avocado, tomatoes, hard-boiled eggs, blue cheese, and mixed greens.",
     "price": 899,
     "category": "Salads",
-    "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+    "image": "https://images.pexels.com/photos/1566837/pexels-photo-1566837.jpeg?auto=compress&cs=tinysrgb&w=400"
   },
   {
     "id": 25,
@@ -197,7 +197,7 @@
     "description": "Delicious pizza loaded with various toppings, including pepperoni, sausage, peppers, onions, and olives.",
     "price": 1349,
     "category": "Pizzas",
-    "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+    "image": "https://images.pexels.com/photos/1566837/pexels-photo-1566837.jpeg?auto=compress&cs=tinysrgb&w=400"
   },
   {
     "id": 26,
@@ -205,7 +205,7 @@
     "description": "Mixed greens, cherry tomatoes, cucumbers, olives, red onions, feta cheese, and Greek dressing.",
     "price": 799,
     "category": "Salads",
-    "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+    "image": "https://images.pexels.com/photos/1566837/pexels-photo-1566837.jpeg?auto=compress&cs=tinysrgb&w=400"
   },
   {
     "id": 27,
@@ -213,7 +213,7 @@
     "description": "Pizza topped with BBQ chicken, red onions, mozzarella cheese, and cilantro.",
     "price": 1299,
     "category": "Pizzas",
-    "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+    "image": "https://images.pexels.com/photos/1566837/pexels-photo-1566837.jpeg?auto=compress&cs=tinysrgb&w=400"
   },
   {
     "id": 28,
@@ -221,7 +221,7 @@
     "description": "Grilled Portobello mushroom cap topped with roasted red peppers, goat cheese, and balsamic glaze in a soft bun.",
     "price": 1099,
     "category": "Burgers",
-    "image": "https://i.ibb.co/G0hZ4Pn/06641ecf-3a93-47bc-a85c-ec9efdcb3d43.jpg"
+    "image": "https://images.pexels.com/photos/1566837/pexels-photo-1566837.jpeg?auto=compress&cs=tinysrgb&w=400"
   },
   {
     "id": 29,
@@ -229,7 +229,7 @@
     "description": "Grilled shrimp on a bed of crisp romaine lettuce, croutons, Parmesan cheese, and Caesar dressing.",
     "price": 949,
     "category": "Salads",
-    "image": "https://i.ibb"
+    "image": "https://images.pexels.com/photos/1566837/pexels-photo-1566837.jpeg?auto=compress&cs=tinysrgb&w=400"
   },
   {
     "id": 30,
@@ -237,6 +237,6 @@
     "description": "Warm chocolate brownie topped with a scoop of vanilla ice cream, chocolate syrup, whipped cream, and a cherry.",
     "price": 699,
     "category": "Desserts",
-    "image": "https://images.pexels.com/photos/1132274/pexels-photo-1132274.jpeg?auto=compress&cs=tinysrgb&w=400"
+    "image": "https://images.pexels.com/photos/1566837/pexels-photo-1566837.jpeg?auto=compress&cs=tinysrgb&w=400"
   }
 ]

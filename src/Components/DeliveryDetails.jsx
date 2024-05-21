@@ -18,7 +18,7 @@ const DeliveryDetails = () => {
   };
 
   return (
-    <div className="mt-6 p-2 relative w-full">
+    <div className="mt-6 p-8 lg:px-[160px] relative w-full">
       <button
         onClick={() => Navigate(-1)}
         className="p-2  mt-4 right-0 top-2  px-3 text-white text-center text-sm bg-accent shadow-md"

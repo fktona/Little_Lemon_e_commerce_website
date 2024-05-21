@@ -1,22 +1,13 @@
 import headerImg from "../assets/img/header.jpg";
 import Search from "./Search";
 import { useLocation } from "react-router";
-import items from "../Item.json";
-import { useState } from "react";
-import { BsFilterCircle } from "react-icons/bs";
 function HeadingText() {
-  const bgImage = {
-    background: `url(${headerImg})`,
-    backgroundSize: "cover",
-    width: "100%",
-
-    backgroundRepeat: "no-repeat",
-  };
 
   const location = useLocation();
   return (
     <div
-      className={` headingText  relative flex justify-center items-center mx-auto h-[48vh] 
+      className={`hero min-h-[80vh] px-6 relative 
+      flex justify-center items-center mx-auto  
  md:aspect-ratio[2.5/1] shadow-sm 
  ${
    location.pathname === "/cart" ||
@@ -26,25 +17,24 @@ function HeadingText() {
      ? "hidden"
      : "flex"
  }`}
-      style={bgImage}
     >
-      <div className="darkh absolute h-full w-full bg-black/[0.45] "></div>
+      <div className=" absolute h-full w-full bg-black/[0.45] "></div>
                  {" "}
       <main className="  flex z-[2] flex-col justify-center items-center gap-6">
-        <div className="text-white text-center flex flex-col justify-center items-center">
+        <div className="text-white text-center flex lg:gap-4 gap-10 flex-col justify-center items-center">
                {" "}
-          <p className="font-bold tracking-[2px] font-popi text-3xl">
+          <p className=" text-[18px] md:text-[24px] text-primary">More Flavour For Less</p>
+          <p className="font-bold tracking-[2px]  text-3xl lg:text-[45px] leading-[110%]">
             {" "}
-            Delicious Food Zone{" "}
+            Delicious Food Zone<br />
+            At Your Ease
           </p>
                      {" "}
           {location.pathname === "/" ? (
-            <p className="text-[8px] w-[70%] mx-auto leading-tight font-semibold font-mono transition duration-[1000ms] hover:text-red-600 linear tracking-[1px]">
+            <p className="text-[16px] text-white/95 lg:w-[60%] mx-auto  transition  tracking-[1px]">
               {" "}
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irur{" "}
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
           ) : (
             <p className="text-[8px] w-[70%] mx-auto leading-tight font-semibold font-mono transition duration-[1000ms] hover:text-red-600 linear tracking-[1px]">

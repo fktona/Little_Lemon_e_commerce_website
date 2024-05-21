@@ -10,7 +10,6 @@ import {
   BrowserRouter as Router,
 } from "react-router-dom";
 import { UserContext } from "./assets/Context/userContext";
-import Access from "./Components/Access";
 import Checkout from "./Components/Checkout";
 import Contact from "./Components/Contact";
 import Account from "./Components/Account";
@@ -25,6 +24,9 @@ import { auth } from "./assets/firebase";
 import { UserProfileFetcher } from "./assets/UserData";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { DataFetcher } from "./assets/UserAddress";
+import Signup from "./Components/Signup";
+import SignIn from "./Components/SignIn";
+import ErrorPage from "./Components/Error";
 function App() {
   const [showLoggedIn, setShowLoggedIn] = useState(false);
   const [allOrder, setAllOrder] = useState([]);
@@ -42,7 +44,11 @@ function App() {
   const dbParentPath = (uid) => "users/" + uid;
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<RootLayout />}>
+      <Route path="/">
+        <Route path="*" element={<ErrorPage />} />
+        <Route path="/signin" element={< SignIn/>} />
+        <Route path="/signup" element={< Signup/>} />
+        <Route path="/" element={<RootLayout />}>
         <Route path="/" element={<FoodMenu />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/cart" element={<Checkout />} />
@@ -53,6 +59,7 @@ function App() {
         <Route path="/profile" element={<Account />} />
         <Route path="reservation" element={authUser?<Reservation />:<Register/>} />
         <Route path="/reservation/list" element={<ReservationList />} />
+      </Route>
       </Route>,
     ),
   );
@@ -179,7 +186,7 @@ function App() {
   };
 
   return (
-    <div className=" relative lg:p-3 pb-[4rem]">
+    <div className=" relative pb-[4rem]">
       <UserContext.Provider
         value={{
           userProfile,

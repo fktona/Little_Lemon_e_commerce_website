@@ -23,7 +23,6 @@ import "swiper/css/scrollbar";
 
 const FoodMenu = () => {
   const [section, setSection] = useState(1);
-  const [searchTerm, setSearchTerm] = useState("");
   const [showEachCategory, setShowEachCategory] = useState(null);
   const sectionItems = {
     1: items.filter((menu) => menu.id >= 1 && menu.id <= 12),
@@ -52,9 +51,9 @@ const FoodMenu = () => {
   }, []);
 
   return (
-    <div className=" relative  mx-auto p-2 md:p-[5rem]  gap-8 ">
+    <div className=" relative  mx-auto p-2 px-[20px] lg:px-[45px]  gap-8 ">
       <div>
-        <h4 className="text-center text-accent mt-[6rem] text-xl ">
+        <h4 className="text-center text-secondary font-bold mt-[2rem] text-xl ">
           {" "}
           CATEGORIES{" "}
         </h4>
@@ -114,7 +113,7 @@ border-l-2 border-primary h-full flex justify-center items-center  text-center t
         </div>
       ) : null}
       <div className="">
-        <h4 className="font-bold mt-8 p-4 flex justify-center mb-2 text-xl font-lato text-secondary">
+        <h4 className="font-bold mt-8 p-4 flex justify-center mb-2 text-xl  text-secondary">
           JUST FOR YOU
         </h4>
         <Swiper
@@ -123,17 +122,17 @@ border-l-2 border-primary h-full flex justify-center items-center  text-center t
           grabCursor={true}
           centeredSlides={true}
           centerInsufficientSlides={true}
-          // slides PerView= {'auto'}
+          slidesPerView= {9}
 
           coverflowEffect={{
-            stretch: 0,
+            stretch: 20,
             rotate: 50,
             depth: 50,
             slideShadows: true,
             modifier: 1,
           }}
           spaceBetween={10}
-          slidesPerView={3}
+          // slidesPerView={3}
           navigation
           pagination={{ clickable: true }}
           //scrollbar={{ draggable: true }}

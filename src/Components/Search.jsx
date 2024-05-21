@@ -16,7 +16,7 @@ export default function Search() {
   const [expandSearch, setExpandSearch] = useState(false);
 
   return (
-    <div className="relative  flex  items-center">
+    <div className="relative  flex  items-center w-full justify-center">
       {expandSearch && (
         <>
           <div className=" ">

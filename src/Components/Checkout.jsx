@@ -163,10 +163,11 @@ function Checkout() {
   const sortedOrders = [...allOrder].sort(sortByQuantityAndOrder);
 
   return (
-    <div className="pt-8">
+    <div className="pt-8  lg:px-[160px]  px-6">
       <button
         onClick={() => Navigate(-1)}
-        className="p-2  mt-4 right-0 top-2  px-3 text-white text-center text-sm bg-accent shadow-md"
+        className="p-4 mt-12 right-0 top-2 
+         px-3 text-white text-center text-sm bg-accent shadow-md"
       >
         <MdWest />
       </button>
