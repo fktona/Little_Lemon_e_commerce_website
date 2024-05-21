@@ -185,12 +185,12 @@ function LoginForm() {
             setEmptyField(true);
           }}
           type="submit"
-          className=" relative px-8 bg-[#131313] mx-auto text-white py-2 rounded hover:bg-secondary"
+          className=" relative px-8 bg-[#131313] mx-auto text-white py-2 rounded hover:bg-primary"
         >
           Sign Up
         </button>
       </form>
-      <span className="w-fit mx-auto text-white">Already have an account? <NavLink to={'/signin'} className={'text-primary hover:text-secondary underline'}>Sign In</NavLink></span>
+      <span className="w-fit mx-auto text-white">Already have an account? <NavLink to={'/signin'} className={'text-black hover:text-primary underline font-semibold ml-2'}>Sign In</NavLink></span>
       {isLoading && <div className="lds-dual-ring"></div>}
     </div>
     </AuthorizationContainer>
