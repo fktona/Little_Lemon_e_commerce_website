@@ -190,7 +190,7 @@ function LoginForm() {
           Sign Up
         </button>
       </form>
-      <span className="w-fit mx-auto text-white">Already have an account? <NavLink to={'/signin'} className={'text-black hover:text-primary underline font-semibold ml-2'}>Sign In</NavLink></span>
+      <span className="w-fit mx-auto text-white">Already have an account? <NavLink to={'/signin'} className={'lg:text-black text-secondary hover:text-primary underline font-semibold ml-2'}>Sign In</NavLink></span>
       {isLoading && <div className="lds-dual-ring"></div>}
     </div>
     </AuthorizationContainer>

@@ -1,24 +1,16 @@
 import { useContext, useState } from "react";
 import { UserContext } from "../assets/Context/userContext";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 import CompanyLogo from "../assets/Context/CompanyIdentity";
-import Address from "./AddressForm";
 import { GrNext, GrDown } from "react-icons/gr";
-import { MdAdd, MdWest } from "react-icons/md";
-import { auth } from "../assets/firebase";
-import { UserAddressFetcher } from "../assets/UserAddress";
+import {  MdWest } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 const Account = () => {
   const Navigate = useNavigate();
 
   const {
-    setShowLoggedIn,
-    allOrder,
-    setAuthUser,
     authUser,
     aboutToSignOut,
-    profileInformation,
-    dbParentPath,
     memoizedUserData,
     addresses,
     defaultAddress,
@@ -70,14 +62,11 @@ const Account = () => {
                 </button>
               </div>
             ) : (
-              <button
-                onClick={() => {
-                  setShowLoggedIn(true);
-                }}
+              <NavLink to={'/signin'}
                 className=" px-2 py-1 mt-2 bg-accent"
               >
                 Please Log In
-              </button>
+              </NavLink>
             )}
           </div>
         </div>

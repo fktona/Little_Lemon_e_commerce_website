@@ -76,7 +76,7 @@ function SignIn() {
   return (
     <AuthorizationContainer>
     <div className=" relative flex flex-col gap-5 w-full h-full top-0">
-      <h2 className="text-3xl text-[#131313] text-center font-bold mb-4">Sign In</h2>
+      <h2 className="text-4xl text-[#131313]  text-center font-bold mb-4">Sign In</h2>
       {isLoading && <div className="lds-dual-ring"></div>}
     
       <ul className="overflow-hidden">
@@ -146,7 +146,7 @@ function SignIn() {
         </button>
       </form>
       <span className="w-fit mx-auto text-white">Do not have an account? 
-      <NavLink to={'/signup'} className={'text-black hover:text-primary underline font-semibold ml-2'}>Sign Up</NavLink></span>
+      <NavLink to={'/signup'} className={'lg:text-black text-secondary hover:text-primary underline font-semibold ml-2'}>Sign Up</NavLink></span>
      
     </div>
     </AuthorizationContainer>

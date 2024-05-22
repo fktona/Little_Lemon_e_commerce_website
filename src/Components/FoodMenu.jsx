@@ -74,15 +74,16 @@ border-l-2 border-primary h-full flex justify-center items-center  text-center t
         </ul>
       </div>
       {showEachCategory ? (
-        <div className="    bg-[#0000001z]  m-auto h-[40vh] inset-0 w-[90%] fixed z-[75] nax-h-[300px]  bg-clip-padding backdrop-filter backdrop-blur-lg border shadow">
+        <div className="  h-fit p-4 lg:h-auto    m-auto   inset-0 w-[90%] fixed z-[75] 
+          bg-clip-padding backdrop-filter backdrop-blur-lg border shadow rounded-[35px]">
           <button
             onClick={() => setShowEachCategory(null)}
-            className="absolute top-2 right-10 px-3 bg-red-500  text-white tex-sm py-2 opacity-100 rounded hover:bg-red-800 "
+            className="absolute top-2 right-10 px-3 z-20 bg-red-500  text-white tex-sm py-2 opacity-100 rounded hover:bg-red-800 "
           >
             {" "}
             <MdClose />{" "}
           </button>
-          <h4 className="text-center text-primary font-semi-bold  m-[1rem] text-2xl ">
+          <h4 className="text-center w-full  text-primary font-semi-bold lg:mb-[5rem]  m-[1rem] text-2xl ">
             {" "}
             {showEachCategory}
           </h4>
@@ -100,12 +101,15 @@ border-l-2 border-primary h-full flex justify-center items-center  text-center t
           >
             {showEachCategory
               ? EachCategory(showEachCategory).map((menu) => (
-                  <SwiperSlide key={menu.id}>
+                  <SwiperSlide key={menu.id}
+                  className="space-x-5">
                     <FoodItem
                       key={menu.id}
                       menu={menu}
                       isBestMenu={menu.id === 2}
+
                     />{" "}
+                
                   </SwiperSlide>
                 ))
               : null}
@@ -122,7 +126,7 @@ border-l-2 border-primary h-full flex justify-center items-center  text-center t
           grabCursor={true}
           centeredSlides={true}
           centerInsufficientSlides={true}
-          slidesPerView= {9}
+          slidesPerView= {4}
 
           coverflowEffect={{
             stretch: 20,
@@ -137,7 +141,7 @@ border-l-2 border-primary h-full flex justify-center items-center  text-center t
           pagination={{ clickable: true }}
           //scrollbar={{ draggable: true }}
           loop={true}
-          className="shadow-inner relative p-1"
+          className="  relative p-1"
         >
           {items.map((menu) =>
             randomNumbers.includes(menu.id) ? (
